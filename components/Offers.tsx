@@ -69,12 +69,12 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
                   </p>
                 </div>
                 
-                <button 
-                  onClick={onOpenZcal}
+                <a
+                  href="mailto:patrice@flow-ops.pro?subject=Demande%20de%20devis%20-%20Mission%20ponctuelle"
                   className="text-slate-900 font-bold text-xs uppercase tracking-wider flex items-center gap-2 hover:gap-3 transition-all mt-auto"
                 >
                   Demander un devis <ArrowRight className="w-4 h-4" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

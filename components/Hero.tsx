@@ -5,6 +5,12 @@ interface HeroProps {
   onOpenZcal: () => void;
 }
 
+const TESTIMONIALS = [
+  { urn: 'urn:li:share:7479934699021369347', title: 'Témoignage client — mission ABX Valala' },
+  { urn: 'urn:li:activity:7498774828095574016', title: 'Témoignage client — stack acquisition Jamespot' },
+  { urn: 'urn:li:share:7488171336314486784', title: 'Témoignage client — CyberVadis' },
+];
+
 const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
   // Use ReturnType<typeof setTimeout> instead of NodeJS.Timeout to fix TypeScript namespace error in browser environment
   const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -119,6 +125,25 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
               </p>
             </div>
 
+          </div>
+        </div>
+
+        {/* Témoignages clients — posts LinkedIn */}
+        <div className="mt-14 max-w-6xl mx-auto">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">
+            Ils en parlent
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t) => (
+              <iframe
+                key={t.urn}
+                src={`https://www.linkedin.com/embed/feed/update/${t.urn}`}
+                title={t.title}
+                loading="lazy"
+                allowFullScreen
+                className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white"
+              />
+            ))}
           </div>
         </div>
       </div>

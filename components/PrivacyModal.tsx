@@ -71,7 +71,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                     </tr>
                     <tr className="border-b border-slate-200">
                       <td className="py-2 font-bold text-slate-900">Adresse postale</td>
-                      <td className="py-2">44 bis Boulevard de la République, 93130 Noisy le Sec</td>
+                      <td className="py-2">59, rue de Ponthieu, Bureau 326, 75008 Paris</td>
                     </tr>
                     <tr className="border-b border-slate-200">
                       <td className="py-2 font-bold text-slate-900">Coordonnées</td>

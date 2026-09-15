@@ -11,4 +11,3 @@ export { default as Footer } from './Footer';
 export { default as ZcalModal } from './ZcalModal';
 export { default as EnrollmentModal } from './EnrollmentModal';
 export { default as PrivacyModal } from './PrivacyModal';
-export { default as GTMAssistant } from './GTMAssistant';

@@ -26,6 +26,12 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
               Transformez votre prospection B2B en infrastructure automatisée et générez des conversations avec vos prospects avec le bon message au bon moment avec en vous appuyant sur la méthodologie ABX. Basé en France, opérant globalement.
             </p>
+            <address className="mt-6 text-slate-500 text-xs not-italic leading-relaxed">
+              <span className="block font-semibold text-slate-400 uppercase tracking-wider text-[10px] mb-1.5">Siège social</span>
+              Patrice Tord<br />
+              59, rue de Ponthieu, Bureau 326<br />
+              75008 Paris, France
+            </address>
           </div>
           
           <div className="flex items-center gap-6">
