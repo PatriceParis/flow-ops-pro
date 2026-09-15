@@ -1,0 +1,5 @@
+{
+  "name": "flow-ops-gtm",
+  "version": "1.0.0",
+  "types": "../dist/types/index.d.ts"
+}

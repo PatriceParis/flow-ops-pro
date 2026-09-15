@@ -1,0 +1,11 @@
+{
+  "projectId": "673bd444-0707-47eb-8d87-13a4a5d4ea6d",
+  "pkg": "flow-ops-gtm",
+  "globalName": "FlowOps",
+  "shape": "package",
+  "srcDir": "components",
+  "buildCmd": "npm run build",
+  "overrides": {
+    "ZcalModal": { "skip": ["Default"] }
+  }
+}
