@@ -7,7 +7,7 @@ const Stack: React.FC = () => {
     {
       icon: <Database className="w-8 h-8" />,
       title: "Data & Ciblage",
-      tag: "Pharow, Sales Nav",
+      tag: "Pharow, Sales Nav, Scraping sur-mesure",
       desc: "Construction de listes de comptes ultra-ciblées. On ne vise plus tout le marché, mais les bons comptes.",
       color: "blue",
       gradient: "from-blue-500 to-cyan-500",
@@ -16,7 +16,7 @@ const Stack: React.FC = () => {
     {
       icon: <BrainCircuit className="w-8 h-8" />,
       title: "Orchestration",
-      tag: "Clay",
+      tag: "Clay, Claude Code",
       desc: "Orchestrateur du système. Enrichissement, scoring et détection de signaux avec +100 intégrations.",
       color: "indigo",
       gradient: "from-indigo-500 to-purple-500",
@@ -25,7 +25,7 @@ const Stack: React.FC = () => {
     {
       icon: <Workflow className="w-8 h-8" />,
       title: "Automatisation",
-      tag: "Zapier, lemlist",
+      tag: "Zapier, lemlist, Clay",
       desc: "Connexion instantanée entre les outils et exécution des séquences d'engagement multicanal.",
       color: "orange",
       gradient: "from-orange-500 to-amber-500",
@@ -84,8 +84,10 @@ const Stack: React.FC = () => {
                 {tool.title}
               </h3>
               
-              <div className="inline-block px-4 py-1.5 bg-slate-50 rounded-full text-[10px] font-bold tracking-wide uppercase text-slate-400 mb-5 border border-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-100 transition-colors">
-                {tool.tag}
+              <div className="min-h-[2.75rem] flex items-center mb-5">
+                <div className="px-4 py-1.5 bg-slate-50 rounded-full text-[10px] font-bold tracking-wide uppercase text-slate-400 border border-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-100 transition-colors">
+                  {tool.tag}
+                </div>
               </div>
               
               <p className="text-sm text-slate-500 leading-relaxed font-medium">
