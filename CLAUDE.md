@@ -13,6 +13,10 @@ npm run preview   # Preview the production build locally
 
 No linter or test runner is configured.
 
+## Environment
+
+No environment variables or secrets are required. `EnrollmentModal` posts to a hardcoded Zapier catch hook (`NOTIFICATION_WEBHOOK_URL`), which relays the submission by email.
+
 ## Architecture
 
 This is a single-page marketing site for the Flow Ops freelance service (ABX & GTM Engineering). There is no routing — the page is a vertical stack of section components rendered in `App.tsx`.

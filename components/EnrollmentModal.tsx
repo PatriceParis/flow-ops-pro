@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { X, Send, Loader2, CheckCircle, Linkedin, Building, User, AlertCircle, ExternalLink } from 'lucide-react';
+import { X, Send, Loader2, CheckCircle, Linkedin, Building, User, AlertCircle } from 'lucide-react';
 import ReactDOM from 'react-dom';
 
 const NOTIFICATION_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/945218/uwpeqb2/'; 
@@ -33,49 +33,17 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
     setStatus('loading');
     setErrorMessage(null);
 
-    const projectId = 'abx-website-ea3d7';
-    const firestoreUrl = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/enrollments?key=${process.env.API_KEY}`;
-    
-    const firestorePayload = {
-      fields: {
-        firstName: { stringValue: formData.firstName },
-        lastName: { stringValue: formData.lastName },
-        linkedinUrl: { stringValue: formData.linkedinUrl },
-        company: { stringValue: formData.company },
-        createdAt: { timestampValue: new Date().toISOString() }
-      }
-    };
-
     try {
-      const firestoreRes = await fetch(firestoreUrl, {
+      await fetch(NOTIFICATION_WEBHOOK_URL, {
         method: 'POST',
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(firestorePayload)
+        body: JSON.stringify({
+          ...formData,
+          source: 'Training Enrollment',
+          date: new Date().toLocaleString('fr-FR')
+        })
       });
-
-      if (!firestoreRes.ok) {
-        if (firestoreRes.status === 403) {
-          throw new Error("ERREUR CRITIQUE : Vos règles de sécurité Firestore ont expiré. Allez dans Firebase Console > Firestore > Rules et autorisez 'create' sur la collection 'enrollments'.");
-        }
-        const errorJson = await firestoreRes.json().catch(() => ({}));
-        const detailedError = errorJson.error ? 
-          `${errorJson.error.status}: ${errorJson.error.message}` : 
-          `Erreur HTTP ${firestoreRes.status}`;
-        throw new Error(detailedError);
-      }
-
-      if (NOTIFICATION_WEBHOOK_URL) {
-        fetch(NOTIFICATION_WEBHOOK_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...formData,
-            source: 'Training Enrollment',
-            date: new Date().toLocaleString('fr-FR')
-          })
-        }).catch(err => console.warn('Notification Webhook bloquée ou échouée:', err));
-      }
 
       setStatus('success');
       setTimeout(() => {
@@ -84,9 +52,9 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
         setFormData({ firstName: '', lastName: '', linkedinUrl: '', company: '' });
       }, 3000);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error('Submission failed:', err);
-      setErrorMessage(err.message || 'Une erreur est survenue lors de l\'envoi.');
+      setErrorMessage('Votre demande n\'a pas pu être envoyée. Réessayez ou écrivez-nous à patrice@flow-ops.pro.');
       setStatus('error');
     }
   };
@@ -201,21 +169,11 @@ const EnrollmentModal: React.FC<EnrollmentModalProps> = ({ isOpen, onClose }) =>
                 <div className="p-4 bg-red-50 rounded-xl border border-red-100 flex flex-col gap-2 items-start animate-in fade-in slide-in-from-top-1">
                   <div className="flex gap-2 items-center text-red-600 font-bold text-[10px] uppercase tracking-wider">
                     <AlertCircle className="w-3.5 h-3.5" />
-                    Erreur de configuration
+                    Envoi impossible
                   </div>
                   <p className="text-[11px] text-red-500 leading-relaxed font-medium">
                     {errorMessage}
                   </p>
-                  {errorMessage?.includes('Firestore') && (
-                    <a 
-                      href="https://console.firebase.google.com/" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 text-[10px] font-bold text-red-700 hover:underline mt-1"
-                    >
-                      Aller à la console Firebase <ExternalLink className="w-3 h-3" />
-                    </a>
-                  )}
                 </div>
               )}
             </form>

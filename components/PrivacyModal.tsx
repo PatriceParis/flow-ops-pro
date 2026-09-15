@@ -88,7 +88,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-4 text-xs italic">Conformément aux obligations légales, l’identité de l’hébergeur du Site est indiquée dans les mentions légales. Le Site est hébergé sur Google Cloud Platform (voir § 6 ci-dessous).</p>
+              <p className="mt-4 text-xs italic">Conformément aux obligations légales, l’identité de l’hébergeur du Site est indiquée ci-après. Le Site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis (voir § 4 ci-dessous).</p>
             </section>
 
             <section>
@@ -161,17 +161,18 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <h3 className="text-xl font-bold text-slate-900 mb-4">4. Destinataires des données</h3>
               <p className="text-sm mb-4">Les informations collectées sont exclusivement utilisées par le responsable du traitement et par ses prestataires strictement habilités :</p>
               <ol className="list-decimal pl-5 space-y-4 text-sm">
-                <li><strong>Google Cloud Platform – hébergement et infrastructure :</strong> Google agit en tant que sous-traitant et traite vos données sur des serveurs sécurisés. Le RGPD impose des obligations spécifiques aux responsables de traitement et aux sous-traitants : les clients sont considérés comme contrôleurs de données tandis que Google est un sous-traitant. Les données restent sous le contrôle du client.</li>
-                <li><strong>Firebase (Google) – base de données pour la gestion des formulaires :</strong> en utilisant Firebase, Google agit comme un sous-traitant et traite les données personnelles au nom du client. En cas de transferts de données hors de l’Espace Économique Européen (EEE), Google applique des clauses contractuelles types approuvées par la Commission européenne.</li>
+                <li><strong>Vercel – hébergement et infrastructure :</strong> Vercel agit en tant que sous-traitant et héberge le Site sur des serveurs sécurisés. Les journaux techniques générés par l’hébergement (adresse IP, horodatage, ressource demandée) sont traités à des fins de fonctionnement et de sécurité. Pour les transferts hors de l’Espace Économique Européen (EEE), Vercel s’appuie sur les clauses contractuelles types approuvées par la Commission européenne.</li>
+                <li><strong>Zapier – acheminement des demandes issues du formulaire :</strong> les informations que vous saisissez dans le formulaire d’inscription sont transmises via Zapier, qui les relaie par e-mail au responsable du traitement. Aucune base de données n’est constituée sur le Site : les données transitent par Zapier puis sont conservées dans la messagerie du responsable du traitement. Zapier encadre les transferts hors EEE par des clauses contractuelles types.</li>
                 <li><strong>zCal – outil de prise de rendez-vous :</strong> zCal reçoit les données que vous saisissez pour fixer un rendez-vous (nom, e-mail, horaire) et les utilise pour gérer le calendrier. Les traitements réalisés par zCal sont décrits dans sa propre politique de confidentialité ; zCal s’appuie notamment sur les principes de consentement et d’intérêt légitime pour l’utilisation de vos données.</li>
                 <li><strong>Google Analytics ou un outil équivalent – mesure d’audience :</strong> cet outil dépose des cookies pour analyser la fréquentation. Vous pouvez accepter ou refuser ces traceurs via le bandeau de consentement.</li>
+                <li><strong>LinkedIn – affichage des témoignages clients :</strong> les publications LinkedIn intégrées sur la page d’accueil sont chargées depuis les serveurs de LinkedIn, qui reçoit de ce fait votre adresse IP et peut déposer ses propres traceurs (cf. § 7).</li>
               </ol>
               <p className="mt-4 text-sm">Les données ne sont ni vendues ni louées à des tiers. Elles peuvent toutefois être transmises aux autorités compétentes en cas d’obligation légale ou pour l’exercice de droits en justice.</p>
             </section>
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">5. Transferts internationaux</h3>
-              <p className="text-sm">Certaines données peuvent être traitées en dehors de l’EEE du fait de l’utilisation de services fournis par Google (Google Cloud, Firebase) ou zCal. Google précise qu’à la suite de l’invalidation du bouclier de protection des données UE–États-Unis, il s’appuie sur les clauses contractuelles types (SCC) validées par la Commission européenne pour encadrer les transferts de données. Ces clauses assurent un niveau de protection équivalent à celui garanti par l’UE. ZCal indique également se conformer aux obligations en matière de protection des données et s’appuie sur des bases légales telles que le consentement et l’intérêt légitime.</p>
+              <p className="text-sm">Certaines données peuvent être traitées en dehors de l’EEE du fait de l’utilisation de services fournis par Vercel, Zapier ou zCal, dont les sociétés éditrices sont établies aux États-Unis. Ces prestataires s’appuient sur les clauses contractuelles types (SCC) validées par la Commission européenne pour encadrer les transferts de données ; ces clauses assurent un niveau de protection équivalent à celui garanti par l’UE. ZCal indique également se conformer aux obligations en matière de protection des données et s’appuie sur des bases légales telles que le consentement et l’intérêt légitime.</p>
             </section>
 
             <section>
@@ -195,19 +196,19 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Cookies techniques et nécessaires :</strong> indispensables au bon fonctionnement du Site (navigation sécurisée, choix de langue). Ils ne nécessitent pas de consentement.</li>
                 <li><strong>Cookies de mesure d’audience (Analytics) :</strong> utilisés pour analyser la fréquentation et améliorer le Site. Ces traceurs ne sont déposés qu’avec votre accord. La CNIL recommande d’informer clairement l’internaute des finalités de ces cookies et d’obtenir un consentement spécifique.</li>
-                <li><strong>Cookies de tiers :</strong> lorsque des contenus externes (par exemple des vidéos ou boutons de partage) sont intégrés, ces services tiers peuvent déposer des traceurs soumis à votre consentement.</li>
+                <li><strong>Cookies de tiers :</strong> la page d’accueil intègre des publications LinkedIn (témoignages clients) affichées depuis les serveurs de LinkedIn Ireland Unlimited Company. À ce titre, LinkedIn est susceptible de déposer des traceurs et de collecter des données de navigation lors de l’affichage de ces contenus, selon sa propre politique de confidentialité. Il en va de même pour tout autre contenu externe intégré (vidéos, boutons de partage). Ces traceurs sont soumis à votre consentement.</li>
               </ul>
               <p className="mt-4 text-sm">Vous pouvez paramétrer les cookies à tout moment via le bandeau ou votre navigateur. Le refus des cookies de mesure d’audience n’a pas d’impact sur la navigation.</p>
             </section>
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">8. Sécurité</h3>
-              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement, sauvegardes régulières) pour assurer la confidentialité et l’intégrité des données. Les accès sont protégés par des mécanismes d’authentification. Les sous-traitants (Google Cloud, Firebase, zCal) certifient respecter des normes internationales de sécurité (notamment ISO 27001, 27017 et 27018 pour Google Firebase).</p>
+              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, Zapier, zCal) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
             </section>
 
             <section className="pb-8">
               <h3 className="text-xl font-bold text-slate-900 mb-4">9. Mise à jour de la politique</h3>
-              <p className="text-sm">La présente politique est susceptible d’être modifiée pour refléter les évolutions légales ou technologiques. La version en vigueur est celle publiée sur le Site à la date de consultation. Les utilisateurs seront informés des changements significatifs (par exemple via un bandeau ou une notification). <strong>Dernière mise à jour : 19 janvier 2026.</strong></p>
+              <p className="text-sm">La présente politique est susceptible d’être modifiée pour refléter les évolutions légales ou technologiques. La version en vigueur est celle publiée sur le Site à la date de consultation. Les utilisateurs seront informés des changements significatifs (par exemple via un bandeau ou une notification). <strong>Dernière mise à jour : 15 septembre 2026.</strong></p>
             </section>
           </div>
         </div>
