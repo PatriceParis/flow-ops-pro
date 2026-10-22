@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import ZcalModal from './components/ZcalModal';
 import EnrollmentModal from './components/EnrollmentModal';
 import PrivacyModal from './components/PrivacyModal';
+import CookieBanner from './components/CookieBanner';
 
 const App: React.FC = () => {
   const [isZcalOpen, setIsZcalOpen] = useState(false);
@@ -49,6 +50,7 @@ const App: React.FC = () => {
       <ZcalModal isOpen={isZcalOpen} onClose={() => setIsZcalOpen(false)} />
       <EnrollmentModal isOpen={isEnrollmentOpen} onClose={() => setIsEnrollmentOpen(false)} />
       <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <CookieBanner onOpenPrivacy={openPrivacy} />
     </div>
   );
 };

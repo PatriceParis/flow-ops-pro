@@ -192,13 +192,13 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">7. Cookies et traceurs</h3>
-              <p className="text-sm mb-3">Un bandeau d’information s’affiche lors de votre première visite pour recueillir votre consentement à l’enregistrement de certains cookies. Plusieurs catégories de cookies peuvent être utilisées :</p>
+              <p className="text-sm mb-3">Un bandeau s’affiche lors de votre première visite pour recueillir votre choix. Tant que vous n’avez pas accepté, <strong>aucun traceur de mesure d’audience n’est déposé et les publications LinkedIn ne sont pas chargées</strong> : elles sont remplacées par un encart qui vous laisse décider. Refuser est aussi simple qu’accepter, et votre refus n’altère en rien la navigation. Vous pouvez revenir sur votre choix à tout moment via le lien « Gérer les traceurs » en pied de page ; le retrait de votre consentement supprime les identifiants déjà enregistrés sur votre terminal. Plusieurs catégories de traceurs peuvent être utilisées :</p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Cookies techniques et nécessaires :</strong> indispensables au bon fonctionnement du Site (navigation sécurisée, choix de langue). Ils ne nécessitent pas de consentement.</li>
                 <li><strong>Traceurs de mesure d’audience (PostHog) :</strong> PostHog enregistre un identifiant de navigation dans le stockage local de votre terminal afin de distinguer les visites et d’analyser la fréquentation. La CNIL recommande d’informer clairement l’internaute des finalités de ces traceurs et d’obtenir un consentement spécifique.</li>
                 <li><strong>Cookies de tiers :</strong> la page d’accueil intègre des publications LinkedIn (témoignages clients) affichées depuis les serveurs de LinkedIn Ireland Unlimited Company. À ce titre, LinkedIn est susceptible de déposer des traceurs et de collecter des données de navigation lors de l’affichage de ces contenus, selon sa propre politique de confidentialité. Il en va de même pour tout autre contenu externe intégré (vidéos, boutons de partage). Ces traceurs sont soumis à votre consentement.</li>
               </ul>
-              <p className="mt-4 text-sm">Vous pouvez paramétrer les cookies à tout moment via le bandeau ou votre navigateur. Le refus des cookies de mesure d’audience n’a pas d’impact sur la navigation.</p>
+              <p className="mt-4 text-sm">Vous pouvez paramétrer ces traceurs à tout moment via le lien « Gérer les traceurs » en pied de page, ou depuis votre navigateur. Le refus n’a pas d’impact sur la navigation : seules les publications LinkedIn intégrées restent masquées, et vous pouvez les consulter directement sur LinkedIn.</p>
             </section>
 
             <section>

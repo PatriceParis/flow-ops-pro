@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
+import { setConsent, useConsent } from '../consent';
 
 interface HeroProps {
   onOpenZcal: () => void;
@@ -12,6 +13,8 @@ const TESTIMONIALS = [
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
+  const consent = useConsent();
+
   // Use ReturnType<typeof setTimeout> instead of NodeJS.Timeout to fix TypeScript namespace error in browser environment
   const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -134,16 +137,46 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
             Ils en parlent
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <iframe
-                key={t.urn}
-                src={`https://www.linkedin.com/embed/feed/update/${t.urn}`}
-                title={t.title}
-                loading="lazy"
-                allowFullScreen
-                className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white"
-              />
-            ))}
+            {TESTIMONIALS.map((t) =>
+              consent === 'granted' ? (
+                <iframe
+                  key={t.urn}
+                  src={`https://www.linkedin.com/embed/feed/update/${t.urn}`}
+                  title={t.title}
+                  loading="lazy"
+                  allowFullScreen
+                  className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white"
+                />
+              ) : (
+                <div
+                  key={t.urn}
+                  className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white flex flex-col items-center justify-center text-center p-8"
+                >
+                  <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300 mb-5">
+                    <Linkedin className="w-6 h-6" />
+                  </div>
+                  <p className="text-sm font-bold text-slate-900 mb-2">Témoignage LinkedIn</p>
+                  <p className="text-xs text-slate-500 leading-relaxed max-w-[240px]">
+                    L'affichage de cette publication dépose des traceurs LinkedIn. Il requiert
+                    votre accord.
+                  </p>
+                  <button
+                    onClick={() => setConsent('granted')}
+                    className="mt-6 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors"
+                  >
+                    Autoriser et afficher
+                  </button>
+                  <a
+                    href={`https://www.linkedin.com/feed/update/${t.urn}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 text-[11px] font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1.5 transition-colors"
+                  >
+                    Voir sur LinkedIn <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )
+            )}
           </div>
         </div>
       </div>

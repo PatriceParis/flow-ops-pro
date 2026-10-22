@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Linkedin, Mail } from 'lucide-react';
+import { clearConsent } from '../consent';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
@@ -52,6 +53,12 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
               className="hover:text-slate-400 transition-colors bg-transparent border-none cursor-pointer p-0"
             >
               Politique de Confidentialité
+            </button>
+            <button
+              onClick={clearConsent}
+              className="hover:text-slate-400 transition-colors bg-transparent border-none cursor-pointer p-0"
+            >
+              Gérer les traceurs
             </button>
           </div>
         </div>

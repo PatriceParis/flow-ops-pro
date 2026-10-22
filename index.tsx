@@ -1,13 +1,10 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import posthog from 'posthog-js';
 import App from './App';
+import { applyStoredConsent } from './consent';
 
-posthog.init('phc_kL32svjiaBcDnDPzV97dVULNw7c2g5PppwZqrgdTSCYJ', {
-  api_host: 'https://eu.i.posthog.com',
-  defaults: '2025-05-24',
-});
+applyStoredConsent();
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
