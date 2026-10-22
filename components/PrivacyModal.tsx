@@ -102,7 +102,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
 
               <h4 className="font-bold text-slate-800 mt-6 mb-2">2.2 Données collectées automatiquement</h4>
               <ul className="list-disc pl-5 space-y-2 text-sm">
-                <li><strong>Données d’usage et d’appareil :</strong> lors de la navigation, le Site enregistre automatiquement certaines informations (adresses IP, identifiants d’appareil, type de navigateur, pages visitées, temps de connexion) via des outils d’analyse comme Google Analytics. Ces données ne permettent pas de vous identifier directement mais servent à des fins statistiques et d’amélioration du Site.</li>
+                <li><strong>Données d’usage et d’appareil :</strong> lors de la navigation, le Site enregistre automatiquement certaines informations (adresse IP, identifiant d’appareil, type de navigateur, pages visitées, temps de connexion) via l’outil de mesure d’audience PostHog, hébergé dans l’Union européenne. Ces données ne permettent pas de vous identifier directement mais servent à des fins statistiques et d’amélioration du Site.</li>
                 <li><strong>Cookies et traceurs :</strong> des cookies de mesure d’audience et de fonctionnement sont déposés sur votre terminal pour faciliter la navigation et mesurer la fréquentation (cf. § 7). Certains cookies nécessitent votre consentement préalable.</li>
               </ul>
 
@@ -153,7 +153,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Données de contact et de rendez-vous :</strong> conservées trois (3) ans à compter du dernier échange avec vous. Au-delà, elles sont supprimées ou anonymisées.</li>
                 <li><strong>Données de facturation :</strong> conservées dix (10) ans pour respecter les obligations fiscales et comptables.</li>
-                <li><strong>Données relatives aux cookies de mesure d’audience :</strong> la durée de conservation maximale des cookies d’Analytics est de 14 mois, conformément aux recommandations de la CNIL.</li>
+                <li><strong>Données relatives aux cookies de mesure d’audience :</strong> la durée de conservation maximale des traceurs de mesure d’audience est de 13 mois, et celle des données qu’ils génèrent de 25 mois, conformément aux recommandations de la CNIL.</li>
               </ul>
             </section>
 
@@ -164,7 +164,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                 <li><strong>Vercel – hébergement et infrastructure :</strong> Vercel agit en tant que sous-traitant et héberge le Site sur des serveurs sécurisés. Les journaux techniques générés par l’hébergement (adresse IP, horodatage, ressource demandée) sont traités à des fins de fonctionnement et de sécurité. Pour les transferts hors de l’Espace Économique Européen (EEE), Vercel s’appuie sur les clauses contractuelles types approuvées par la Commission européenne.</li>
                 <li><strong>Zapier – acheminement des demandes issues du formulaire :</strong> les informations que vous saisissez dans le formulaire d’inscription sont transmises via Zapier, qui les relaie par e-mail au responsable du traitement. Aucune base de données n’est constituée sur le Site : les données transitent par Zapier puis sont conservées dans la messagerie du responsable du traitement. Zapier encadre les transferts hors EEE par des clauses contractuelles types.</li>
                 <li><strong>zCal – outil de prise de rendez-vous :</strong> zCal reçoit les données que vous saisissez pour fixer un rendez-vous (nom, e-mail, horaire) et les utilise pour gérer le calendrier. Les traitements réalisés par zCal sont décrits dans sa propre politique de confidentialité ; zCal s’appuie notamment sur les principes de consentement et d’intérêt légitime pour l’utilisation de vos données.</li>
-                <li><strong>Google Analytics ou un outil équivalent – mesure d’audience :</strong> cet outil dépose des cookies pour analyser la fréquentation. Vous pouvez accepter ou refuser ces traceurs via le bandeau de consentement.</li>
+                <li><strong>PostHog – mesure d’audience :</strong> PostHog analyse la fréquentation et l’usage du Site. Les données sont traitées sur l’infrastructure européenne de PostHog (eu.i.posthog.com) et ne quittent pas l’Espace Économique Européen.</li>
                 <li><strong>LinkedIn – affichage des témoignages clients :</strong> les publications LinkedIn intégrées sur la page d’accueil sont chargées depuis les serveurs de LinkedIn, qui reçoit de ce fait votre adresse IP et peut déposer ses propres traceurs (cf. § 7).</li>
               </ol>
               <p className="mt-4 text-sm">Les données ne sont ni vendues ni louées à des tiers. Elles peuvent toutefois être transmises aux autorités compétentes en cas d’obligation légale ou pour l’exercice de droits en justice.</p>
@@ -195,7 +195,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <p className="text-sm mb-3">Un bandeau d’information s’affiche lors de votre première visite pour recueillir votre consentement à l’enregistrement de certains cookies. Plusieurs catégories de cookies peuvent être utilisées :</p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Cookies techniques et nécessaires :</strong> indispensables au bon fonctionnement du Site (navigation sécurisée, choix de langue). Ils ne nécessitent pas de consentement.</li>
-                <li><strong>Cookies de mesure d’audience (Analytics) :</strong> utilisés pour analyser la fréquentation et améliorer le Site. Ces traceurs ne sont déposés qu’avec votre accord. La CNIL recommande d’informer clairement l’internaute des finalités de ces cookies et d’obtenir un consentement spécifique.</li>
+                <li><strong>Traceurs de mesure d’audience (PostHog) :</strong> PostHog enregistre un identifiant de navigation dans le stockage local de votre terminal afin de distinguer les visites et d’analyser la fréquentation. La CNIL recommande d’informer clairement l’internaute des finalités de ces traceurs et d’obtenir un consentement spécifique.</li>
                 <li><strong>Cookies de tiers :</strong> la page d’accueil intègre des publications LinkedIn (témoignages clients) affichées depuis les serveurs de LinkedIn Ireland Unlimited Company. À ce titre, LinkedIn est susceptible de déposer des traceurs et de collecter des données de navigation lors de l’affichage de ces contenus, selon sa propre politique de confidentialité. Il en va de même pour tout autre contenu externe intégré (vidéos, boutons de partage). Ces traceurs sont soumis à votre consentement.</li>
               </ul>
               <p className="mt-4 text-sm">Vous pouvez paramétrer les cookies à tout moment via le bandeau ou votre navigateur. Le refus des cookies de mesure d’audience n’a pas d’impact sur la navigation.</p>
@@ -203,7 +203,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">8. Sécurité</h3>
-              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, Zapier, zCal) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
+              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, Zapier, zCal, PostHog) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
             </section>
 
             <section className="pb-8">

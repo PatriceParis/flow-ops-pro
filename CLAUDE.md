@@ -17,6 +17,8 @@ No linter or test runner is configured.
 
 No environment variables or secrets are required. `EnrollmentModal` posts to a hardcoded Zapier catch hook (`NOTIFICATION_WEBHOOK_URL`), which relays the submission by email.
 
+PostHog analytics is initialized in `index.tsx` against the EU region (`https://eu.i.posthog.com`). The project token there is a public write-only key, intended to ship in the client bundle — it is not a secret.
+
 ## Architecture
 
 This is a single-page marketing site for the Flow Ops freelance service (ABX & GTM Engineering). There is no routing — the page is a vertical stack of section components rendered in `App.tsx`.
