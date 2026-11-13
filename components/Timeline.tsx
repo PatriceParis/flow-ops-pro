@@ -115,7 +115,7 @@ const Timeline: React.FC = () => {
               </div>
               
               <div className="pt-2">
-                <h4 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-slate-800">{c.timeline.steps[idx].title}</h4>
+                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-slate-800">{c.timeline.steps[idx].title}</h3>
                 <p className="text-slate-500 mt-3 leading-relaxed font-medium">{c.timeline.steps[idx].desc}</p>
                 <div className="flex flex-wrap gap-3 mt-5">
                   {c.timeline.steps[idx].tags.map((tag, tIdx) => (

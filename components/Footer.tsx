@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
               <img 
                 src="/flow-ops-logo.png" 
                 alt="Flow Ops" 
-                className="h-9 w-auto brightness-0 invert" 
+                width="600" height="143" loading="lazy" className="h-9 w-auto brightness-0 invert" 
               />
             </div>
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed">

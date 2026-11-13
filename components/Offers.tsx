@@ -66,7 +66,7 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
             <div className="bg-slate-100/50 rounded-[2rem] p-8 border border-slate-200 flex flex-col h-full">
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900 mb-2">{c.offers.sideTitle}</h4>
+                  <h3 className="text-lg font-bold text-slate-900 mb-2">{c.offers.sideTitle}</h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-8">
                     {c.offers.sideBody}
                   </p>

@@ -22,7 +22,7 @@ const Navbar: React.FC<NavbarProps> = ({ onOpenZcal }) => {
               <img
                 src="/flow-ops-logo.png"
                 alt="Flow Ops"
-                className="h-8 w-auto block"
+                width="600" height="143" className="h-8 w-auto block"
               />
               <div className="absolute -inset-2 bg-blue-500/5 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
