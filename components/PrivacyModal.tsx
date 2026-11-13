@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import { useContent } from '../i18n';
 import ReactDOM from 'react-dom';
 
 interface PrivacyModalProps {
@@ -9,6 +10,7 @@ interface PrivacyModalProps {
 }
 
 const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
+  const c = useContent();
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -43,7 +45,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
         <div className="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-3">
             <img src="/flow-ops-logo.png" alt="Flow Ops" className="h-6 w-auto" />
-            <h2 className="text-lg font-bold text-slate-900">Politique de confidentialité</h2>
+            <h2 className="text-lg font-bold text-slate-900">{c.footer.privacy}</h2>
           </div>
           <button 
             onClick={onClose}
@@ -56,6 +58,11 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
         {/* Content */}
         <div className="flex-grow overflow-y-auto p-8 sm:p-12 prose prose-slate max-w-none">
           <div className="space-y-8 text-slate-600 leading-relaxed">
+            {c.privacyNotice && (
+              <p className="text-xs bg-blue-50 border border-blue-100 text-blue-900 rounded-xl p-4 leading-relaxed">
+                {c.privacyNotice}
+              </p>
+            )}
             <p className="text-sm">
               Cette politique de confidentialité décrit la manière dont <strong>Flow Ops</strong> (le « Site »), exploité par un entrepreneur individuel basé en France, collecte et utilise les données personnelles de ses visiteurs et clients. Elle a pour but de répondre aux obligations légales prévues par le Règlement général sur la protection des données (RGPD) et la loi Informatique et Libertés. La politique est applicable à toutes les pages et services accessibles via <strong>flow-ops.pro</strong>
             </p>

@@ -1,21 +1,24 @@
 import React from 'react';
 import { X, Check, Radar, ThumbsUp, MessageSquare } from 'lucide-react';
+import { useContent } from '../i18n';
 
 const Method: React.FC = () => {
+  const c = useContent();
+
   return (
     <section id="methode" className="py-24 bg-white relative">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/50 to-transparent"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <span className="text-blue-600 font-bold tracking-widest text-base md:text-lg uppercase mb-3 inline-block max-w-4xl leading-relaxed">
-            Ne chassez plus aveuglément des leads. Orchestrez les interactions avec vos comptes clés et engagez les.
+            {c.method.eyebrow}
           </span>
         </div>
         
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-snug">
-              Le volume ne fonctionne plus. <br /><span className="text-blue-600">Le contexte est roi.</span>
+              {c.method.titleLine1}<br /><span className="text-blue-600">{c.method.titleAccent}</span>
             </h2>
             <div className="space-y-8">
               <div className="flex gap-5">
@@ -23,9 +26,9 @@ const Method: React.FC = () => {
                   <X className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-slate-900 mb-2">Les limites du modèle traditionnel</h3>
+                  <h3 className="font-semibold text-lg text-slate-900 mb-2">{c.method.oldTitle}</h3>
                   <p className="text-slate-500 leading-relaxed">
-                    Dilution du message marketing, travail en silos entre Marketing et Sales, et concentration sur des métriques de vanité (clics, vues) plutôt que sur le pipeline réel.
+                    {c.method.oldBody}
                   </p>
                 </div>
               </div>
@@ -34,9 +37,9 @@ const Method: React.FC = () => {
                   <Check className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-slate-900 mb-2">La vision Account Based Experience (ABX)</h3>
+                  <h3 className="font-semibold text-lg text-slate-900 mb-2">{c.method.newTitle}</h3>
                   <p className="text-slate-500 leading-relaxed">
-                    Une infrastructure personnalisée et scalable. Identifier les comptes prioritaires avant les Sales, générer des signaux d'intérêt exploitables basés sur des données réelles.
+                    {c.method.newBody}
                   </p>
                 </div>
               </div>
@@ -52,7 +55,7 @@ const Method: React.FC = () => {
                     <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
                       <Radar className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-slate-700">1. Sourcing, enrichissement et détection de signaux</span>
+                    <span className="font-semibold text-slate-700">{c.method.step1}</span>
                   </div>
                 </div>
                 
@@ -63,9 +66,9 @@ const Method: React.FC = () => {
                     <div className="p-2 bg-purple-50 rounded-lg text-blue-600">
                       <ThumbsUp className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-slate-700">2. Conversations LinkedIn et email</span>
+                    <span className="font-semibold text-slate-700">{c.method.step2}</span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-600 px-2 py-1 rounded-md">AUTO</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-600 px-2 py-1 rounded-md">{c.method.step2Badge}</span>
                 </div>
                 
                 <div className="w-0.5 h-6 bg-slate-200 mx-auto group-hover:bg-green-200 transition-colors"></div>
@@ -75,9 +78,9 @@ const Method: React.FC = () => {
                     <div className="p-2 bg-white/10 rounded-lg text-green-400">
                       <MessageSquare className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold">3. Activation Sales</span>
+                    <span className="font-semibold">{c.method.step3}</span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/20 text-green-300 px-2 py-1 rounded-md">Conversion</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/20 text-green-300 px-2 py-1 rounded-md">{c.method.step3Badge}</span>
                 </div>
               </div>
             </div>

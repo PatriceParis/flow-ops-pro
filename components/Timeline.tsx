@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useContent } from '../i18n';
 
 // Custom Isometric 3D Icons with improved readability and contrast
 const FoundationIcon = () => (
@@ -70,25 +71,17 @@ const FullCityIcon = () => (
 );
 
 const Timeline: React.FC = () => {
+  const c = useContent();
   const steps = [
     {
-      title: "Construction & Fondations",
-      desc: "On arrête de deviner. On structure le marché adressable en tiering (TAM), on nettoie le CRM, on définit les cibles et audiences précises et on configure la stack technique.",
-      tags: ["Setup technique", "Sourcing"],
       borderColor: "border-blue-500",
       icon: <FoundationIcon />
     },
     {
-      title: "Exécution & Itérations",
-      desc: "Lancement simultanée Paid, outreach & nurturing. Collecte de la données et itérations.",
-      tags: ["Outbound", "Publicité payante", "Signaux"],
       borderColor: "border-purple-500",
       icon: <ConstructionIcon />
     },
     {
-      title: "Scale & Optimisations",
-      desc: "On double la mise sur ce qui fonctionne. On coupe ce qui ne marche pas. On aligne les équipes Sales pour qu'elles traitent les leads entrants de manière optimale.",
-      tags: ["Pipeline Review", "Playbook Final"],
       borderColor: "border-emerald-500",
       icon: <FullCityIcon />
     }
@@ -98,8 +91,8 @@ const Timeline: React.FC = () => {
     <section className="py-24 bg-slate-50 border-t border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-slate-900">Une approche méthodologique et structurée</h2>
-          <p className="text-slate-500 mt-2">Une roadmap claire de l'identification des comptes à la génération de conversions</p>
+          <h2 className="text-2xl font-bold text-slate-900">{c.timeline.title}</h2>
+          <p className="text-slate-500 mt-2">{c.timeline.subtitle}</p>
         </div>
         
         <div className="relative border-l-2 border-slate-200 ml-8 md:ml-16 space-y-20">
@@ -122,10 +115,10 @@ const Timeline: React.FC = () => {
               </div>
               
               <div className="pt-2">
-                <h4 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-slate-800">{step.title}</h4>
-                <p className="text-slate-500 mt-3 leading-relaxed font-medium">{step.desc}</p>
+                <h4 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-slate-800">{c.timeline.steps[idx].title}</h4>
+                <p className="text-slate-500 mt-3 leading-relaxed font-medium">{c.timeline.steps[idx].desc}</p>
                 <div className="flex flex-wrap gap-3 mt-5">
-                  {step.tags.map((tag, tIdx) => (
+                  {c.timeline.steps[idx].tags.map((tag, tIdx) => (
                     <span key={tIdx} className="px-3 py-1 bg-white border border-slate-200 text-[11px] rounded-lg text-slate-500 font-bold uppercase tracking-wider shadow-sm transition-all group-hover:border-slate-300">
                       {tag}
                     </span>

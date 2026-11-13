@@ -1,33 +1,39 @@
-
 import React from 'react';
+import { Plus } from 'lucide-react';
+import { useContent } from '../i18n';
 
 const FAQ: React.FC = () => {
-  const questions = [
-    {
-      q: "Quelle est la différence entre ABX et ABM ?",
-      a: "L’ABM pousse des campagnes personnalisées sur une liste de comptes, souvent sans coordination avec les sales.\n\nL’ABX observe les comportements réels, capte des signaux, puis active le bon canal (marketing ou sales) au bon moment.\n\n→ Plus dynamique, orchestré, itératif, et aligné marketing + sales."
-    },
-    {
-      q: "Que déploie-t-on concrètement en ABX ?",
-      a: "Un système complet et coordonné autour de 4 piliers :\n\n• Data : ciblage, enrichissement, signaux\n• Contenus : lead magnets, landing pages, vidéos\n• Paid : campagnes LinkedIn/Google, retargeting\n• Outreach : séquences multicanal pilotées par signaux\n\n→ Le tout orchestré avec Clay, Lemlist, Zapier & co."
-    },
-    {
-      q: "A quel type de sociétés s'adresse ces offres ?",
-      a: "Ces offres sont conçues pour des sociétés B2B avec un panier moyen > 2000€ et une offre déjà validée (Product Market Fit). Si vous cherchez encore votre marché ou venez de lever des fonds, l'approche est ajustée. Nous proposons des offres spécifiques.\n\nNous travaillons aussi bien avec des Head of Sales que des CMO."
-    }
-  ];
+  const c = useContent();
 
   return (
-    <section className="py-24 bg-white">
+    <section id="faq" className="py-24 bg-white">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-12 text-center">Questions Fréquentes</h2>
-        
-        <div className="space-y-6">
-          {questions.map((item, idx) => (
-            <div key={idx} className="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors">
-              <h4 className="font-bold text-slate-900 text-lg">{item.q}</h4>
-              <p className="text-slate-500 mt-3 leading-relaxed whitespace-pre-line">{item.a}</p>
-            </div>
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900">{c.faq.title}</h2>
+          <p className="text-slate-500 mt-3">{c.faq.subtitle}</p>
+        </div>
+
+        {/* Native <details> keeps every answer in the DOM without JavaScript, so
+            search and AI crawlers read the full text even while it is collapsed. */}
+        <div className="space-y-4">
+          {c.faq.items.map((item, idx) => (
+            <details
+              key={idx}
+              open={idx === 0}
+              className="group bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-200 transition-colors overflow-hidden"
+            >
+              <summary className="flex items-start justify-between gap-6 p-6 md:p-8 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                <h3 className="font-bold text-slate-900 text-base md:text-lg leading-snug">
+                  {item.q}
+                </h3>
+                <span className="shrink-0 w-7 h-7 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-open:rotate-45 transition-transform duration-300">
+                  <Plus className="w-4 h-4" />
+                </span>
+              </summary>
+              <p className="px-6 md:px-8 pb-6 md:pb-8 -mt-1 text-slate-500 leading-relaxed whitespace-pre-line">
+                {item.a}
+              </p>
+            </details>
           ))}
         </div>
       </div>

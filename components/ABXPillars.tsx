@@ -1,35 +1,30 @@
 import React from 'react';
 import { Mail, Megaphone, FileText, Database, Calendar, Users, CheckCircle } from 'lucide-react';
+import { useContent } from '../i18n';
 
 const ABXPillars: React.FC = () => {
+  const c = useContent();
+
   const pillars = [
     {
       id: 1,
-      name: 'Outbound',
       icon: <Mail className="w-4 h-4" />,
-      description: 'Prospection ultra-personnalisée et adaptée au tiering de vos comptes.',
       // Utilisation de classes responsive pour le positionnement
       containerClasses: 'top-0 left-0 items-start text-left pl-6 pt-6 pr-10 md:pl-16 md:pt-16 md:pr-24 justify-start'
     },
     {
       id: 2,
-      name: 'Paid (Ads)',
       icon: <Megaphone className="w-4 h-4" />,
-      description: 'Campagnes Notoriété et Lead Gen via LinkedIn Ads pour éduquer et convertir.',
       containerClasses: 'top-0 right-0 items-end text-right pr-6 pt-6 pl-10 md:pr-16 md:pt-16 md:pl-24 justify-start'
     },
     {
       id: 3,
-      name: 'Data & Signaux',
       icon: <Database className="w-4 h-4" />,
-      description: 'Identification des comptes à forte intention d\'achat et ciblage au bon timing.',
       containerClasses: 'bottom-0 left-0 items-start text-left pl-6 pb-6 pr-10 md:pl-16 md:pb-16 md:pr-24 justify-end'
     },
     {
       id: 4,
-      name: 'Contenus',
       icon: <FileText className="w-4 h-4" />,
-      description: 'Création d\'autorité et éducation du marché pour réduire vos cycles de vente.',
       containerClasses: 'bottom-0 right-0 items-end text-right pr-6 pb-6 pl-10 md:pr-16 md:pb-16 md:pl-24 justify-end'
     }
   ];
@@ -43,10 +38,10 @@ const ABXPillars: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4 md:mb-6">
-            Une approche <span className="gradient-text">complémentaire</span>
+            {c.pillars.titleBefore} <span className="gradient-text">{c.pillars.titleAccent}</span>
           </h2>
           <p className="text-slate-500 text-sm md:text-lg font-light leading-relaxed">
-            Un système performant ne repose pas sur un levier isolé, mais sur <span className="text-slate-900">l'assemblage simultané</span> de 4 piliers.
+            {c.pillars.subtitleBefore}<span className="text-slate-900">{c.pillars.subtitleHighlight}</span>{c.pillars.subtitleAfter}
           </p>
         </div>
 
@@ -76,14 +71,14 @@ const ABXPillars: React.FC = () => {
             {/* Content Layer */}
             <div className="absolute inset-0 pointer-events-none">
               <div className="grid grid-cols-2 grid-rows-2 w-full h-full">
-                {pillars.map((p) => (
+                {pillars.map((p, i) => (
                   <div key={p.id} className={`flex flex-col h-full absolute w-1/2 h-1/2 ${p.containerClasses}`}>
                     <div className="bg-white p-1.5 md:p-2.5 rounded-lg md:rounded-xl w-fit mb-2 md:mb-5 shadow-sm border border-slate-100 flex items-center justify-center">
                       {React.cloneElement(p.icon as React.ReactElement<any>, { className: "w-3 h-3 md:w-4 md:h-4 text-indigo-500" })}
                     </div>
-                    <h3 className="text-slate-900 font-bold text-sm md:text-xl mb-1 md:mb-3 tracking-tight whitespace-nowrap">{p.name}</h3>
+                    <h3 className="text-slate-900 font-bold text-sm md:text-xl mb-1 md:mb-3 tracking-tight whitespace-nowrap">{c.pillars.items[i].name}</h3>
                     <p className="text-slate-500 text-[8px] sm:text-[10px] md:text-xs leading-tight md:leading-relaxed max-w-[130px] md:max-w-[180px] font-normal">
-                      {p.description}
+                      {c.pillars.items[i].description}
                     </p>
                   </div>
                 ))}
@@ -121,14 +116,14 @@ const ABXPillars: React.FC = () => {
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-500">
                 <Calendar className="w-4 md:w-4.5 h-4 md:h-4.5" />
               </div>
-              <span className="text-sm md:text-base font-bold text-slate-700">RDV qualifiés</span>
+              <span className="text-sm md:text-base font-bold text-slate-700">{c.pillars.outcomeMeetings}</span>
             </div>
 
             <div className="w-full px-5 md:px-6 py-4 md:py-5 bg-white rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(15,23,42,0.02)] flex items-center gap-4 md:gap-5 group transition-colors hover:border-indigo-100">
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400">
                 <Users className="w-4 md:w-4.5 h-4 md:h-4.5" />
               </div>
-              <span className="text-sm md:text-base font-bold text-slate-700">Processus interne Sales</span>
+              <span className="text-sm md:text-base font-bold text-slate-700">{c.pillars.outcomeProcess}</span>
             </div>
 
             <div className="h-8 md:h-10 w-px relative mt-1">
@@ -140,7 +135,7 @@ const ABXPillars: React.FC = () => {
               <div className="p-1.5 md:p-2 bg-emerald-500/10 rounded-full">
                 <CheckCircle className="w-4 md:w-5 h-4 md:h-5 text-emerald-400" />
               </div>
-              <span className="font-bold text-white text-xs md:text-sm tracking-[0.1em] md:tracking-[0.15em] uppercase">De la conversation au deal</span>
+              <span className="font-bold text-white text-xs md:text-sm tracking-[0.1em] md:tracking-[0.15em] uppercase">{c.pillars.outcomeFinal}</span>
             </div>
           </div>
         </div>

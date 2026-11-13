@@ -1,19 +1,21 @@
 import React, { useRef, useEffect } from 'react';
 import { ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
 import { setConsent, useConsent } from '../consent';
+import { useContent } from '../i18n';
 
 interface HeroProps {
   onOpenZcal: () => void;
 }
 
-const TESTIMONIALS = [
-  { urn: 'urn:li:share:7479934699021369347', title: 'Témoignage client — mission ABX Valala' },
-  { urn: 'urn:li:activity:7498774828095574016', title: 'Témoignage client — stack acquisition Jamespot' },
-  { urn: 'urn:li:share:7488171336314486784', title: 'Témoignage client — CyberVadis' },
+const TESTIMONIAL_URNS = [
+  'urn:li:share:7479934699021369347',
+  'urn:li:activity:7498774828095574016',
+  'urn:li:share:7488171336314486784',
 ];
 
 const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
   const consent = useConsent();
+  const c = useContent();
 
   // Use ReturnType<typeof setTimeout> instead of NodeJS.Timeout to fix TypeScript namespace error in browser environment
   const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -65,17 +67,18 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
           </span>
-          Engager les bons prospects au bon moment en 2026
+          {c.hero.badge}
         </div>
-        
+
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-tight">
-          Transformez votre prospection B2B en<br />
-          <span className="gradient-text">infrastructure automatisée.</span>
+          {c.hero.titleLine1}<br />
+          <span className="gradient-text">{c.hero.titleAccent}</span>
         </h1>
         
         <p className="mt-4 text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
-          L'Account Based Marketing (ABM) et la prospection de masse
-sont limitées. On construit en 3 mois un <span className="text-slate-900 font-medium">système autonome et scalable</span> de génération d'opportunités B2B.
+          {c.hero.subtitleBefore}
+          <span className="text-slate-900 font-medium">{c.hero.subtitleHighlight}</span>
+          {c.hero.subtitleAfter}
         </p>
         
         {/* Interactive "Electric Charge" Scroll Indicator */}
@@ -86,7 +89,7 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className="group flex flex-col items-center gap-3 transition-all duration-500"
-            aria-label="Scroll down to explore the method"
+            aria-label={c.hero.scrollAria}
           >
             <div className="relative w-10 h-16 border-2 border-slate-200 rounded-full flex flex-col items-center justify-center gap-0.5 transition-all duration-500 group-hover:border-indigo-400/30 group-hover:bg-indigo-50/20 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.1)]">
               {/* Electric charge arrows */}
@@ -106,25 +109,25 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
             
             <div className="flex flex-col items-center md:items-start shrink-0">
               <div className="text-3xl md:text-4xl font-bold tracking-tight flex items-baseline gap-2">
-                <span className="text-slate-400 font-medium text-2xl md:text-3xl">Déjà</span>
-                <span className="text-slate-700">+10</span>
-                <span className="text-slate-400 font-medium text-2xl md:text-3xl">systèmes</span>
+                <span className="text-slate-400 font-medium text-2xl md:text-3xl">{c.hero.proofAlready}</span>
+                <span className="text-slate-700">{c.hero.proofCount}</span>
+                <span className="text-slate-400 font-medium text-2xl md:text-3xl">{c.hero.proofSystems}</span>
               </div>
-              <span className="text-xl md:text-2xl font-medium text-slate-400 -mt-1">déployés</span>
+              <span className="text-xl md:text-2xl font-medium text-slate-400 -mt-1">{c.hero.proofDeployed}</span>
             </div>
 
             <div className="hidden md:block w-px h-16 bg-slate-200/60"></div>
 
             <div className="flex flex-col items-center md:items-start flex-1">
               <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
-                {["Cybersec", "SaaS B2B", "Industrie", "Deeptech"].map((sector) => (
+                {c.hero.sectors.map((sector) => (
                   <span key={sector} className="text-[10px] font-bold text-slate-400 bg-white/50 px-2.5 py-1 rounded-lg border border-slate-100 uppercase tracking-wider">
                     {sector}
                   </span>
                 ))}
               </div>
               <p className="text-xs md:text-sm leading-relaxed text-slate-400 italic max-w-sm text-center md:text-left font-medium">
-                Missions confidentielles opérées en direct ou via des collectifs.
+                {c.hero.proofNote}
               </p>
             </div>
 
@@ -134,45 +137,44 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
         {/* Témoignages clients — posts LinkedIn */}
         <div className="mt-14 max-w-6xl mx-auto">
           <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">
-            Ils en parlent
+            {c.hero.testimonialsLabel}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) =>
+            {TESTIMONIAL_URNS.map((urn, idx) =>
               consent === 'granted' ? (
                 <iframe
-                  key={t.urn}
-                  src={`https://www.linkedin.com/embed/feed/update/${t.urn}`}
-                  title={t.title}
+                  key={urn}
+                  src={`https://www.linkedin.com/embed/feed/update/${urn}`}
+                  title={`${c.hero.blockedTitle} ${idx + 1}`}
                   loading="lazy"
                   allowFullScreen
                   className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white"
                 />
               ) : (
                 <div
-                  key={t.urn}
+                  key={urn}
                   className="w-full h-[560px] rounded-2xl border border-slate-200 bg-white flex flex-col items-center justify-center text-center p-8"
                 >
                   <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300 mb-5">
                     <Linkedin className="w-6 h-6" />
                   </div>
-                  <p className="text-sm font-bold text-slate-900 mb-2">Témoignage LinkedIn</p>
+                  <p className="text-sm font-bold text-slate-900 mb-2">{c.hero.blockedTitle}</p>
                   <p className="text-xs text-slate-500 leading-relaxed max-w-[240px]">
-                    L'affichage de cette publication dépose des traceurs LinkedIn. Il requiert
-                    votre accord.
+                    {c.hero.blockedBody}
                   </p>
                   <button
                     onClick={() => setConsent('granted')}
                     className="mt-6 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors"
                   >
-                    Autoriser et afficher
+                    {c.hero.blockedAllow}
                   </button>
                   <a
-                    href={`https://www.linkedin.com/feed/update/${t.urn}`}
+                    href={`https://www.linkedin.com/feed/update/${urn}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-4 text-[11px] font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1.5 transition-colors"
                   >
-                    Voir sur LinkedIn <ExternalLink className="w-3 h-3" />
+                    {c.hero.blockedView} <ExternalLink className="w-3 h-3" />
                   </a>
                 </div>
               )

@@ -10,3 +10,4 @@ export { default as Footer } from './Footer';
 export { default as ZcalModal } from './ZcalModal';
 export { default as PrivacyModal } from './PrivacyModal';
 export { default as CookieBanner } from './CookieBanner';
+export { default as LocaleSwitcher } from './LocaleSwitcher';

@@ -1,15 +1,45 @@
-
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flow Ops | Système ABX & GTM Engineering</title>
+
+    <title>Flow Ops | Système ABX &amp; GTM Engineering B2B</title>
+    <meta name="description" content="Freelance GTM Engineer. Je construis en 3 mois un système ABX autonome qui identifie vos comptes cibles, détecte leurs signaux d'achat et déclenche les bonnes conversations. +10 systèmes déployés en B2B.">
+    <meta name="author" content="Patrice Tord">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+    <link rel="canonical" href="https://flow-ops.pro/">
+    <link rel="alternate" hreflang="fr" href="https://flow-ops.pro/">
+    <link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/">
+    <link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flow Ops">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_GB">
+    <meta property="og:url" content="https://flow-ops.pro/">
+    <meta property="og:title" content="Flow Ops | Système ABX &amp; GTM Engineering B2B">
+    <meta property="og:description" content="Je construis en 3 mois un système ABX autonome qui identifie vos comptes cibles, détecte leurs signaux d'achat et déclenche les bonnes conversations.">
+    <meta property="og:image" content="https://flow-ops.pro/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Flow Ops — Système ABX &amp; GTM Engineering">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flow Ops | Système ABX &amp; GTM Engineering B2B">
+    <meta name="twitter:description" content="Je construis en 3 mois un système ABX autonome qui identifie vos comptes cibles, détecte leurs signaux d'achat et déclenche les bonnes conversations.">
+    <meta name="twitter:image" content="https://flow-ops.pro/og-image.png">
+
     <link rel="icon" type="image/png" href="/flow-ops-logo.png">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="apple-touch-icon" href="/flow-ops-logo.png">
+    <meta name="theme-color" content="#0f172a">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -21,74 +51,6 @@
             },
         }
     </script>
-    <style>
-        body { 
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #004e92, #00d2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .bg-grid-pattern {
-            background-image: linear-gradient(to right, #f1f5f9 1px, transparent 1px),
-            linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        .btn-glow {
-            position: relative;
-            isolation: isolate;
-        }
-        .btn-glow::after {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #004e92, #00d2ff, #004e92);
-            z-index: -1;
-            border-radius: 0.8rem;
-            background-size: 200%;
-            animation: glowing 3s linear infinite;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-        .btn-glow:hover::after {
-            opacity: 0.5;
-        }
-        @keyframes glowing {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes flow {
-            from { stroke-dashoffset: 20; }
-            to { stroke-dashoffset: 0; }
-        }
-        .animate-flow {
-            animation: flow 1.5s linear infinite;
-        }
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
-            border-color: #cbd5e1;
-        }
-        .footer-pattern {
-            background-image: radial-gradient(#3b82f6 1px, transparent 1px);
-            background-size: 24px 24px;
-        }
-        /* Modal Animation */
-        @keyframes modalEnter {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .animate-modal {
-            animation: modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-    </style>
 </head>
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900 font-sans">
     <div id="root"></div>

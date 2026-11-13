@@ -2,12 +2,15 @@
 import React from 'react';
 import { Linkedin, Mail } from 'lucide-react';
 import { clearConsent } from '../consent';
+import { useContent } from '../i18n';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
 }
 
 const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
+  const c = useContent();
+
   return (
     <footer className="relative bg-slate-950 text-slate-300 py-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/20"></div>
@@ -25,10 +28,10 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
               />
             </div>
             <p className="text-slate-400 text-sm max-w-sm leading-relaxed">
-              Transformez votre prospection B2B en infrastructure automatisée et générez des conversations avec vos prospects avec le bon message au bon moment avec en vous appuyant sur la méthodologie ABX. Basé en France, opérant globalement.
+              {c.footer.tagline}
             </p>
             <address className="mt-6 text-slate-500 text-xs not-italic leading-relaxed">
-              <span className="block font-semibold text-slate-400 uppercase tracking-wider text-[10px] mb-1.5">Siège social</span>
+              <span className="block font-semibold text-slate-400 uppercase tracking-wider text-[10px] mb-1.5">{c.footer.addressLabel}</span>
               Patrice Tord<br />
               59, rue de Ponthieu, Bureau 326<br />
               75008 Paris, France
@@ -46,19 +49,19 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
         </div>
         
         <div className="mt-16 pt-8 border-t border-white/5 text-xs text-center text-slate-600 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4">
-          <span>© 2026 Flow Ops. Tous droits réservés.</span>
+          <span>{c.footer.rights}</span>
           <div className="flex gap-6">
             <button 
               onClick={(e) => { e.preventDefault(); onOpenPrivacy(); }}
               className="hover:text-slate-400 transition-colors bg-transparent border-none cursor-pointer p-0"
             >
-              Politique de Confidentialité
+              {c.footer.privacy}
             </button>
             <button
               onClick={clearConsent}
               className="hover:text-slate-400 transition-colors bg-transparent border-none cursor-pointer p-0"
             >
-              Gérer les traceurs
+              {c.footer.cookies}
             </button>
           </div>
         </div>

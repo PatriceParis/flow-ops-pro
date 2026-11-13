@@ -9,3 +9,4 @@ ds-bundle/
 .env.local
 .env
 *.local
+migrated_prompt_history/
