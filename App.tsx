@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,6 +11,9 @@ import Footer from './components/Footer';
 import ZcalModal from './components/ZcalModal';
 import PrivacyModal from './components/PrivacyModal';
 import CookieBanner from './components/CookieBanner';
+import ArticlePage from './components/ArticlePage';
+import { slugFromPath } from './i18n';
+import { SLUGS, type Slug } from './i18n/pages';
 
 const App: React.FC = () => {
   const [isZcalOpen, setIsZcalOpen] = useState(false);
@@ -26,6 +28,26 @@ const App: React.FC = () => {
     setIsPrivacyOpen(true);
   };
 
+  const raw = slugFromPath();
+  const slug = SLUGS.includes(raw as Slug) ? (raw as Slug) : null;
+
+  const modals = (
+    <>
+      <ZcalModal isOpen={isZcalOpen} onClose={() => setIsZcalOpen(false)} />
+      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
+      <CookieBanner onOpenPrivacy={openPrivacy} />
+    </>
+  );
+
+  if (slug) {
+    return (
+      <>
+        <ArticlePage slug={slug} onOpenZcal={openZcal} onOpenPrivacy={openPrivacy} />
+        {modals}
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar onOpenZcal={openZcal} />
@@ -39,9 +61,7 @@ const App: React.FC = () => {
         <FAQ />
       </main>
       <Footer onOpenPrivacy={openPrivacy} />
-      <ZcalModal isOpen={isZcalOpen} onClose={() => setIsZcalOpen(false)} />
-      <PrivacyModal isOpen={isPrivacyOpen} onClose={() => setIsPrivacyOpen(false)} />
-      <CookieBanner onOpenPrivacy={openPrivacy} />
+      {modals}
     </div>
   );
 };

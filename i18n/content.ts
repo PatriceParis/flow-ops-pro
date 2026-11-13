@@ -81,6 +81,7 @@ export interface Content {
     title: string;
     subtitle: string;
     items: { q: string; a: string }[];
+    readMore: string;
   };
   footer: {
     tagline: string;
@@ -250,6 +251,7 @@ export const fr: Content = {
     ],
   },
   faq: {
+    readMore: 'Approfondir',
     title: 'Questions Fréquentes',
     subtitle: "Tout ce qu'il faut savoir sur l'ABX et le GTM Engineering",
     items: [
@@ -305,7 +307,7 @@ export const fr: Content = {
   },
   cookies: {
     title: 'Votre choix sur les traceurs',
-    body: "Nous utilisons des traceurs pour mesurer l'audience du site (PostHog, hébergé dans l'Union européenne) et pour afficher les témoignages publiés sur LinkedIn. Sans votre accord, aucun de ces traceurs n'est déposé et les témoignages restent masqués. Vous pouvez changer d'avis à tout moment depuis le pied de page.",
+    body: "Nous utilisons des traceurs pour analyser l'usage du site (PostHog, hébergé dans l'Union européenne). Cela inclut l'enregistrement anonyme des sessions de navigation, afin de comprendre où les visiteurs décrochent. Nous chargeons également les témoignages publiés sur LinkedIn. Sans votre accord, aucun traceur n'est déposé, aucune session n'est enregistrée et les témoignages restent masqués. Vous pouvez changer d'avis à tout moment depuis le pied de page.",
     refuse: 'Tout refuser',
     accept: 'Tout accepter',
     more: 'En savoir plus sur les données collectées',
@@ -463,6 +465,7 @@ export const en: Content = {
     ],
   },
   faq: {
+    readMore: 'Read further',
     title: 'Frequently asked questions',
     subtitle: 'What you need to know about ABX and GTM Engineering',
     items: [
@@ -518,7 +521,7 @@ export const en: Content = {
   },
   cookies: {
     title: 'Your tracking preferences',
-    body: 'We use tracking to measure site audience (PostHog, hosted in the European Union) and to display testimonials published on LinkedIn. Without your consent none of this tracking is set and the testimonials stay hidden. You can change your mind at any time from the footer.',
+    body: 'We use tracking to analyse how the site is used (PostHog, hosted in the European Union). This includes anonymous recording of browsing sessions, to understand where visitors drop off. We also load testimonials published on LinkedIn. Without your consent no tracking is set, no session is recorded and the testimonials stay hidden. You can change your mind at any time from the footer.',
     refuse: 'Reject all',
     accept: 'Accept all',
     more: 'Learn more about the data collected',

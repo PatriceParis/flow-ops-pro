@@ -26,6 +26,10 @@ function startAnalytics() {
     posthog.init(POSTHOG_TOKEN, {
       api_host: 'https://eu.i.posthog.com',
       defaults: '2025-05-24',
+      // Session replay is declared in the banner and the privacy policy, but
+      // console capture is not: it can vacuum up whatever any script logs,
+      // which is data nobody consented to and we never asked for.
+      enable_recording_console_log: false,
     });
   });
 }

@@ -14,6 +14,18 @@ export function pathForLocale(locale: Locale): string {
   return locale === 'en' ? '/en/' : '/';
 }
 
+/** The article slug for the current URL, or null on the home page. */
+export function slugFromPath(pathname: string = window.location.pathname): string | null {
+  const rest = pathname.replace(/^\/en(?=\/|$)/, '').replace(/^\/|\/$/g, '');
+  return rest === '' || rest === 'index.html' ? null : rest;
+}
+
+/** Same article in the other language, so the switcher never drops the reader home. */
+export function pathForLocaleAtSlug(locale: Locale, slug: string | null): string {
+  const base = pathForLocale(locale);
+  return slug ? `${base === '/' ? '/' : base}${slug}/` : base;
+}
+
 function storedPreference(): Locale | null {
   try {
     const v = localStorage.getItem(PREF_KEY);
@@ -43,10 +55,11 @@ function prefersEnglish(): boolean {
  * themselves, so an explicit switch is never overridden and no loop is possible.
  */
 export function redirectToPreferredLocale(): boolean {
-  if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return false;
+  if (localeFromPath() !== 'fr') return false;
   if (storedPreference()) return false;
   if (!prefersEnglish()) return false;
-  window.location.replace('/en/' + window.location.search + window.location.hash);
+  const target = pathForLocaleAtSlug('en', slugFromPath());
+  window.location.replace(target + window.location.search + window.location.hash);
   return true;
 }
 

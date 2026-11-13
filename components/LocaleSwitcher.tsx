@@ -1,23 +1,30 @@
 import React from 'react';
 import { Languages } from 'lucide-react';
-import { pathForLocale, rememberPreference, useContent, useLocale } from '../i18n';
+import {
+  pathForLocaleAtSlug,
+  rememberPreference,
+  slugFromPath,
+  useContent,
+  useLocale,
+} from '../i18n';
 
 const LocaleSwitcher: React.FC = () => {
   const locale = useLocale();
   const c = useContent();
   const target = locale === 'fr' ? 'en' : 'fr';
+  const href = pathForLocaleAtSlug(target, slugFromPath());
 
   // A full navigation, not a state flip: each language is its own document with
   // its own meta, canonical and structured data.
   const go = (e: React.MouseEvent) => {
     e.preventDefault();
     rememberPreference(target);
-    window.location.href = pathForLocale(target);
+    window.location.href = href;
   };
 
   return (
     <a
-      href={pathForLocale(target)}
+      href={href}
       onClick={go}
       hrefLang={target}
       aria-label={c.nav.switchLabel}

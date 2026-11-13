@@ -6,15 +6,41 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/"/>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <changefreq>monthly</changefreq><priority>1.0</priority>
   </url>
   <url>
     <loc>https://flow-ops.pro/en/</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/"/>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://flow-ops.pro/abx-vs-abm/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/abx-vs-abm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/abx-vs-abm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/abx-vs-abm/"/>
+    <changefreq>yearly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flow-ops.pro/en/abx-vs-abm/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/abx-vs-abm/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/abx-vs-abm/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/abx-vs-abm/"/>
+    <changefreq>yearly</changefreq><priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://flow-ops.pro/gtm-engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/gtm-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/gtm-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/gtm-engineering/"/>
+    <changefreq>yearly</changefreq><priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://flow-ops.pro/en/gtm-engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://flow-ops.pro/gtm-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://flow-ops.pro/en/gtm-engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://flow-ops.pro/gtm-engineering/"/>
+    <changefreq>yearly</changefreq><priority>0.7</priority>
   </url>
 </urlset>

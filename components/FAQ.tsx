@@ -1,9 +1,11 @@
 import React from 'react';
-import { Plus } from 'lucide-react';
-import { useContent } from '../i18n';
+import { ArrowRight, Plus } from 'lucide-react';
+import { pathForLocaleAtSlug, useContent, useLocale } from '../i18n';
+import { articles, SLUGS } from '../i18n/pages';
 
 const FAQ: React.FC = () => {
   const c = useContent();
+  const locale = useLocale();
 
   return (
     <section id="faq" className="py-24 bg-white">
@@ -35,6 +37,31 @@ const FAQ: React.FC = () => {
               </p>
             </details>
           ))}
+        </div>
+
+        {/* Without these links the articles would be orphan pages — nothing on
+            the site would point a crawler or a reader to them. */}
+        <div className="mt-10 pt-8 border-t border-slate-100">
+          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-5">
+            {c.faq.readMore}
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {SLUGS.map((slug) => (
+              <a
+                key={slug}
+                href={pathForLocaleAtSlug(locale, slug)}
+                className="group bg-slate-50 hover:bg-white border border-slate-100 hover:border-slate-200 rounded-2xl p-5 transition-all"
+              >
+                <span className="block text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                  {articles[locale][slug].h1}
+                </span>
+                <span className="mt-2 flex items-center gap-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                  {articles[locale][slug].eyebrow}
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
