@@ -102,9 +102,8 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <h3 className="text-xl font-bold text-slate-900 mb-4">2. Données collectées et finalités</h3>
               <h4 className="font-bold text-slate-800 mb-2">2.1 Données fournies volontairement par les utilisateurs</h4>
               <ul className="list-disc pl-5 space-y-2 text-sm">
-                <li><strong>Formulaire de contact / demande d’information :</strong> les champs collectés comprennent le nom, le prénom, la société, l’adresse e-mail, le numéro de téléphone et le contenu du message. Ces informations sont nécessaires pour répondre à votre demande, établir des devis ou préparer des formations.</li>
-                <li><strong>Prise de rendez-vous via zCal :</strong> lors de la réservation d’un créneau, zCal collecte votre nom, votre adresse e-mail et le créneau sélectionné afin d’organiser l’appel ou la visio-conférence. Cette collecte est gérée par zCal (voir § 6 ci-dessous).</li>
-                <li><strong>Inscription à une formation ou demande d’alertes :</strong> lorsque vous vous inscrivez pour être informé du lancement d’une formation, nous collectons votre adresse e-mail et vos éventuelles préférences pour vous envoyer des informations pertinentes.</li>
+                <li><strong>Prise de contact par e-mail :</strong> le Site ne comporte aucun formulaire de contact. Les liens « Discutons de vos enjeux » et « Demander un devis » ouvrent votre logiciel de messagerie vers <strong>patrice@flow-ops.pro</strong>. Les données que vous nous transmettez ainsi sont celles que vous choisissez d’écrire dans votre message ; elles sont conservées dans la messagerie du responsable du traitement.</li>
+                <li><strong>Prise de rendez-vous via zCal :</strong> lors de la réservation d’un créneau, zCal collecte votre nom, votre adresse e-mail et le créneau sélectionné afin d’organiser l’appel ou la visio-conférence. Cette collecte est gérée par zCal (voir § 4 ci-dessous).</li>
               </ul>
 
               <h4 className="font-bold text-slate-800 mt-6 mb-2">2.2 Données collectées automatiquement</h4>
@@ -125,7 +124,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     <tr>
-                      <td className="py-3">Répondre à une demande envoyée via le formulaire et assurer le suivi commercial</td>
+                      <td className="py-3">Répondre à une demande envoyée par e-mail et assurer le suivi commercial</td>
                       <td className="py-3">Nom, prénom, société, e-mail, téléphone, message</td>
                       <td className="py-3">Exécution de mesures précontractuelles (art. 6 §1 b RGPD)</td>
                     </tr>
@@ -133,11 +132,6 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                       <td className="py-3">Gérer les rendez-vous et organiser des sessions d’échange via zCal</td>
                       <td className="py-3">Nom, e-mail, date et horaire de rendez-vous</td>
                       <td className="py-3">Exécution de mesures précontractuelles (art. 6 §1 b RGPD)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3">Informer des formations et envoyer des communications (inscription à une alerte)</td>
-                      <td className="py-3">Adresse e-mail, préférence de formation</td>
-                      <td className="py-3">Consentement (art. 6 §1 a RGPD) : vous pouvez retirer votre consentement à tout moment</td>
                     </tr>
                     <tr>
                       <td className="py-3">Mesurer l’audience, analyser la performance du Site et optimiser l’expérience utilisateur</td>
@@ -169,7 +163,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
               <p className="text-sm mb-4">Les informations collectées sont exclusivement utilisées par le responsable du traitement et par ses prestataires strictement habilités :</p>
               <ol className="list-decimal pl-5 space-y-4 text-sm">
                 <li><strong>Vercel – hébergement et infrastructure :</strong> Vercel agit en tant que sous-traitant et héberge le Site sur des serveurs sécurisés. Les journaux techniques générés par l’hébergement (adresse IP, horodatage, ressource demandée) sont traités à des fins de fonctionnement et de sécurité. Pour les transferts hors de l’Espace Économique Européen (EEE), Vercel s’appuie sur les clauses contractuelles types approuvées par la Commission européenne.</li>
-                <li><strong>Zapier – acheminement des demandes issues du formulaire :</strong> les informations que vous saisissez dans le formulaire d’inscription sont transmises via Zapier, qui les relaie par e-mail au responsable du traitement. Aucune base de données n’est constituée sur le Site : les données transitent par Zapier puis sont conservées dans la messagerie du responsable du traitement. Zapier encadre les transferts hors EEE par des clauses contractuelles types.</li>
+                <li><strong>LinkedIn – affichage des témoignages clients :</strong> les publications LinkedIn intégrées sur la page d’accueil ne sont chargées qu’après votre accord. LinkedIn reçoit alors votre adresse IP et peut déposer ses propres traceurs (cf. § 7).</li>
                 <li><strong>zCal – outil de prise de rendez-vous :</strong> zCal reçoit les données que vous saisissez pour fixer un rendez-vous (nom, e-mail, horaire) et les utilise pour gérer le calendrier. Les traitements réalisés par zCal sont décrits dans sa propre politique de confidentialité ; zCal s’appuie notamment sur les principes de consentement et d’intérêt légitime pour l’utilisation de vos données.</li>
                 <li><strong>PostHog – mesure d’audience :</strong> PostHog analyse la fréquentation et l’usage du Site. Les données sont traitées sur l’infrastructure européenne de PostHog (eu.i.posthog.com) et ne quittent pas l’Espace Économique Européen.</li>
                 <li><strong>LinkedIn – affichage des témoignages clients :</strong> les publications LinkedIn intégrées sur la page d’accueil sont chargées depuis les serveurs de LinkedIn, qui reçoit de ce fait votre adresse IP et peut déposer ses propres traceurs (cf. § 7).</li>
@@ -179,7 +173,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">5. Transferts internationaux</h3>
-              <p className="text-sm">Certaines données peuvent être traitées en dehors de l’EEE du fait de l’utilisation de services fournis par Vercel, Zapier ou zCal, dont les sociétés éditrices sont établies aux États-Unis. Ces prestataires s’appuient sur les clauses contractuelles types (SCC) validées par la Commission européenne pour encadrer les transferts de données ; ces clauses assurent un niveau de protection équivalent à celui garanti par l’UE. ZCal indique également se conformer aux obligations en matière de protection des données et s’appuie sur des bases légales telles que le consentement et l’intérêt légitime.</p>
+              <p className="text-sm">Certaines données peuvent être traitées en dehors de l’EEE du fait de l’utilisation de services fournis par Vercel ou zCal, dont les sociétés éditrices sont établies aux États-Unis. Ces prestataires s’appuient sur les clauses contractuelles types (SCC) validées par la Commission européenne pour encadrer les transferts de données ; ces clauses assurent un niveau de protection équivalent à celui garanti par l’UE. ZCal indique également se conformer aux obligations en matière de protection des données et s’appuie sur des bases légales telles que le consentement et l’intérêt légitime.</p>
             </section>
 
             <section>
@@ -192,7 +186,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
                 <li><strong>Droit d’opposition :</strong> vous pouvez vous opposer à tout moment au traitement de vos données réalisé à des fins de prospection ou fondé sur l’intérêt légitime.</li>
                 <li><strong>Droit à la limitation du traitement :</strong> demander la suspension temporaire du traitement de vos données.</li>
                 <li><strong>Droit à la portabilité :</strong> recevoir les données que vous avez fournies dans un format structuré, couramment utilisé et lisible par machine, et les transmettre à un autre responsable du traitement.</li>
-                <li><strong>Droit de retirer votre consentement :</strong> pour les traitements fondés sur votre consentement (inscription à une formation, cookies), vous pouvez le retirer à tout moment.</li>
+                <li><strong>Droit de retirer votre consentement :</strong> pour les traitements fondés sur votre consentement (traceurs de mesure d’audience, affichage des publications LinkedIn), vous pouvez le retirer à tout moment.</li>
               </ul>
               <p className="mt-4 text-sm">Pour exercer ces droits, adressez votre demande à <strong>contact@flow-ops.pro</strong> en justifiant de votre identité. Vous avez également la possibilité d’introduire une réclamation auprès de la Commission Nationale de l’Informatique et des Libertés (CNIL) si vous estimez que vos droits ne sont pas respectés.</p>
             </section>
@@ -210,12 +204,12 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
 
             <section>
               <h3 className="text-xl font-bold text-slate-900 mb-4">8. Sécurité</h3>
-              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, Zapier, zCal, PostHog) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
+              <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, zCal, PostHog) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
             </section>
 
             <section className="pb-8">
               <h3 className="text-xl font-bold text-slate-900 mb-4">9. Mise à jour de la politique</h3>
-              <p className="text-sm">La présente politique est susceptible d’être modifiée pour refléter les évolutions légales ou technologiques. La version en vigueur est celle publiée sur le Site à la date de consultation. Les utilisateurs seront informés des changements significatifs (par exemple via un bandeau ou une notification). <strong>Dernière mise à jour : 15 septembre 2026.</strong></p>
+              <p className="text-sm">La présente politique est susceptible d’être modifiée pour refléter les évolutions légales ou technologiques. La version en vigueur est celle publiée sur le Site à la date de consultation. Les utilisateurs seront informés des changements significatifs (par exemple via un bandeau ou une notification). <strong>Dernière mise à jour : 13 novembre 2026.</strong></p>
             </section>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import { useSyncExternalStore } from 'react';
-import posthog from 'posthog-js';
 
 export type Consent = 'granted' | 'denied';
 
@@ -18,12 +17,16 @@ function read(): Consent | null {
   }
 }
 
+// posthog-js is the heaviest dependency on the site and a visitor who refuses
+// tracking must never pay for it, so it is only fetched once consent is granted.
 function startAnalytics() {
   if (started) return;
   started = true;
-  posthog.init(POSTHOG_TOKEN, {
-    api_host: 'https://eu.i.posthog.com',
-    defaults: '2025-05-24',
+  void import('posthog-js').then(({ default: posthog }) => {
+    posthog.init(POSTHOG_TOKEN, {
+      api_host: 'https://eu.i.posthog.com',
+      defaults: '2025-05-24',
+    });
   });
 }
 

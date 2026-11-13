@@ -10,24 +10,28 @@ const Stack: React.FC = () => {
       icon: <Database className="w-8 h-8" />,
       color: "blue",
       gradient: "from-blue-500 to-cyan-500",
+      gradientHover: "group-hover:from-blue-500 group-hover:to-cyan-500",
       shadow: "shadow-blue-200"
     },
     {
       icon: <BrainCircuit className="w-8 h-8" />,
       color: "indigo",
       gradient: "from-indigo-500 to-purple-500",
+      gradientHover: "group-hover:from-indigo-500 group-hover:to-purple-500",
       shadow: "shadow-indigo-200"
     },
     {
       icon: <Workflow className="w-8 h-8" />,
       color: "orange",
       gradient: "from-orange-500 to-amber-500",
+      gradientHover: "group-hover:from-orange-500 group-hover:to-amber-500",
       shadow: "shadow-orange-200"
     },
     {
       icon: <Eye className="w-8 h-8" />,
       color: "green",
       gradient: "from-emerald-500 to-teal-500",
+      gradientHover: "group-hover:from-emerald-500 group-hover:to-teal-500",
       shadow: "shadow-emerald-200"
     }
   ];
@@ -59,7 +63,7 @@ const Stack: React.FC = () => {
                 <div className={`
                   relative w-20 h-20 rounded-2xl flex items-center justify-center 
                   bg-slate-50 text-slate-400
-                  group-hover:bg-gradient-to-br group-hover:${tool.gradient} group-hover:text-white 
+                  group-hover:bg-gradient-to-br ${tool.gradientHover} group-hover:text-white
                   group-hover:scale-110
                   transition-all duration-500 ease-out shadow-lg ${tool.shadow}
                 `}>

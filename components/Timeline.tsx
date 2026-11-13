@@ -75,14 +75,17 @@ const Timeline: React.FC = () => {
   const steps = [
     {
       borderColor: "border-blue-500",
+      tint: "bg-blue-500",
       icon: <FoundationIcon />
     },
     {
       borderColor: "border-purple-500",
+      tint: "bg-purple-500",
       icon: <ConstructionIcon />
     },
     {
       borderColor: "border-emerald-500",
+      tint: "bg-emerald-500",
       icon: <FullCityIcon />
     }
   ];
@@ -111,7 +114,7 @@ const Timeline: React.FC = () => {
                   {step.icon}
                 </div>
                 {/* Subtle internal gradient based on step color */}
-                <div className={`absolute inset-0 opacity-[0.03] bg-current ${step.borderColor.replace('border-', 'bg-')}`}></div>
+                <div className={`absolute inset-0 opacity-[0.03] bg-current ${step.tint}`}></div>
               </div>
               
               <div className="pt-2">
