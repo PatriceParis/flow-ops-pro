@@ -107,7 +107,7 @@ sont limitées. On construit en 3 mois un <span className="text-slate-900 font-m
             <div className="flex flex-col items-center md:items-start shrink-0">
               <div className="text-3xl md:text-4xl font-bold tracking-tight flex items-baseline gap-2">
                 <span className="text-slate-400 font-medium text-2xl md:text-3xl">Déjà</span>
-                <span className="text-slate-700">+7</span>
+                <span className="text-slate-700">+10</span>
                 <span className="text-slate-400 font-medium text-2xl md:text-3xl">systèmes</span>
               </div>
               <span className="text-xl md:text-2xl font-medium text-slate-400 -mt-1">déployés</span>
