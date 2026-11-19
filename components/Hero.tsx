@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { ArrowRight, ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
 import { setConsent, useConsent } from '../consent';
-import { mailtoHref, useContent } from '../i18n';
+import { useContent } from '../i18n';
 
 interface HeroProps {
   onOpenZcal: () => void;
@@ -82,19 +82,19 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-          <a
-            href={mailtoHref(c.freeList.mailSubject, c.freeList.mailBody)}
+          <button
+            onClick={onOpenZcal}
             className="btn-glow w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all shadow-xl flex items-center justify-center gap-2"
           >
             {c.hero.ctaPrimary}
             <ArrowRight className="w-4 h-4" />
-          </a>
-          <button
-            onClick={onOpenZcal}
-            className="w-full sm:w-auto px-7 py-4 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-50 transition-colors"
+          </button>
+          <a
+            href="#exemple"
+            className="w-full sm:w-auto px-7 py-4 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-50 transition-colors text-center"
           >
             {c.hero.ctaSecondary}
-          </button>
+          </a>
         </div>
         <p className="mt-4 text-sm text-slate-400">{c.hero.ctaNote}</p>
 

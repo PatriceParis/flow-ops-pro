@@ -4,17 +4,17 @@
 
 ## Ce que Flow Ops n'est pas
 
-Flow Ops ne vend ni logiciel, ni CRM, ni outil d'automatisation de workflows. Ce n'est pas une alternative à n8n, Zapier, Make ou HubSpot. Le client n'installe rien et n'apprend aucun outil : Flow Ops exploite lui-même les relevés et les outils qui produisent la liste. Flow Ops ne passe pas non plus les appels à la place du client, contrairement à un SDR externalisé.
+Flow Ops ne vend ni logiciel, ni CRM, ni outil d'automatisation de workflows. Ce n'est pas une alternative à n8n, Zapier, Make ou HubSpot. Le client n'installe rien et n'apprend aucun outil : Flow Ops exploite lui-même les relevés et les outils qui produisent la liste. Par défaut, ce sont les commerciaux du client qui appellent la liste ; une équipe de SDR peut le faire en option, sur devis.
 
 ## Offres
 
-- La première liste, gratuite : 20 entreprises du marché du client classées par score, avec les signaux relevés, envoyées par email, sans rendez-vous.
-- Qui appeler lundi, 1 200 € HT par mois, outils compris : chaque lundi, les 10 à 20 entreprises les mieux notées, avec la raison de l'appel et une phrase d'ouverture, plus deux séquences de nurturing (LinkedIn et email) pour les entreprises pas encore prêtes. Sans frais de mise en place, sans engagement, résiliable chaque mois.
+- L'appel de cadrage, gratuit, 30 minutes : le marché du client, ses meilleurs clients, les signaux à suivre. Une première liste de 20 entreprises peut suivre l'appel si le client joint un export de son CRM.
+- Qui appeler lundi, 1 200 € HT par mois, outils compris : chaque lundi, les 10 à 20 entreprises les mieux notées, avec la raison de l'appel et une phrase d'ouverture, plus deux séquences de nurturing (LinkedIn et email) pour les entreprises pas encore prêtes. Le premier mois sert d'essai : quatre listes, et trois chiffres relus chaque semaine avec le client (entreprises appelées, conversations, rendez-vous). Un marché suivi par abonnement. Sans frais de mise en place, sans engagement, résiliable chaque mois. En option, sur devis : une équipe de SDR appelle la liste.
 - ABM en masse, sur devis, trois mois d'engagement : en complément de la liste, la publicité LinkedIn sur les comptes les mieux notés, des séquences sur mesure et les contenus, appliqués à plusieurs centaines de comptes.
 
 ## Pour qui
 
-Entreprises B2B françaises de 50 à 249 salariés, surtout éditeurs de logiciels et fabricants d'équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent. Interlocuteurs : direction commerciale, direction marketing, dirigeant.
+Entreprises B2B françaises de 10 à 249 salariés, surtout éditeurs de logiciels, éditeurs de cybersécurité et fabricants d'équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois. Le plus souvent, le dirigeant y vend lui-même avec un ou deux commerciaux, ou une personne s'occupe déjà du marketing sans le temps de suivre les signaux. Interlocuteurs : dirigeant, direction marketing, direction commerciale.
 
 ## Score et signaux
 
@@ -39,4 +39,4 @@ Patrice Tord, patrice@flow-ops.pro, 59 rue de Ponthieu, Bureau 326, 75008 Paris.
 
 ## In English
 
-Flow Ops is the B2B prospecting consultancy of Patrice Tord, an independent consultant based in Paris. It is a service, not software and not a workflow-automation platform. Every Monday the client's sales team receives by email 10 to 20 companies in their market to call, ranked by a score that combines several signals, each with the reason for the call and an opening line. The subscription, "Who to call on Monday", costs €1,200 excluding VAT per month with no commitment, after a free first list of 20 companies.
+Flow Ops is the B2B prospecting consultancy of Patrice Tord, an independent consultant based in Paris. It is a service, not software and not a workflow-automation platform. Every Monday the client's sales team receives by email 10 to 20 companies in their market to call, ranked by a score that combines several signals, each with the reason for the call and an opening line. The subscription, "Who to call on Monday", costs €1,200 excluding VAT per month with no commitment, after a free 30-minute scoping call; the first month is a measured trial. By default the client's own sales team calls the list; a team of SDRs can do it as an option, quoted separately.

@@ -15,7 +15,7 @@ No linter or test runner is configured.
 
 ## Environment
 
-No environment variables or secrets are required. The site has no form: every call to action is either a prefilled `mailto:` (`mailtoHref` in `i18n/index.tsx`) or the zCal booking modal, which is what lets the privacy policy say no form data is collected.
+No environment variables or secrets are required. The site has no form: every call to action is either the zCal booking modal (the scoping call, primary everywhere) or a prefilled `mailto:` (`mailtoHref` in `i18n/index.tsx`, for quotes), which is what lets the privacy policy say no form data is collected.
 
 PostHog analytics targets the EU region (`https://eu.i.posthog.com`). The project token in `consent.ts` is a public write-only key, intended to ship in the client bundle — it is not a secret.
 
@@ -29,7 +29,7 @@ This is the marketing site of Flow Ops, the B2B prospecting consultancy of Patri
 
 Flow Ops is a **service sold by a named consultant**, and the copy must never let a reader, human or machine, take it for software. An AI sales tool once classified the site as an n8n competitor because the copy led with "infrastructure automatisée", "système autonome", "stack" and "orchestration"; the positioning was rewritten in November 2026 around the validated offer.
 
-- The lead offer is **« Qui appeler lundi »**: every Monday, the 10 to 20 highest-scoring companies to call, with the reason for the call and an opening line, plus two nurturing sequences (LinkedIn and email) for the companies not yet ready, 1 200 € HT per month, no setup fee, no commitment, preceded by a free list of 20 companies.
+- The lead offer is **« Qui appeler lundi »**: every Monday, the 10 to 20 highest-scoring companies to call, with the reason for the call and an opening line, plus two nurturing sequences (LinkedIn and email) for the companies not yet ready, 1 200 € HT per month, no setup fee, no commitment. The entry point is a free 30-minute scoping call (decision of 19 November 2026: the blind free list sent by email is gone, because a list built without the client's context and CRM export is a risk); a first list of 20 companies is offered after the call only against a CRM export. The first month is a measured trial: four lists, three figures reviewed every week (companies called, conversations, meetings). The client's own sales team calls the list by default; a team of SDRs is an option, quoted separately, so the copy no longer compares the price with an outsourced SDR.
 - The complementary high-end offer is called **« ABM en masse »** ("ABM at scale" in English). Do not call it ABX on the home page or in the offers: Patrice ruled that word out. The two published articles still discuss ABX as a topic.
 - The list is the output of a **score that combines several signals**, never of one dated signal per call. Explain scoring in three plain parts: what the company is, what it is doing now, how recently.
 - No trade-show framing ("fichier de salon", "deux salons par an"): many clients do not exhibit.

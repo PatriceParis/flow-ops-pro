@@ -8,7 +8,7 @@ interface OffersProps {
 
 const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
   const c = useContent();
-  const [freeList, monday, abx] = c.offers.tiers;
+  const [scoping, monday, abx] = c.offers.tiers;
 
   const points = (items: string[], dark = false) => (
     <ul className="space-y-3 mb-8">
@@ -34,18 +34,18 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
 
         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
           <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200 flex flex-col">
-            <h3 className="text-lg font-bold text-slate-900">{freeList.name}</h3>
-            <p className="mt-4 text-3xl font-bold text-slate-900 tracking-tight">{freeList.price}</p>
-            <p className="text-sm text-slate-400 mb-6">{freeList.priceNote}</p>
-            <p className="text-slate-700 leading-relaxed mb-6">{freeList.body}</p>
-            {points(freeList.points)}
-            <a
-              href={mailtoHref(c.freeList.mailSubject, c.freeList.mailBody)}
+            <h3 className="text-lg font-bold text-slate-900">{scoping.name}</h3>
+            <p className="mt-4 text-3xl font-bold text-slate-900 tracking-tight">{scoping.price}</p>
+            <p className="text-sm text-slate-400 mb-6">{scoping.priceNote}</p>
+            <p className="text-slate-700 leading-relaxed mb-6">{scoping.body}</p>
+            {points(scoping.points)}
+            <button
+              onClick={onOpenZcal}
               className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
             >
-              {freeList.cta}
+              {scoping.cta}
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </button>
           </div>
 
           <div className="bg-slate-900 rounded-[2rem] p-8 relative overflow-hidden flex flex-col shadow-2xl shadow-slate-900/20">
@@ -82,7 +82,7 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
           </div>
         </div>
 
-        <p className="mt-8 text-sm text-slate-400 max-w-3xl">{c.offers.compare}</p>
+        <p className="mt-8 text-sm text-slate-600 max-w-3xl">{c.offers.sdrOption}</p>
         <p className="mt-3 text-sm text-slate-500 max-w-3xl">
           {c.offers.oneOff}{' '}
           <a

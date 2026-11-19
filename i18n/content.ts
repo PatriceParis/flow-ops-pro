@@ -40,8 +40,6 @@ export interface Content {
     blockedAllow: string;
     blockedView: string;
   };
-  /** Prefilled email that requests the free list: no form, so no data stored. */
-  freeList: { mailSubject: string; mailBody: string };
   method: {
     eyebrow: string;
     titleLine1: string;
@@ -77,7 +75,7 @@ export interface Content {
   offers: {
     title: string;
     subtitle: string;
-    /** Exactly three, in order: free list, monthly subscription, full engagement. */
+    /** Exactly three, in order: free scoping call, monthly subscription, full engagement. */
     tiers: {
       name: string;
       price: string;
@@ -86,7 +84,8 @@ export interface Content {
       points: string[];
       cta: string;
     }[];
-    compare: string;
+    /** The calls are made by the client by default; SDRs are an option, quoted separately. */
+    sdrOption: string;
     oneOff: string;
     oneOffCta: string;
     oneOffMailSubject: string;
@@ -158,9 +157,9 @@ export const fr: Content = {
     subtitleHighlight: 'prêtes à vous écouter',
     subtitleAfter:
       '\u00a0: 10 à 20 par semaine, classées par score, chacune avec une phrase d’ouverture pour vos commerciaux.',
-    ctaPrimary: 'Recevoir 20 entreprises de mon marché',
-    ctaSecondary: 'Prendre rendez-vous',
-    ctaNote: 'Première liste gratuite, envoyée par email, sans rendez-vous.',
+    ctaPrimary: 'Réserver 30 minutes de cadrage',
+    ctaSecondary: 'Voir un exemple de liste',
+    ctaNote: 'Appel gratuit. Le premier mois sert d’essai, sans engagement.',
     scrollAria: 'Défiler vers la méthode',
     proofAlready: 'Déjà',
     proofCount: '+10',
@@ -174,11 +173,6 @@ export const fr: Content = {
       'L’affichage de cette publication dépose des traceurs LinkedIn. Il requiert votre accord.',
     blockedAllow: 'Autoriser et afficher',
     blockedView: 'Voir sur LinkedIn',
-  },
-  freeList: {
-    mailSubject: 'Ma liste de 20 entreprises',
-    mailBody:
-      'Bonjour Patrice,\n\nJe souhaite recevoir la liste de 20 entreprises de mon marché.\n\nAdresse de notre site : \nType de clients que nous visons : \n',
   },
   method: {
     eyebrow: 'Un flux régulier d’entreprises à appeler, toute l’année',
@@ -276,19 +270,19 @@ export const fr: Content = {
   offers: {
     title: 'Les offres',
     subtitle:
-      'Une première liste gratuite pour juger sur pièces, puis un abonnement sans engagement. L’ABM en masse le complète quand il faut aussi la publicité et les séquences.',
+      'Un appel de cadrage gratuit, puis un abonnement sans engagement dont le premier mois sert d’essai. L’ABM en masse le complète quand il faut aussi la publicité et les séquences.',
     tiers: [
       {
-        name: 'La première liste',
-        price: 'Gratuite',
-        priceNote: 'par email, sans rendez-vous',
-        body: '20 entreprises de votre marché classées par score, avec les signaux relevés et la raison d’appeler chacune.',
+        name: 'L’appel de cadrage',
+        price: 'Gratuit',
+        priceNote: '30 minutes, sans engagement',
+        body: 'Votre marché, vos meilleurs clients et la façon dont vos commerciaux prospectent\u00a0: de quoi vérifier que la liste du lundi vous sera utile.',
         points: [
-          'Une phrase d’ouverture par entreprise',
-          'Vos clients et prospects connus séparés des entreprises nouvelles, si vous joignez un export de votre CRM',
-          'Une revue de 30 minutes avec votre commercial, si vous le souhaitez',
+          'Les signaux à suivre pour votre marché, choisis avec vous',
+          'Une première liste de 20 entreprises après l’appel, si vous joignez un export de votre CRM',
+          'Si l’offre ne vous convient pas, vous le savez en 30 minutes',
         ],
-        cta: 'Recevoir ma liste',
+        cta: 'Réserver l’appel',
       },
       {
         name: 'Qui appeler lundi',
@@ -296,11 +290,12 @@ export const fr: Content = {
         priceNote: 'par mois, outils compris',
         body: 'Chaque lundi, les 10 à 20 entreprises les mieux notées de votre marché, avec la raison de l’appel et une phrase d’ouverture.',
         points: [
+          'Le premier mois sert d’essai\u00a0: quatre listes, et trois chiffres relus chaque semaine avec vous, les entreprises appelées, les conversations et les rendez-vous',
           'Par email, avec un fichier prêt à importer dans votre CRM',
           'Deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises pas encore prêtes',
           'Sans frais de mise en place, sans engagement, résiliable chaque mois',
-          'Une heure par mois sur les appels passés et les rendez-vous obtenus',
-          'Un seul client par marché concurrent',
+          'Ensuite, une heure par mois sur les appels passés et les rendez-vous obtenus',
+          'Un marché suivi, et un seul client par marché concurrent',
         ],
         cta: 'Discutons de vos enjeux',
       },
@@ -317,8 +312,8 @@ export const fr: Content = {
         cta: 'Demander un devis',
       },
     ],
-    compare:
-      'Pour comparaison, un SDR externalisé coûte de 3 000 à 8 000 € par mois, le plus souvent avec six mois d’engagement.',
+    sdrOption:
+      'Personne chez vous pour appeler la liste\u00a0? En option et sur devis, une équipe de SDR passe les appels pour vous.',
     oneOff:
       'Des missions ponctuelles sont possibles : audit de vos outils de prospection, campagnes LinkedIn Ads, constitution d’un fichier de comptes.',
     oneOffCta: 'Écrire à Patrice',
@@ -441,7 +436,7 @@ export const fr: Content = {
       },
       {
         q: 'Qu’est-ce que «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez les 10 à 20 entreprises les mieux notées de votre marché, avec les signaux qui expliquent leur score, la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. L’abonnement comprend aussi deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises dont le score n’est pas encore assez haut. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nSi vous transmettez un export de votre CRM, la liste distingue les entreprises nouvelles de celles que vous connaissez déjà. Avant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
+        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez les 10 à 20 entreprises les mieux notées de votre marché, avec les signaux qui expliquent leur score, la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. L’abonnement comprend aussi deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises dont le score n’est pas encore assez haut. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nSi vous transmettez un export de votre CRM, la liste distingue les entreprises nouvelles de celles que vous connaissez déjà. Tout commence par un appel de cadrage gratuit de 30 minutes. Le premier mois sert d’essai\u00a0: quatre listes, et trois chiffres relus chaque semaine avec vous, les entreprises appelées, les conversations et les rendez-vous.',
       },
       {
         q: 'Comment le score est-il calculé\u00a0?',
@@ -453,15 +448,15 @@ export const fr: Content = {
       },
       {
         q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: '1\u00a0200\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3\u00a0000 à 8\u00a0000\u00a0€ par mois, le plus souvent avec six mois d’engagement. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
+        a: '1\u00a0200\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. L’appel de cadrage est gratuit et le premier mois sert d’essai\u00a0: vous arrêtez à la fin du mois si les chiffres ne suivent pas.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
       },
       {
         q: 'Quelle différence avec un SDR externalisé ou une agence de prospection\u00a0?',
-        a: 'Un SDR externalisé passe des appels à votre place, une agence envoie des messages en volume. Flow Ops ne remplace pas vos commerciaux\u00a0: il leur dit qui appeler et leur donne la raison de l’appel. La relation avec le prospect reste chez vous.\n\nL’abonnement est sans engagement et coûte moins qu’un SDR externalisé. Il suppose en revanche qu’au moins une personne chez vous appelle la liste.',
+        a: 'Un SDR externalisé passe des appels à votre place, une agence envoie des messages en volume. Flow Ops commence par dire qui appeler et pourquoi\u00a0: la liste, le score, la raison de l’appel. Le plus souvent, ce sont vos commerciaux qui appellent, et la relation avec le prospect reste chez vous.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’abonnement, lui, reste sans engagement.',
       },
       {
         q: 'À quelles entreprises l’offre s’adresse-t-elle\u00a0?',
-        a: 'Aux entreprises B2B françaises de 50 à 249 salariés, en particulier les éditeurs de logiciels et les fabricants d’équipements, qui vendent un produit à plus de 15\u00a0000\u00a0€ ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent.\n\nL’offre ne convient pas si votre panier est inférieur à 5\u00a0000\u00a0€, ou si personne chez vous ne peut appeler la liste.',
+        a: 'Aux entreprises B2B françaises de 10 à 249 salariés, en particulier les éditeurs de logiciels, les éditeurs de cybersécurité et les fabricants d’équipements, qui vendent un produit à plus de 15\u00a0000\u00a0€ ou sous contrat pluriannuel, sur un cycle de plusieurs mois. Le plus souvent, le dirigeant y vend lui-même avec un ou deux commerciaux, ou une personne s’occupe déjà du marketing sans le temps de suivre les signaux.\n\nL’offre ne convient pas si votre panier est inférieur à 5\u00a0000\u00a0€.',
       },
       {
         q: 'Faut-il installer un outil ou changer de CRM\u00a0?',
@@ -511,9 +506,9 @@ export const en: Content = {
     subtitleHighlight: 'ready to listen',
     subtitleAfter:
       ': 10 to 20 a week, ranked by score, each with an opening line for your sales team.',
-    ctaPrimary: 'Get 20 companies from my market',
-    ctaSecondary: 'Book a call',
-    ctaNote: 'First list free, sent by email, no meeting required.',
+    ctaPrimary: 'Book a 30-minute scoping call',
+    ctaSecondary: 'See a sample list',
+    ctaNote: 'The call is free. The first month is a trial, with no commitment.',
     scrollAria: 'Scroll to the method',
     proofAlready: 'Already',
     proofCount: '10+',
@@ -527,11 +522,6 @@ export const en: Content = {
       'Displaying this post sets LinkedIn tracking cookies. It requires your consent.',
     blockedAllow: 'Allow and display',
     blockedView: 'View on LinkedIn',
-  },
-  freeList: {
-    mailSubject: 'My list of 20 companies',
-    mailBody:
-      'Hello Patrice,\n\nI would like to receive the list of 20 companies from my market.\n\nOur website: \nThe kind of customers we target: \n',
   },
   method: {
     eyebrow: 'A steady flow of companies to call, all year round',
@@ -628,19 +618,19 @@ export const en: Content = {
   offers: {
     title: 'The offers',
     subtitle:
-      'A first list, free, so you can judge for yourself, then a subscription with no commitment. ABM at scale complements it when advertising and sequences are needed too.',
+      'A free scoping call, then a subscription with no commitment whose first month is a trial. ABM at scale complements it when advertising and sequences are needed too.',
     tiers: [
       {
-        name: 'The first list',
+        name: 'The scoping call',
         price: 'Free',
-        priceNote: 'by email, no meeting required',
-        body: '20 companies in your market ranked by score, with the signals found and the reason to call each one.',
+        priceNote: '30 minutes, no commitment',
+        body: 'Your market, your best customers and how your sales team prospects today: enough to check that the Monday list will be useful to you.',
         points: [
-          'An opening line for each company',
-          'Your known customers and prospects separated from new companies, if you attach a CRM export',
-          'A 30-minute review with your sales rep, if you want one',
+          'The signals to track for your market, chosen with you',
+          'A first list of 20 companies after the call, if you attach a CRM export',
+          'If the offer is not a fit, you know within 30 minutes',
         ],
-        cta: 'Get my list',
+        cta: 'Book the call',
       },
       {
         name: 'Who to call on Monday',
@@ -648,11 +638,12 @@ export const en: Content = {
         priceNote: 'per month, tools included',
         body: 'Every Monday, the 10 to 20 highest-scoring companies in your market, with the reason for the call and an opening line.',
         points: [
+          'The first month is a trial: four lists, and three figures reviewed with you every week, companies called, conversations and meetings',
           'By email, with a file ready to import into your CRM',
           'Two nurturing sequences, on LinkedIn and by email, for the companies not yet ready',
           'No setup fee, no commitment, cancel at the end of any month',
-          'One hour a month on calls made and meetings booked',
-          'One client only per competing market',
+          'After that, one hour a month on calls made and meetings booked',
+          'One market tracked, and one client only per competing market',
         ],
         cta: "Let's discuss your challenges",
       },
@@ -669,8 +660,8 @@ export const en: Content = {
         cta: 'Request a quote',
       },
     ],
-    compare:
-      'For comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment.',
+    sdrOption:
+      'Nobody on your side to call the list? As an option, quoted separately, a team of SDRs makes the calls for you.',
     oneOff:
       'One-off engagements are also possible: an audit of your prospecting tools, LinkedIn Ads campaigns, building an account list.',
     oneOffCta: 'Write to Patrice',
@@ -793,7 +784,7 @@ export const en: Content = {
       },
       {
         q: 'What is “Who to call on Monday”?',
-        a: 'It is the Flow Ops subscription. Every Monday you receive the 10 to 20 highest-scoring companies in your market, with the signals behind their score, the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. The subscription also includes two nurturing sequences, on LinkedIn and by email, for the companies whose score is not yet high enough. One hour a month is spent reviewing the calls made and the meetings booked.\n\nIf you share a CRM export, the list separates new companies from those you already know. Before subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
+        a: 'It is the Flow Ops subscription. Every Monday you receive the 10 to 20 highest-scoring companies in your market, with the signals behind their score, the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. The subscription also includes two nurturing sequences, on LinkedIn and by email, for the companies whose score is not yet high enough. One hour a month is spent reviewing the calls made and the meetings booked.\n\nIf you share a CRM export, the list separates new companies from those you already know. It starts with a free 30-minute scoping call. The first month is a trial: four lists, and three figures reviewed with you every week, companies called, conversations and meetings.',
       },
       {
         q: 'How is the score calculated?',
@@ -805,15 +796,15 @@ export const en: Content = {
       },
       {
         q: 'How much does “Who to call on Monday” cost?',
-        a: '€1,200 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
+        a: '€1,200 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The scoping call is free and the first month is a trial: you stop at the end of the month if the figures do not follow.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
       },
       {
         q: 'How is this different from an outsourced SDR or a prospecting agency?',
-        a: 'An outsourced SDR makes calls on your behalf; an agency sends messages in volume. Flow Ops does not replace your sales team: it tells them who to call and gives them the reason for the call. The relationship with the prospect stays with you.\n\nThe subscription carries no commitment and costs less than an outsourced SDR. It does assume that at least one person on your side calls the list.',
+        a: 'An outsourced SDR makes calls on your behalf; an agency sends messages in volume. Flow Ops starts by telling you who to call and why: the list, the score, the reason for the call. Most often your own sales team makes the calls, and the relationship with the prospect stays with you.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. The subscription itself carries no commitment.',
       },
       {
         q: 'Which companies is the offer for?',
-        a: 'French B2B companies with 50 to 249 employees, software vendors and equipment manufacturers in particular, selling a product above €15,000 or under multi-year contract, over a cycle of several months, with at least two people who sell.\n\nThe offer is not a fit if your average deal is below €5,000, or if nobody on your side can call the list.',
+        a: 'French B2B companies with 10 to 249 employees, software vendors, cybersecurity vendors and equipment manufacturers in particular, selling a product above €15,000 or under multi-year contract, over a cycle of several months. Most often the chief executive sells in person with one or two sales reps, or one person already handles marketing without the time to track signals.\n\nThe offer is not a fit if your average deal is below €5,000.',
       },
       {
         q: 'Do we need to install a tool or change CRM?',
