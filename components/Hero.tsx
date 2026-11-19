@@ -143,9 +143,6 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
                   </span>
                 ))}
               </div>
-              <p className="text-xs md:text-sm leading-relaxed text-slate-400 italic max-w-sm text-center md:text-left font-medium">
-                {c.hero.proofNote}
-              </p>
             </div>
 
           </div>

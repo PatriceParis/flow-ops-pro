@@ -33,7 +33,6 @@ export interface Content {
     proofSystems: string;
     proofDeployed: string;
     sectors: string[];
-    proofNote: string;
     testimonialsLabel: string;
     blockedTitle: string;
     blockedBody: string;
@@ -166,7 +165,6 @@ export const fr: Content = {
     proofSystems: 'systèmes',
     proofDeployed: 'de prospection déployés',
     sectors: ['Cybersécurité', 'Éditeurs de logiciels', 'Fabricants d’équipements', 'Deeptech'],
-    proofNote: 'Missions confidentielles opérées en direct ou via des collectifs.',
     testimonialsLabel: 'Ils en parlent',
     blockedTitle: 'Témoignage LinkedIn',
     blockedBody:
@@ -515,7 +513,6 @@ export const en: Content = {
     proofSystems: 'prospecting',
     proofDeployed: 'systems deployed',
     sectors: ['Cybersecurity', 'Software vendors', 'Equipment manufacturers', 'Deeptech'],
-    proofNote: 'Confidential engagements, run directly or through collectives.',
     testimonialsLabel: 'What clients say',
     blockedTitle: 'LinkedIn testimonial',
     blockedBody:
