@@ -1,6 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { mailtoHref, useContent } from '../i18n';
+import { useContent } from '../i18n';
 
 const References: React.FC = () => {
   const r = useContent().references;
@@ -33,17 +32,6 @@ const References: React.FC = () => {
               {c.note && <p className="mt-4 pt-4 border-t border-slate-200 text-sm text-slate-500">{c.note}</p>}
             </article>
           ))}
-        </div>
-
-        <div className="mt-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
-          <p className="text-sm text-slate-400 max-w-2xl">{r.footnote}</p>
-          <a
-            href={mailtoHref(r.cta)}
-            className="shrink-0 inline-flex items-center gap-2 font-bold text-slate-900 underline underline-offset-4 hover:text-blue-600 transition-colors"
-          >
-            {r.cta}
-            <ArrowRight className="w-4 h-4" />
-          </a>
         </div>
       </div>
     </section>
