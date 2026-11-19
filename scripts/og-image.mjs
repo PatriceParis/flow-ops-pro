@@ -11,13 +11,13 @@ const logo = 'data:image/png;base64,' + readFileSync(resolve(root, 'public/flow-
 const variants = [
   {
     file: 'og-image.png',
-    headline: 'Votre prospection B2B en<br><span class="accent">infrastructure automatisée.</span>',
-    tagline: 'Systèmes ABX &amp; GTM Engineering — +10 systèmes déployés',
+    headline: 'Chaque lundi, les entreprises à appeler.<br><span class="accent">Et la raison de l’appel.</span>',
+    tagline: 'Conseil en prospection B2B, par Patrice Tord',
   },
   {
     file: 'og-image-en.png',
-    headline: 'Your B2B prospecting as<br><span class="accent">automated infrastructure.</span>',
-    tagline: 'ABX Systems &amp; GTM Engineering — 10+ systems deployed',
+    headline: 'Every Monday, the companies to call.<br><span class="accent">And the reason for the call.</span>',
+    tagline: 'B2B prospecting consultancy, by Patrice Tord',
   },
 ];
 
@@ -38,7 +38,7 @@ const page_html = (v) => `<!DOCTYPE html><html><head><meta charset="utf-8">
          background:rgba(0,78,146,.3);border-radius:50%;filter:blur(130px)}
   .inner{position:relative;z-index:10}
   .logo{height:52px;margin-bottom:52px;filter:brightness(0) invert(1)}
-  h1{font-size:70px;line-height:1.08;font-weight:800;color:#fff;letter-spacing:-.025em;max-width:940px}
+  h1{font-size:52px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.025em;max-width:1008px}
   .accent{background:linear-gradient(135deg,#38bdf8,#00d2ff);-webkit-background-clip:text;
           -webkit-text-fill-color:transparent}
   p{margin-top:30px;font-size:27px;color:#94a3b8;max-width:840px}

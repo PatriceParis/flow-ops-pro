@@ -3,16 +3,16 @@ import { Languages } from 'lucide-react';
 import {
   pathForLocaleAtSlug,
   rememberPreference,
-  slugFromPath,
   useContent,
   useLocale,
+  useSlug,
 } from '../i18n';
 
 const LocaleSwitcher: React.FC = () => {
   const locale = useLocale();
   const c = useContent();
   const target = locale === 'fr' ? 'en' : 'fr';
-  const href = pathForLocaleAtSlug(target, slugFromPath());
+  const href = pathForLocaleAtSlug(target, useSlug());
 
   // A full navigation, not a state flip: each language is its own document with
   // its own meta, canonical and structured data.

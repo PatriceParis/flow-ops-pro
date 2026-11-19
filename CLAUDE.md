@@ -15,7 +15,7 @@ No linter or test runner is configured.
 
 ## Environment
 
-No environment variables or secrets are required. `EnrollmentModal` posts to a hardcoded Zapier catch hook (`NOTIFICATION_WEBHOOK_URL`), which relays the submission by email.
+No environment variables or secrets are required. The site has no form: every call to action is either a prefilled `mailto:` (`mailtoHref` in `i18n/index.tsx`) or the zCal booking modal, which is what lets the privacy policy say no form data is collected.
 
 PostHog analytics targets the EU region (`https://eu.i.posthog.com`). The project token in `consent.ts` is a public write-only key, intended to ship in the client bundle — it is not a secret.
 
@@ -23,18 +23,30 @@ PostHog analytics targets the EU region (`https://eu.i.posthog.com`). The projec
 
 ## Architecture
 
-This is a single-page marketing site for the Flow Ops freelance service (ABX & GTM Engineering). There is no routing — the page is a vertical stack of section components rendered in `App.tsx`.
+This is the marketing site of Flow Ops, the B2B prospecting consultancy of Patrice Tord. The home page is a vertical stack of section components rendered in `App.tsx`; two article pages share the same shell.
+
+## Positioning and voice
+
+Flow Ops is a **service sold by a named consultant**, and the copy must never let a reader, human or machine, take it for software. An AI sales tool once classified the site as an n8n competitor because the copy led with "infrastructure automatisée", "système autonome", "stack" and "orchestration"; the positioning was rewritten in November 2026 around the validated offer.
+
+- The lead offer is **« Qui appeler lundi »**: every Monday, 10 to 20 companies to call with the reason for the call and an opening line, 1 200 € HT per month, no setup fee, no commitment, preceded by a free list of 20 companies. The ABX engagement is the high-end offer, not the headline.
+- Write in the vocabulary of the manager who sells: "qui appeler", "la raison de l'appel", "vos salons". Keep TAM, stack, infrastructure, orchestration and tool names out of anything addressed to the buyer. Claude and the API connectors are how the list gets made, and appear once, in the "D'où viennent les signaux" section, as a reason to believe.
+- Only promise signals that are actually wired and verified: changes of chief executive, acquisitions and head-office moves (BODACC, company register), hiring (careers pages, job boards).
+- Never claim a guaranteed number of meetings or a projected cost per lead, and never name a client in copy without written consent. Sector-level proof ("éditeurs de logiciels", "fabricants d'équipements") is fine.
+- French copy follows Patrice's style rules: no em or en dash as sentence punctuation, sentence-case titles, no emoji, non-breaking space before : ; ! ? and inside « », typographic apostrophes, direct statements over hedged ones.
+
+The source of truth for the offer, the ICP and these rules is the Flow Ops tenant in the sibling workspace: `../gtm-engine/clients/flow-ops/CLAUDE.md`.
 
 **Component model**
 
 - `App.tsx` owns all modal state (`isZcalOpen`, `isPrivacyOpen`) and passes open/close callbacks as props.
-- Section components (`Hero`, `Method`, `ABXPillars`, `Offers`, `Stack`, `Timeline`, `FAQ`) are purely presentational with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
+- Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list), `Stack` (where the signals come from, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the ABX engagement), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
 - Two modals — `ZcalModal` (booking) and `PrivacyModal` (legal) — are lifted to `App.tsx` so any section can trigger them via props.
 - `Hero` embeds three LinkedIn testimonial posts as iframes, driven by the `TESTIMONIAL_URNS` array at the top of the file and gated behind cookie consent.
 
 **Styling**
 
-Tailwind CSS is loaded via CDN in both HTML entry points (not as a PostCSS plugin). Custom utilities (`gradient-text`, `btn-glow`, `card-hover`, `animate-flow`, `animate-modal`, `footer-pattern`, `bg-grid-pattern`) live in `styles.css`, imported from `index.tsx`. Do not move Tailwind to a PostCSS/Vite plugin without also migrating these custom classes.
+Tailwind CSS v3 is compiled at build time through PostCSS (`tailwind.config.js`). It scans source text, so a class name must appear literally somewhere: never assemble one from fragments (`group-hover:${x}`), it would silently not be generated. Custom utilities (`gradient-text`, `btn-glow`, `card-hover`, `animate-flow`, `animate-modal`, `footer-pattern`, `bg-grid-pattern`) live in `styles.css`, imported from `index.tsx`.
 
 ## Internationalisation & SEO
 
@@ -42,12 +54,19 @@ Six static pages, French by default: the home page plus one article per entry in
 
 **Every HTML file on disk is an identical empty shell.** All head content — `lang`, title, description, canonical, the hreflang triplet, Open Graph, Twitter and JSON-LD — is emitted by the `seoHead` Vite plugin in `vite.config.ts`, which derives the route from the file path and reads the same dictionaries the UI renders. Never hand-edit meta into an HTML file: it would be the only copy not covered by that guarantee.
 
+**The production build prerenders every page.** The same plugin renders `<App />` to static HTML into `#root`, and `index.tsx` hydrates it. Without this, a crawler that does not run JavaScript, which includes most AI readers, received an empty body and judged the business on the title and JSON-LD alone. Consequences to respect:
+
+- Nothing may read `window`, `document` or `localStorage` while rendering. The route comes from `RouteProvider` (`useLocale()`, `useSlug()`), not from `window.location`. Browser-only state belongs in an effect or behind `useSyncExternalStore` with a server snapshot, as `useConsent` does.
+- `CookieBanner` renders only after mount, so it is never baked into the static HTML where it would flash at visitors who already chose.
+- The dev server keeps an empty root and `index.tsx` falls back to `createRoot`: the config bundles its own copy of the components once, which would go stale against hot-reloaded code. A hydration bug therefore only shows in `npm run build && npm run preview`. Check the console there after touching anything that renders differently on server and client.
+- `public/llms.txt` states in plain text what Flow Ops is and is not. Keep it in step with the offers.
+
 To add a page: add its slug to `SLUGS`, its content to both `i18n/pages.ts` and `i18n/pages.en.ts`, create `<slug>/index.html` and `en/<slug>/index.html` as copies of any existing shell, and add the URLs to `public/sitemap.xml`.
 
 - **Copy** lives in `i18n/content.ts` (one `Content` object per locale, no markup). Components read it with `useContent()`. Sentences with an inline highlight are split into `…Before` / `…Highlight` / `…After` parts so the dictionary stays plain data.
-- **Routing** is path-derived, never state: `localeFromPath` gives the language and `slugFromPath` the article (null on the home page). `App.tsx` picks `ArticlePage` or the home sections from that.
+- **Routing** is path-derived, never state: `localeFromPath` gives the language and `slugFromPath` the article (null on the home page). `index.tsx` resolves both once and hands them to `RouteProvider`; `App.tsx` picks `ArticlePage` or the home sections from `useSlug()`.
 - **Locale** comes from the URL path, never from state. `LocaleSwitcher` performs a real navigation and records the choice in `localStorage`.
-- **Auto-detection**: `redirectToPreferredLocale()` runs in `index.tsx` *before* React mounts and sends a first-time English-speaking visitor to the English copy of whatever page they landed on, slug included. It fires only from a French URL and only when the visitor has never chosen a language, so an explicit choice is never overridden.
-- **Structured data** is emitted into the static HTML, not injected at runtime, because AI crawlers generally do not execute JS. The home pages carry `ProfessionalService` + `WebSite` + `FAQPage` (all ten Q&As); article pages carry `ProfessionalService` + `Article` + a single-question `FAQPage` built from `keyAnswer`. Adding a FAQ entry to `content.ts` updates the schema automatically — do not hand-maintain the JSON-LD.
+- **Auto-detection**: `LOCALE_REDIRECT_SCRIPT` (in `i18n/index.tsx`) is inlined into `<head>` by the plugin, so it runs before the prerendered French page paints. It sends a first-time English-speaking visitor to the English copy of whatever page they landed on, slug included, only from a French URL and only when the visitor has never chosen a language, so an explicit choice is never overridden.
+- **Structured data** is emitted into the static HTML, not injected at runtime, because AI crawlers generally do not execute JS. The home pages carry `ProfessionalService` (with `serviceType` and an `OfferCatalog` of the three tiers; numeric prices live in `TIER_PRICES` in `vite.config.ts` and must follow the dictionary) + `WebSite` + `FAQPage` (all ten Q&As); article pages carry `ProfessionalService` + `Article` + a single-question `FAQPage` built from `keyAnswer`. Adding a FAQ entry to `content.ts` updates the schema automatically — do not hand-maintain the JSON-LD.
 - **OG images** are rendered by `node scripts/og-image.mjs` (headless Chromium) into `public/og-image.png` and `public/og-image-en.png`. Re-run it after changing the headline or the brand.
 - The privacy policy in `PrivacyModal` stays in French in both locales — it is the authoritative text for a French-registered business. The English build shows a notice to that effect via `content.en.privacyNotice`; do not machine-translate the legal body.

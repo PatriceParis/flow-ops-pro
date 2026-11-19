@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
 import { setConsent, useConsent } from '../consent';
-import { useContent } from '../i18n';
+import { mailtoHref, useContent } from '../i18n';
 
 interface HeroProps {
   onOpenZcal: () => void;
@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
           {c.hero.badge}
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-slate-900 mb-8 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-8 leading-tight">
           {c.hero.titleLine1}<br />
           <span className="gradient-text">{c.hero.titleAccent}</span>
         </h1>
@@ -80,7 +80,24 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
           <span className="text-slate-900 font-medium">{c.hero.subtitleHighlight}</span>
           {c.hero.subtitleAfter}
         </p>
-        
+
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <a
+            href={mailtoHref(c.freeList.mailSubject, c.freeList.mailBody)}
+            className="btn-glow w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all shadow-xl flex items-center justify-center gap-2"
+          >
+            {c.hero.ctaPrimary}
+            <ArrowRight className="w-4 h-4" />
+          </a>
+          <button
+            onClick={onOpenZcal}
+            className="w-full sm:w-auto px-7 py-4 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-50 transition-colors"
+          >
+            {c.hero.ctaSecondary}
+          </button>
+        </div>
+        <p className="mt-4 text-sm text-slate-400">{c.hero.ctaNote}</p>
+
         {/* Interactive "Electric Charge" Scroll Indicator */}
         <div className="mt-20 flex justify-center">
           <a 

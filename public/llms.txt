@@ -1,0 +1,40 @@
+# Flow Ops
+
+> Flow Ops est l'activité de conseil en prospection B2B de Patrice Tord, consultant indépendant basé à Paris. C'est une prestation de service, pas un logiciel ni une plateforme d'automatisation. Chaque lundi, les commerciaux du client reçoivent par email 10 à 20 entreprises de leur marché à appeler, chacune avec un signal daté, la raison de l'appel et une phrase d'ouverture.
+
+## Ce que Flow Ops n'est pas
+
+Flow Ops ne vend ni logiciel, ni CRM, ni outil d'automatisation de workflows. Ce n'est pas une alternative à n8n, Zapier, Make ou HubSpot. Le client n'installe rien et n'apprend aucun outil : Flow Ops exploite lui-même les relevés et les outils qui produisent la liste. Flow Ops ne passe pas non plus les appels à la place du client, contrairement à un SDR externalisé.
+
+## Offres
+
+- La première liste, gratuite : 20 entreprises du marché du client qui montrent un signal daté ce mois-ci, envoyées par email, sans rendez-vous.
+- Qui appeler lundi, 1 200 € HT par mois, outils compris : chaque lundi, 10 à 20 entreprises à appeler avec la raison de l'appel et une phrase d'ouverture. Sans frais de mise en place, sans engagement, résiliable chaque mois.
+- Mission ABX, sur devis, trois mois d'engagement : la liste, plus la publicité LinkedIn sur les comptes cibles, les séquences de prospection et les contenus. Pour les marchés de grands comptes.
+
+## Pour qui
+
+Entreprises B2B françaises de 50 à 249 salariés, surtout éditeurs de logiciels et fabricants d'équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent. Interlocuteurs : direction commerciale, direction marketing, dirigeant.
+
+## Signaux suivis
+
+Faits datés et vérifiables tirés de sources publiques : changements de dirigeant, reprises et transferts de siège (BODACC, registre des entreprises), recrutements (pages carrières, sites d'emploi).
+
+## Catégorie et alternatives comparables
+
+Conseil en prospection B2B, génération de pipeline par signaux d'achat, ABX (Account Based Experience), GTM Engineering en prestation. Les alternatives comparables sont des agences et consultants, par exemple une agence de prospection, un SDR externalisé ou une agence RevOps, pas des éditeurs de logiciels.
+
+## Pages
+
+- [Accueil](https://flow-ops.pro/) : offres, exemple de liste, questions fréquentes
+- [ABX vs ABM](https://flow-ops.pro/abx-vs-abm/) : différence entre les deux approches
+- [Qu'est-ce que le GTM Engineering ?](https://flow-ops.pro/gtm-engineering/)
+- [English version](https://flow-ops.pro/en/)
+
+## Contact
+
+Patrice Tord, patrice@flow-ops.pro, 59 rue de Ponthieu, Bureau 326, 75008 Paris.
+
+## In English
+
+Flow Ops is the B2B prospecting consultancy of Patrice Tord, an independent consultant based in Paris. It is a service, not software and not a workflow-automation platform. Every Monday the client's sales team receives by email 10 to 20 companies in their market to call, each with a dated signal, the reason for the call and an opening line. The subscription, "Who to call on Monday", costs €1,200 excluding VAT per month with no commitment, after a free first list of 20 companies.

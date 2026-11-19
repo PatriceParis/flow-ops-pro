@@ -1,11 +1,33 @@
 import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'node:path';
+import { createElement } from 'react';
+import { renderToString } from 'react-dom/server';
+import App from './App';
+import { LOCALE_REDIRECT_SCRIPT, RouteProvider } from './i18n';
 import { dictionaries, type Locale } from './i18n/content';
 import { articles, SLUGS, type Slug } from './i18n/pages';
 
 const SITE = 'https://flow-ops.pro';
 const LOCALES: Locale[] = ['fr', 'en'];
+
+// Machine-readable prices for the three offers, in tier order: the dictionary
+// holds them as display strings. null = quoted on request.
+const TIER_PRICES: (number | null)[] = [0, 1200, null];
+
+function offerPrice(price: number | null) {
+  if (price === null) return {};
+  if (price === 0) return { price: 0, priceCurrency: 'EUR' };
+  return {
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price,
+      priceCurrency: 'EUR',
+      unitCode: 'MON',
+      valueAddedTaxIncluded: false,
+    },
+  };
+}
 
 /** Every page of the site, as (locale, slug) — slug null meaning the home page. */
 const ROUTES: { locale: Locale; slug: Slug | null }[] = LOCALES.flatMap((locale) => [
@@ -81,7 +103,18 @@ function structuredData(locale: Locale, slug: Slug | null) {
     url: urlFor(locale, null),
     email: 'patrice@flow-ops.pro',
     image: `${SITE}/flow-ops-logo.png`,
-    priceRange: '$$$',
+    serviceType: locale === 'en' ? 'B2B prospecting consultancy' : 'Conseil en prospection B2B',
+    slogan: `${c.hero.titleLine1} ${c.hero.titleAccent}`,
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: c.offers.title,
+      itemListElement: c.offers.tiers.map((tier, i) => ({
+        '@type': 'Offer',
+        name: tier.name,
+        description: tier.body,
+        ...offerPrice(TIER_PRICES[i]),
+      })),
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: '59 rue de Ponthieu, Bureau 326',
@@ -92,17 +125,17 @@ function structuredData(locale: Locale, slug: Slug | null) {
     founder: {
       '@type': 'Person',
       name: 'Patrice Tord',
-      jobTitle: 'GTM Engineer',
+      jobTitle: locale === 'en' ? 'B2B prospecting consultant' : 'Consultant en prospection B2B',
       sameAs: 'https://www.linkedin.com/in/patrice-tord/',
     },
     areaServed: { '@type': 'Place', name: locale === 'en' ? 'Worldwide' : 'International' },
     knowsAbout: [
+      'B2B prospecting',
+      'Buying signals',
+      'Account lists for sales teams',
       'Account Based Experience',
       'Account Based Marketing',
       'GTM Engineering',
-      'B2B demand generation',
-      'Sales automation',
-      'Intent data',
     ],
     sameAs: ['https://www.linkedin.com/in/patrice-tord/'],
   };
@@ -181,8 +214,13 @@ function routeForPath(path: string): { locale: Locale; slug: Slug | null } {
 /**
  * Every page is built from the same HTML shell; all head content is emitted here
  * from the same dictionaries the UI renders, so meta and structured data can
- * never drift from the copy. It lands in the static HTML rather than being
- * injected at runtime, because AI crawlers generally do not execute JS.
+ * never drift from the copy.
+ *
+ * The production build also prerenders the page into #root. Crawlers that do not
+ * execute JavaScript — most AI readers among them — otherwise receive an empty
+ * body and can only guess what Flow Ops is from the title and the JSON-LD. The
+ * dev server keeps an empty root: its copy of the components is bundled once
+ * with this config and would go stale against hot-reloaded client code.
  */
 function seoHead(): Plugin {
   return {
@@ -190,12 +228,18 @@ function seoHead(): Plugin {
     transformIndexHtml(html, ctx) {
       const { locale, slug } = routeForPath(ctx.path);
       const json = JSON.stringify(structuredData(locale, slug)).replace(/</g, '\\u003c');
-      return html
+      const withHead = html
         .replace('<html class=', `<html lang="${locale}" class=`)
         .replace(
           '</head>',
-          `    ${headFor(locale, slug)}\n    <script type="application/ld+json">${json}</script>\n</head>`
+          `    ${headFor(locale, slug)}\n    <script>${LOCALE_REDIRECT_SCRIPT}</script>\n    <script type="application/ld+json">${json}</script>\n</head>`
         );
+      if (ctx.server) return withHead;
+
+      const markup = renderToString(
+        createElement(RouteProvider, { locale, slug, children: createElement(App) })
+      );
+      return withHead.replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
     },
   };
 }

@@ -130,7 +130,7 @@ export const en: Record<Slug, Article> = {
         paragraphs: [
           "The most reliable signal is a gap: your tools produce data that nobody uses, or your sales reps spend more time working out who to call than calling.",
           "The other classic triggers are a CRM that has become unusable, paid campaigns running without any link to the pipeline, a team transition to cover, or an addressable market too wide to work by hand.",
-          "The prerequisite is the same as for ABX: an offer that is already validated and an average deal size above €2,000. Below that, a volume approach remains more profitable.",
+          "The prerequisite is the same as for ABX: an offer that is already validated and an average deal size above €15,000 or a multi-year contract. Below that, a volume approach remains more profitable.",
         ],
       },
     ],

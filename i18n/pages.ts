@@ -157,7 +157,7 @@ const fr: Record<Slug, Article> = {
         paragraphs: [
           "Le signal le plus fiable est un écart : vos outils produisent de la donnée que personne n'exploite, ou vos commerciaux passent plus de temps à chercher qui appeler qu'à appeler.",
           "Les autres déclencheurs classiques sont un CRM devenu inexploitable, des campagnes payantes qui tournent sans être reliées au pipeline, une transition d'équipe à couvrir, ou un marché adressable trop large pour être travaillé à la main.",
-          "Le prérequis reste le même que pour l'ABX : une offre déjà validée et un panier moyen supérieur à 2 000 €. En dessous, une approche volume reste plus rentable.",
+          "Le prérequis reste le même que pour l'ABX : une offre déjà validée et un panier moyen supérieur à 15 000 € ou un contrat pluriannuel. En dessous, une approche volume reste plus rentable.",
         ],
       },
     ],

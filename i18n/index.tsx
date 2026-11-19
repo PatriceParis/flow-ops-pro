@@ -6,7 +6,7 @@ export type { Content, Locale };
 const PREF_KEY = 'flowops_locale';
 
 /** `/en` and `/en/...` are the English document; everything else is French. */
-export function localeFromPath(pathname: string = window.location.pathname): Locale {
+export function localeFromPath(pathname: string): Locale {
   return /^\/en(\/|$)/.test(pathname) ? 'en' : 'fr';
 }
 
@@ -14,8 +14,8 @@ export function pathForLocale(locale: Locale): string {
   return locale === 'en' ? '/en/' : '/';
 }
 
-/** The article slug for the current URL, or null on the home page. */
-export function slugFromPath(pathname: string = window.location.pathname): string | null {
+/** The article slug for a URL, or null on the home page. */
+export function slugFromPath(pathname: string): string | null {
   const rest = pathname.replace(/^\/en(?=\/|$)/, '').replace(/^\/|\/$/g, '');
   return rest === '' || rest === 'index.html' ? null : rest;
 }
@@ -23,16 +23,7 @@ export function slugFromPath(pathname: string = window.location.pathname): strin
 /** Same article in the other language, so the switcher never drops the reader home. */
 export function pathForLocaleAtSlug(locale: Locale, slug: string | null): string {
   const base = pathForLocale(locale);
-  return slug ? `${base === '/' ? '/' : base}${slug}/` : base;
-}
-
-function storedPreference(): Locale | null {
-  try {
-    const v = localStorage.getItem(PREF_KEY);
-    return v === 'fr' || v === 'en' ? v : null;
-  } catch {
-    return null;
-  }
+  return slug ? `${base}${slug}/` : base;
 }
 
 export function rememberPreference(locale: Locale) {
@@ -43,37 +34,47 @@ export function rememberPreference(locale: Locale) {
   }
 }
 
-function prefersEnglish(): boolean {
-  const langs = navigator.languages?.length ? navigator.languages : [navigator.language];
-  const first = langs.find((l) => /^(fr|en)/i.test(l));
-  return !!first && /^en/i.test(first);
+/**
+ * Sends a first-time visitor whose browser prefers English from a French URL to
+ * its English copy. Emitted as an inline <head> script by the Vite plugin so it
+ * runs before the prerendered French page paints. It only fires when the visitor
+ * has never chosen a language, so an explicit switch is never overridden.
+ */
+export const LOCALE_REDIRECT_SCRIPT = `(function(){try{var p=location.pathname;if(/^\\/en(\\/|$)/.test(p))return;if(localStorage.getItem('${PREF_KEY}'))return;var l=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language]).filter(function(x){return /^(fr|en)/i.test(x)})[0];if(l&&/^en/i.test(l))location.replace('/en'+(p==='/index.html'?'/':p)+location.search+location.hash)}catch(e){}})();`;
+
+interface Route {
+  locale: Locale;
+  slug: string | null;
 }
+
+const RouteContext = createContext<Route>({ locale: 'fr', slug: null });
 
 /**
- * Sends a first-time visitor to the document matching their browser language.
- * Only fires from the French root, only when they have never chosen a language
- * themselves, so an explicit switch is never overridden and no loop is possible.
+ * The route is passed in rather than read from `window` inside components, so
+ * the same tree renders at build time (prerender) and in the browser.
  */
-export function redirectToPreferredLocale(): boolean {
-  if (localeFromPath() !== 'fr') return false;
-  if (storedPreference()) return false;
-  if (!prefersEnglish()) return false;
-  const target = pathForLocaleAtSlug('en', slugFromPath());
-  window.location.replace(target + window.location.search + window.location.hash);
-  return true;
-}
-
-const LocaleContext = createContext<Locale>('fr');
-
-export const LocaleProvider: React.FC<{ locale: Locale; children: React.ReactNode }> = ({
+export const RouteProvider: React.FC<Route & { children: React.ReactNode }> = ({
   locale,
+  slug,
   children,
-}) => <LocaleContext.Provider value={locale}>{children}</LocaleContext.Provider>;
+}) => <RouteContext.Provider value={{ locale, slug }}>{children}</RouteContext.Provider>;
 
 export function useLocale(): Locale {
-  return useContext(LocaleContext);
+  return useContext(RouteContext).locale;
+}
+
+export function useSlug(): string | null {
+  return useContext(RouteContext).slug;
 }
 
 export function useContent(): Content {
-  return dictionaries[useContext(LocaleContext)];
+  return dictionaries[useContext(RouteContext).locale];
+}
+
+const CONTACT_EMAIL = 'patrice@flow-ops.pro';
+
+export function mailtoHref(subject: string, body?: string): string {
+  const query = [`subject=${encodeURIComponent(subject)}`];
+  if (body) query.push(`body=${encodeURIComponent(body)}`);
+  return `mailto:${CONTACT_EMAIL}?${query.join('&')}`;
 }

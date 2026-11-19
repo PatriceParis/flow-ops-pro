@@ -2,6 +2,12 @@ export type Locale = 'fr' | 'en';
 
 // Rich sentences are split into parts instead of carrying markup, so the
 // dictionary stays plain data and translators never touch JSX.
+//
+// Voice (French): the vocabulary of the manager who sells, not of the growth
+// team. "Qui appeler", "la raison de l'appel", "vos salons" — never TAM, stack,
+// infrastructure or tool names in what addresses the buyer. French typography
+// throughout:   before : ; ! ? and inside « », typographic apostrophes, no
+// em or en dash used as sentence punctuation.
 export interface Content {
   meta: {
     title: string;
@@ -16,6 +22,9 @@ export interface Content {
     subtitleBefore: string;
     subtitleHighlight: string;
     subtitleAfter: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
+    ctaNote: string;
     scrollAria: string;
     proofAlready: string;
     proofCount: string;
@@ -29,6 +38,8 @@ export interface Content {
     blockedAllow: string;
     blockedView: string;
   };
+  /** Prefilled email that requests the free list: no form, so no data stored. */
+  freeList: { mailSubject: string; mailBody: string };
   method: {
     eyebrow: string;
     titleLine1: string;
@@ -43,6 +54,35 @@ export interface Content {
     step3: string;
     step3Badge: string;
   };
+  sample: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    context: string;
+    labelSignal: string;
+    labelReason: string;
+    labelOpener: string;
+    rows: { company: string; signal: string; reason: string; opener: string }[];
+    footnote: string;
+  };
+  offers: {
+    title: string;
+    subtitle: string;
+    /** Exactly three, in order: free list, monthly subscription, full engagement. */
+    tiers: {
+      name: string;
+      price: string;
+      priceNote: string;
+      body: string;
+      points: string[];
+      cta: string;
+    }[];
+    compare: string;
+    oneOff: string;
+    oneOffCta: string;
+    oneOffMailSubject: string;
+    quoteMailSubject: string;
+  };
   pillars: {
     titleBefore: string;
     titleAccent: string;
@@ -54,18 +94,7 @@ export interface Content {
     outcomeProcess: string;
     outcomeFinal: string;
   };
-  offers: {
-    title: string;
-    introBefore: string;
-    introHighlight: string;
-    introAfter: string;
-    deliverables: string[];
-    cta: string;
-    sideTitle: string;
-    sideBody: string;
-    sideCta: string;
-    sideMailSubject: string;
-  };
+  /** "Where the signals come from" — the section that says this is a service. */
   stack: {
     eyebrow: string;
     title: string;
@@ -102,207 +131,274 @@ export interface Content {
 
 export const fr: Content = {
   meta: {
-    title: 'Flow Ops | Système ABX & GTM Engineering B2B',
+    title: 'Flow Ops | Conseil en prospection B2B : qui appeler lundi',
     description:
-      "Freelance GTM Engineer. Je construis en 3 mois un système ABX autonome qui identifie vos comptes cibles, détecte leurs signaux d'achat et déclenche les bonnes conversations. +10 systèmes déployés en B2B.",
+      'Conseil en prospection B2B pour éditeurs de logiciels et fabricants d’équipements. Chaque lundi, 10 à 20 entreprises à appeler, avec la raison de l’appel.',
     ogLocale: 'fr_FR',
   },
   nav: { cta: 'Discutons de vos enjeux', switchTo: 'EN', switchLabel: 'Switch to English' },
   hero: {
-    badge: 'Engager les bons prospects au bon moment en 2026',
-    titleLine1: 'Transformez votre prospection B2B en',
-    titleAccent: 'infrastructure automatisée.',
-    subtitleBefore:
-      "L'Account Based Marketing (ABM) et la prospection de masse sont limitées. On construit en 3 mois un ",
-    subtitleHighlight: 'système autonome et scalable',
-    subtitleAfter: " de génération d'opportunités B2B.",
+    badge: 'Conseil en prospection B2B, par Patrice Tord',
+    titleLine1: 'Chaque lundi, les entreprises à appeler.',
+    titleAccent: 'Et la raison de l’appel.',
+    subtitleBefore: 'Votre fichier de salon dit qui existe. Flow Ops vous dit ',
+    subtitleHighlight: 'qui bouge maintenant',
+    subtitleAfter:
+      ' : 10 à 20 entreprises de votre marché par semaine, chacune avec un signal daté et une phrase d’ouverture pour vos commerciaux.',
+    ctaPrimary: 'Recevoir 20 entreprises de mon marché',
+    ctaSecondary: 'Prendre rendez-vous',
+    ctaNote: 'Première liste gratuite, envoyée par email, sans rendez-vous.',
     scrollAria: 'Défiler vers la méthode',
     proofAlready: 'Déjà',
     proofCount: '+10',
     proofSystems: 'systèmes',
-    proofDeployed: 'déployés',
-    sectors: ['Cybersec', 'SaaS B2B', 'Industrie', 'Deeptech'],
+    proofDeployed: 'de prospection déployés',
+    sectors: ['Cybersécurité', 'Éditeurs de logiciels', 'Fabricants d’équipements', 'Deeptech'],
     proofNote: 'Missions confidentielles opérées en direct ou via des collectifs.',
     testimonialsLabel: 'Ils en parlent',
     blockedTitle: 'Témoignage LinkedIn',
     blockedBody:
-      "L'affichage de cette publication dépose des traceurs LinkedIn. Il requiert votre accord.",
+      'L’affichage de cette publication dépose des traceurs LinkedIn. Il requiert votre accord.',
     blockedAllow: 'Autoriser et afficher',
     blockedView: 'Voir sur LinkedIn',
   },
+  freeList: {
+    mailSubject: 'Ma liste de 20 entreprises',
+    mailBody:
+      'Bonjour Patrice,\n\nJe souhaite recevoir la liste de 20 entreprises de mon marché.\n\nAdresse de notre site : \nType de clients que nous visons : \n',
+  },
   method: {
-    eyebrow:
-      'Ne chassez plus aveuglément des leads. Orchestrez les interactions avec vos comptes clés et engagez les.',
-    titleLine1: 'Le volume ne fonctionne plus.',
-    titleAccent: 'Le contexte est roi.',
-    oldTitle: 'Les limites du modèle traditionnel',
+    eyebrow: 'Un flux régulier toute l’année, au lieu de deux pics autour des salons',
+    titleLine1: 'Votre fichier dit qui existe.',
+    titleAccent: 'La liste dit qui bouge.',
+    oldTitle: 'Le fichier de salon et le carnet d’adresses',
     oldBody:
-      'Dilution du message marketing, travail en silos entre Marketing et Sales, et concentration sur des métriques de vanité (clics, vues) plutôt que sur le pipeline réel.',
-    newTitle: 'La vision Account Based Experience (ABX)',
+      'Deux pics d’activité par an, des commerciaux qui prospectent à l’aveugle le reste du temps, et un CRM que personne n’a envie d’ouvrir.',
+    newTitle: 'Un signal daté pour chaque appel',
     newBody:
-      "Une infrastructure personnalisée et scalable. Identifier les comptes prioritaires avant les Sales, générer des signaux d'intérêt exploitables basés sur des données réelles.",
-    step1: '1. Sourcing, enrichissement et détection de signaux',
-    step2: '2. Conversations LinkedIn et email',
-    step2Badge: 'AUTO',
-    step3: '3. Activation Sales',
-    step3Badge: 'Conversion',
+      'Une entreprise qui recrute un commercial, change de dirigeant ou vient d’être reprise a une raison d’écouter cette semaine. Votre commercial sait pourquoi il appelle et par quelle phrase commencer.',
+    step1: '1. Votre marché, relevé dans les registres publics',
+    step2: '2. Les signaux de la semaine, datés et vérifiés',
+    step2Badge: 'Chaque semaine',
+    step3: '3. La liste, par email',
+    step3Badge: 'Lundi',
+  },
+  sample: {
+    eyebrow: 'Exemple',
+    title: 'Ce que votre commercial reçoit le lundi',
+    subtitle: 'Pour chaque entreprise : le signal, la raison de l’appel et une phrase pour commencer.',
+    context:
+      'Exemple fictif, pour un fabricant de machines d’emballage qui vend aux industriels de l’agroalimentaire.',
+    labelSignal: 'Signal',
+    labelReason: 'Raison de l’appel',
+    labelOpener: 'Phrase d’ouverture',
+    rows: [
+      {
+        company: 'Laiterie, 140 salariés, Ille-et-Vilaine',
+        signal: 'Changement de président publié le 3 novembre',
+        reason: 'Un nouveau dirigeant revoit les investissements dans ses premiers mois.',
+        opener:
+          '« J’ai vu que la direction venait de changer. Le renouvellement de vos lignes d’emballage fait-il partie des sujets ouverts ? »',
+      },
+      {
+        company: 'Biscuiterie, 85 salariés, Loire-Atlantique',
+        signal: 'Recrute un responsable de production depuis le 28 octobre',
+        reason: 'Un poste de production ouvert annonce souvent une montée en cadence.',
+        opener:
+          '« Vous recrutez un responsable de production : est-ce pour une nouvelle ligne ? »',
+      },
+      {
+        company: 'Conserverie, 210 salariés, Finistère',
+        signal: 'Transfert du siège vers un nouveau site, annonce du 12 novembre',
+        reason: 'Un nouveau site s’équipe, et le cahier des charges s’écrit maintenant.',
+        opener:
+          '« Félicitations pour le nouveau site. Qui pilote le choix des équipements de conditionnement ? »',
+      },
+    ],
+    footnote:
+      'Dans votre liste, chaque ligne porte le nom de l’entreprise, la source du signal et le contact à appeler.',
+  },
+  offers: {
+    title: 'Les offres',
+    subtitle:
+      'Une première liste gratuite pour juger sur pièces, puis un abonnement sans engagement. La mission complète répond aux marchés de grands comptes.',
+    tiers: [
+      {
+        name: 'La première liste',
+        price: 'Gratuite',
+        priceNote: 'par email, sans rendez-vous',
+        body: '20 entreprises de votre marché qui montrent un signal daté ce mois-ci, avec la raison d’appeler chacune.',
+        points: [
+          'Une phrase d’ouverture par entreprise',
+          'Vos clients et prospects connus séparés des entreprises nouvelles, si vous joignez un export de votre CRM',
+          'Une revue de 30 minutes avec votre commercial, si vous le souhaitez',
+        ],
+        cta: 'Recevoir ma liste',
+      },
+      {
+        name: 'Qui appeler lundi',
+        price: '1 200 € HT',
+        priceNote: 'par mois, outils compris',
+        body: 'Chaque lundi, 10 à 20 entreprises à appeler, avec la raison de l’appel et une phrase d’ouverture.',
+        points: [
+          'Par email, avec un fichier prêt à importer dans votre CRM',
+          'Sans frais de mise en place, sans engagement, résiliable chaque mois',
+          'Une heure par mois sur les appels passés et les rendez-vous obtenus',
+          'Un seul client par marché concurrent',
+        ],
+        cta: 'Discutons de vos enjeux',
+      },
+      {
+        name: 'Mission ABX',
+        price: 'Sur devis',
+        priceNote: 'trois mois d’engagement',
+        body: 'Pour les marchés de grands comptes : la liste, plus la publicité LinkedIn sur vos comptes cibles, les séquences de prospection et les contenus.',
+        points: [
+          'Marché listé et classé par priorité',
+          'Publicité et séquences pilotées chaque semaine',
+          'Documentation complète et transfert à votre équipe',
+        ],
+        cta: 'Demander un devis',
+      },
+    ],
+    compare:
+      'Pour comparaison, un SDR externalisé coûte de 3 000 à 8 000 € par mois, le plus souvent avec six mois d’engagement.',
+    oneOff:
+      'Des missions ponctuelles sont possibles : audit de vos outils de prospection, campagnes LinkedIn Ads, constitution d’un fichier de comptes.',
+    oneOffCta: 'Écrire à Patrice',
+    oneOffMailSubject: 'Demande de devis - Mission ponctuelle',
+    quoteMailSubject: 'Demande de devis - Mission ABX',
   },
   pillars: {
-    titleBefore: 'Une approche',
-    titleAccent: 'complémentaire',
-    subtitleBefore: 'Un système performant ne repose pas sur un levier isolé, mais sur ',
-    subtitleHighlight: "l'assemblage simultané",
-    subtitleAfter: ' de 4 piliers.',
+    titleBefore: 'La mission ABX :',
+    titleAccent: 'quatre canaux coordonnés',
+    subtitleBefore:
+      'Quand vos comptes cibles sont peu nombreux et très sollicités, la liste ne suffit pas. La mission y ajoute la publicité, les contenus et les séquences, ',
+    subtitleHighlight: 'menés ensemble',
+    subtitleAfter: '.',
     items: [
       {
-        name: 'Outbound',
-        description: 'Prospection ultra-personnalisée et adaptée au tiering de vos comptes.',
+        name: 'Prospection',
+        description: 'Des messages écrits pour chaque compte, envoyés quand le signal tombe.',
       },
       {
-        name: 'Paid (Ads)',
-        description:
-          'Campagnes Notoriété et Lead Gen via LinkedIn Ads pour éduquer et convertir.',
+        name: 'Publicité',
+        description: 'Sur LinkedIn, vos comptes cibles voient votre nom avant le premier appel.',
       },
       {
-        name: 'Data & Signaux',
-        description:
-          "Identification des comptes à forte intention d'achat et ciblage au bon timing.",
+        name: 'Signaux',
+        description: 'Les comptes qui bougent, repérés chaque semaine.',
       },
       {
         name: 'Contenus',
-        description:
-          "Création d'autorité et éducation du marché pour réduire vos cycles de vente.",
+        description: 'Des guides et des pages qui répondent aux questions de vos acheteurs.',
       },
     ],
-    outcomeMeetings: 'RDV qualifiés',
-    outcomeProcess: 'Processus interne Sales',
-    outcomeFinal: 'De la conversation au deal',
-  },
-  offers: {
-    title: 'Mise en place',
-    introBefore:
-      "Nous fonctionnons sur la base d'un forfait mensuel. Au début de notre collaboration, nous demandons un engagement sur les ",
-    introHighlight: 'trois premiers mois',
-    introAfter:
-      ". C'est le délai nécessaire pour structurer les fondations, lancer les campagnes et valider les premiers signaux. Après cette période, nous pouvons continuer pour une période totale de 6 mois ou transférer en interne les compétences.",
-    deliverables: [
-      'Cartographie complète du TAM',
-      'Setup de la stack technique',
-      "Détection de signaux d'intention",
-      'Documentation complète',
-      'Pilotage campagnes Ads & Outreach',
-      'Reporting hebdo & itérations',
-    ],
-    cta: 'Démarrer le partenariat',
-    sideTitle: 'Missions Ponctuelles',
-    sideBody:
-      'Audit de stack technique, publicités payantes seules, stratégie GTM ou sourcing de données. Nous répondons à la carte à vos besoins de missions.',
-    sideCta: 'Demander un devis',
-    sideMailSubject: 'Demande de devis - Mission ponctuelle',
+    outcomeMeetings: 'Rendez-vous qualifiés',
+    outcomeProcess: 'Suivi par vos commerciaux',
+    outcomeFinal: 'De la conversation à la signature',
   },
   stack: {
-    eyebrow: 'Des outils innovants et automatisés',
-    title: 'La Stack Technique ABX',
-    subtitle:
-      'Les meilleurs outils du marché, orchestrés pour transformer vos données en revenus prédictibles.',
+    eyebrow: 'Une prestation, pas un logiciel',
+    title: 'D’où viennent les signaux',
+    subtitle: 'Flow Ops exploite les relevés et les outils. Vous recevez la liste.',
     tools: [
       {
-        title: 'Data & Ciblage',
-        tag: 'Pharow, Sales Nav, Scraping sur-mesure',
-        desc: "Construction de listes de comptes ultra-ciblées. On ne vise plus tout le marché, mais les bons comptes.",
+        title: 'Registres publics',
+        tag: 'BODACC, registre des entreprises',
+        desc: 'Changements de dirigeant, reprises, transferts de siège : des faits datés, que votre commercial peut citer.',
       },
       {
-        title: 'Orchestration',
-        tag: 'Clay, Claude Code',
-        desc: 'Orchestrateur du système. Enrichissement, scoring et détection de signaux avec +100 intégrations.',
+        title: 'Tri et rédaction',
+        tag: 'Claude, connecteurs API',
+        desc: 'Chaque signal est rapproché de votre marché, noté, puis traduit en raison d’appel et en phrase d’ouverture.',
       },
       {
-        title: 'Automatisation',
-        tag: 'Zapier, lemlist, Clay',
-        desc: "Connexion instantanée entre les outils et exécution des séquences d'engagement multicanal.",
+        title: 'Recrutements',
+        tag: 'Pages carrières, sites d’emploi',
+        desc: 'Une entreprise qui ouvre un poste investit. L’offre d’emploi dit où.',
       },
       {
-        title: 'Custom Signals',
-        tag: 'Snitcher, BuiltWith...',
-        desc: 'Déanonymisation du trafic, identification de technologies Web etc.',
+        title: 'Vos propres données',
+        tag: 'Export CRM, fichier de salon',
+        desc: 'La liste distingue les entreprises nouvelles de vos clients et prospects qui montrent un signal.',
       },
     ],
   },
   timeline: {
-    title: 'Une approche méthodologique et structurée',
-    subtitle:
-      "Une roadmap claire de l'identification des comptes à la génération de conversions",
+    title: 'Déroulé d’une mission ABX',
+    subtitle: 'Trois mois, de la liste de vos comptes aux premiers rendez-vous',
     steps: [
       {
-        title: 'Construction & Fondations',
-        desc: "On arrête de deviner. On structure le marché adressable en tiering (TAM), on nettoie le CRM, on définit les cibles et audiences précises et on configure la stack technique.",
-        tags: ['Setup technique', 'Sourcing'],
+        title: 'Fondations',
+        desc: 'Votre marché est listé et classé par priorité, le CRM nettoyé, les signaux à suivre choisis avec vos commerciaux.',
+        tags: ['Marché listé', 'Signaux choisis'],
       },
       {
-        title: 'Exécution & Itérations',
-        desc: 'Lancement simultanée Paid, outreach & nurturing. Collecte de la données et itérations.',
-        tags: ['Outbound', 'Publicité payante', 'Signaux'],
+        title: 'Lancement',
+        desc: 'Publicité, séquences et contenus partent ensemble. Chaque semaine, les résultats décident de ce qui continue.',
+        tags: ['Prospection', 'Publicité LinkedIn', 'Signaux'],
       },
       {
-        title: 'Scale & Optimisations',
-        desc: "On double la mise sur ce qui fonctionne. On coupe ce qui ne marche pas. On aligne les équipes Sales pour qu'elles traitent les leads entrants de manière optimale.",
-        tags: ['Pipeline Review', 'Playbook Final'],
+        title: 'Transfert',
+        desc: 'Ce qui produit des rendez-vous est renforcé, le reste est arrêté. Votre équipe reprend la main, documentation à l’appui.',
+        tags: ['Revue du pipeline', 'Documentation'],
       },
     ],
   },
   faq: {
     readMore: 'Approfondir',
-    title: 'Questions Fréquentes',
-    subtitle: "Tout ce qu'il faut savoir sur l'ABX et le GTM Engineering",
+    title: 'Questions fréquentes',
+    subtitle: 'Ce que fait Flow Ops, pour qui, et à quel prix',
     items: [
       {
-        q: "Qu'est-ce que l'ABX (Account Based Experience) ?",
-        a: "L'ABX est une approche go-to-market B2B qui coordonne marketing et sales autour d'un nombre restreint de comptes cibles, en s'appuyant sur leurs signaux de comportement réels plutôt que sur des campagnes diffusées à l'aveugle.\n\nConcrètement, un système ABX identifie les comptes qui correspondent à votre profil client idéal, détecte le moment où ils manifestent une intention d'achat (visite du site, changement d'organisation, recrutement, adoption d'une technologie), puis déclenche le canal approprié — publicité, contenu, outreach ou appel d'un commercial.\n\nLa différence avec la prospection de masse tient à l'ordre des opérations : le signal précède le message, au lieu que le message soit envoyé en espérant produire un signal.",
+        q: 'Que fait Flow Ops ?',
+        a: 'Flow Ops est l’activité de conseil en prospection B2B de Patrice Tord. Ce n’est ni un logiciel ni une plateforme d’automatisation : c’est une prestation.\n\nChaque lundi, vos commerciaux reçoivent par email la liste des 10 à 20 entreprises de votre marché à appeler cette semaine, avec pour chacune un signal daté, la raison de l’appel et une phrase d’ouverture. Flow Ops exploite les outils qui produisent cette liste. Vous n’installez rien.',
       },
       {
-        q: "Quelle est la différence entre ABX et ABM ?",
-        a: "L'ABM (Account Based Marketing) pousse des campagnes personnalisées vers une liste de comptes définie à l'avance, souvent sans coordination avec les équipes sales.\n\nL'ABX observe les comportements réels, capte des signaux, puis active le bon canal — marketing ou sales — au bon moment.\n\nEn pratique : l'ABM est une campagne, l'ABX est un système. L'ABM se planifie par trimestre ; l'ABX réagit en continu. L'ABM appartient au marketing ; l'ABX est partagé entre marketing et sales, avec une définition commune de ce qui constitue un compte prêt à être contacté.",
+        q: 'Qu’est-ce que « Qui appeler lundi » ?',
+        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez 10 à 20 entreprises de votre marché qui montrent un signal daté (un recrutement commercial, un changement de dirigeant, une reprise), la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nAvant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
       },
       {
-        q: "Qu'est-ce que le GTM Engineering ?",
-        a: "Le GTM Engineering (Go-To-Market Engineering) consiste à traiter l'acquisition B2B comme un système technique plutôt que comme une suite de tâches manuelles.\n\nUn GTM Engineer connecte les sources de données, les outils d'enrichissement, le CRM et les canaux d'activation en un flux unique et documenté : la donnée entre, elle est enrichie et scorée, les signaux sont détectés, et les actions se déclenchent automatiquement.\n\nC'est un rôle hybride entre growth marketing, sales ops et automatisation. Il se distingue d'un SDR, qui exécute la prospection, et d'une agence, qui opère des campagnes : le GTM Engineer construit l'infrastructure qui rend les deux plus efficaces.",
+        q: 'Combien coûte « Qui appeler lundi » ?',
+        a: '1 200 € HT par mois, outils compris, sans frais de mise en place et sans engagement : l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3 000 à 8 000 € par mois, le plus souvent avec six mois d’engagement. La mission ABX complète, avec publicité LinkedIn et séquences de prospection, fait l’objet d’un devis.',
       },
       {
-        q: 'Que déploie-t-on concrètement dans un système ABX ?',
-        a: "Un système complet et coordonné autour de 4 piliers :\n\n• Data : ciblage, enrichissement, détection de signaux d'intention\n• Contenus : lead magnets, landing pages, vidéos\n• Paid : campagnes LinkedIn Ads et Google, retargeting\n• Outreach : séquences multicanal pilotées par les signaux\n\nLe tout orchestré avec Clay, lemlist, Zapier et les outils de votre stack existante. La livraison inclut la cartographie du marché adressable (TAM), la configuration technique, la documentation complète et le pilotage des campagnes.",
+        q: 'Quels signaux sont suivis ?',
+        a: 'Des faits datés et vérifiables, tirés de sources publiques : les changements de dirigeant, les reprises et les transferts de siège publiés au BODACC et au registre des entreprises, et les recrutements relevés sur les pages carrières et les sites d’emploi.\n\nLes signaux retenus dépendent de votre marché. Un signal n’entre dans la liste que s’il peut être daté et vérifié.',
       },
       {
-        q: "À quel type d'entreprises s'adresse l'ABX ?",
-        a: "Ces offres sont conçues pour des entreprises B2B avec un panier moyen supérieur à 2 000 € et une offre déjà validée (Product Market Fit).\n\nL'ABX suppose un cycle de vente suffisamment long et une valeur contrat suffisamment élevée pour justifier un ciblage compte par compte. En dessous de ce seuil, une approche volume reste plus rentable.\n\nSi vous cherchez encore votre marché ou venez de lever des fonds, l'approche est ajustée et des offres spécifiques sont proposées. Les interlocuteurs sont généralement des Head of Sales, CMO ou fondateurs.",
+        q: 'J’ai déjà mon fichier de salon. Qu’apporte la liste ?',
+        a: 'Un fichier de salon dit quelles entreprises existent. La liste dit lesquelles bougent cette semaine, et pourquoi les appeler maintenant. Elle arrive chaque lundi, au lieu de deux pics d’activité par an autour des salons.\n\nSi vous transmettez votre fichier ou un export de votre CRM, la liste sépare les entreprises nouvelles des clients et prospects que vous connaissez déjà et qui montrent un signal, avec le contact à rappeler.',
       },
       {
-        q: 'Combien de temps faut-il pour déployer un système ABX ?',
-        a: "Trois mois pour les fondations, six mois pour un système pleinement autonome.\n\nLes trois premiers mois couvrent la structuration du marché adressable, le nettoyage du CRM, la configuration de la stack, le lancement des premières campagnes et la validation des premiers signaux. C'est la durée minimale pour disposer de données exploitables plutôt que d'intuitions.\n\nLes trois mois suivants servent à amplifier ce qui fonctionne, couper ce qui ne fonctionne pas, et transférer les compétences en interne afin que l'équipe opère le système sans dépendance externe.",
+        q: 'Quelle différence avec un SDR externalisé ou une agence de prospection ?',
+        a: 'Un SDR externalisé passe des appels à votre place, une agence envoie des messages en volume. Flow Ops ne remplace pas vos commerciaux : il leur dit qui appeler et leur donne la raison de l’appel. La relation avec le prospect reste chez vous.\n\nL’abonnement est sans engagement et coûte moins qu’un SDR externalisé. Il suppose en revanche qu’au moins une personne chez vous appelle la liste.',
       },
       {
-        q: 'Quels outils composent la stack technique ABX ?',
-        a: "Quatre familles d'outils :\n\n• Data et ciblage : Pharow, LinkedIn Sales Navigator, scraping sur-mesure\n• Orchestration : Clay et Claude Code, pour l'enrichissement, le scoring et la détection de signaux\n• Automatisation : Zapier, lemlist, Clay, pour l'exécution des séquences multicanal\n• Signaux personnalisés : Snitcher pour la déanonymisation du trafic, BuiltWith pour la détection de technologies\n\nLa stack s'adapte à l'existant : l'objectif est d'orchestrer vos outils actuels, pas de tout remplacer.",
+        q: 'À quelles entreprises l’offre s’adresse-t-elle ?',
+        a: 'Aux entreprises B2B françaises de 50 à 249 salariés, en particulier les éditeurs de logiciels et les fabricants d’équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent.\n\nL’offre ne convient pas si votre panier est inférieur à 5 000 €, ou si personne chez vous ne peut appeler la liste.',
       },
       {
-        q: 'Combien coûte une mission ABX ?',
-        a: "Le modèle est un forfait mensuel, avec un engagement sur les trois premiers mois — délai nécessaire pour structurer les fondations et produire des résultats mesurables.\n\nLe montant dépend du périmètre : nombre de comptes à couvrir, canaux activés, complexité de la stack existante et volume de données à traiter.\n\nDes missions ponctuelles sont également possibles : audit de stack, campagnes payantes seules, stratégie go-to-market ou sourcing de données. Un devis est établi après un premier échange sur vos enjeux.",
+        q: 'Faut-il installer un outil ou changer de CRM ?',
+        a: 'Non. La liste arrive par email, avec un fichier Excel prêt à importer dans le CRM ou l’ERP que vous utilisez déjà. Les outils de relevé et de notation sont exploités par Flow Ops et compris dans l’abonnement.\n\nL’écriture directe dans votre CRM est possible. Elle se chiffre à part, selon l’outil.',
       },
       {
-        q: "Quelle différence avec une agence growth ou un SDR externalisé ?",
-        a: "Une agence opère des campagnes pour vous ; un SDR externalisé exécute des volumes d'appels et d'emails. Dans les deux cas, l'expertise repart avec le prestataire à la fin du contrat.\n\nUn système ABX laisse une infrastructure documentée : la cartographie du marché, la stack configurée, les séquences, les règles de scoring et les playbooks restent votre propriété.\n\nL'objectif explicite est le transfert de compétences — à l'issue de la mission, votre équipe opère le système. C'est un investissement en capital, pas une location de main-d'œuvre.",
+        q: 'Qu’est-ce que la mission ABX ?',
+        a: 'C’est l’offre complète, pour les marchés de grands comptes peu nombreux et très sollicités. À la liste hebdomadaire s’ajoutent la publicité LinkedIn sur vos comptes cibles, les séquences de prospection et les contenus, coordonnés entre marketing et commerciaux.\n\nLa mission pose les fondations en trois mois, puis se prolonge ou se transfère à votre équipe, documentation comprise. L’ABX (Account Based Experience) se distingue de l’ABM par l’ordre des opérations : le signal précède le message.',
       },
       {
-        q: "Comment mesure-t-on la performance d'un système ABX ?",
-        a: "Sur le pipeline généré, pas sur les métriques de vanité.\n\nLes indicateurs suivis sont le nombre de comptes cibles engagés, le taux de conversion signal → conversation, le nombre de rendez-vous qualifiés, le pipeline créé et le coût d'acquisition par compte.\n\nLes clics, impressions et taux d'ouverture servent au diagnostic interne mais ne constituent pas des objectifs. Le reporting est hebdomadaire et chaque itération est justifiée par la donnée collectée.",
+        q: 'Qu’est-ce que le GTM Engineering ?',
+        a: 'Le GTM Engineering consiste à traiter la prospection B2B comme un système documenté plutôt que comme une suite de tâches manuelles : les données du marché sont relevées, les signaux détectés et les actions commerciales déclenchées selon des règles écrites.\n\nC’est la méthode de travail de Flow Ops. Ce que vous achetez, c’est le résultat : la liste du lundi.',
       },
     ],
   },
   footer: {
     tagline:
-      "Transformez votre prospection B2B en infrastructure automatisée et générez des conversations avec vos prospects avec le bon message au bon moment avec en vous appuyant sur la méthodologie ABX. Basé en France, opérant globalement.",
+      'Conseil en prospection B2B pour les éditeurs de logiciels et les fabricants d’équipements. Chaque lundi, les entreprises à appeler et la raison de l’appel.',
     addressLabel: 'Siège social',
     rights: '© 2026 Flow Ops. Tous droits réservés.',
-    privacy: 'Politique de Confidentialité',
+    privacy: 'Politique de confidentialité',
     cookies: 'Gérer les traceurs',
   },
   cookies: {
@@ -317,26 +413,29 @@ export const fr: Content = {
 
 export const en: Content = {
   meta: {
-    title: 'Flow Ops | B2B ABX Systems & GTM Engineering',
+    title: 'Flow Ops | B2B prospecting consultancy: who to call on Monday',
     description:
-      'Freelance GTM Engineer. I build autonomous ABX systems in 3 months that identify your target accounts, detect their buying signals and trigger the right conversations. 10+ systems deployed in B2B.',
+      'B2B prospecting consultancy for software vendors and equipment manufacturers. Every Monday, 10 to 20 companies to call, each with the reason for the call.',
     ogLocale: 'en_GB',
   },
   nav: { cta: "Let's discuss your challenges", switchTo: 'FR', switchLabel: 'Passer en français' },
   hero: {
-    badge: 'Reaching the right prospects at the right moment in 2026',
-    titleLine1: 'Turn your B2B prospecting into',
-    titleAccent: 'automated infrastructure.',
-    subtitleBefore:
-      'Account Based Marketing (ABM) and mass prospecting have hit their limits. In 3 months we build an ',
-    subtitleHighlight: 'autonomous, scalable system',
-    subtitleAfter: ' for generating B2B opportunities.',
+    badge: 'B2B prospecting consultancy, by Patrice Tord',
+    titleLine1: 'Every Monday, the companies to call.',
+    titleAccent: 'And the reason for the call.',
+    subtitleBefore: 'Your trade-show list says who exists. Flow Ops tells you ',
+    subtitleHighlight: 'who is moving right now',
+    subtitleAfter:
+      ': 10 to 20 companies in your market each week, each with a dated signal and an opening line for your sales team.',
+    ctaPrimary: 'Get 20 companies from my market',
+    ctaSecondary: 'Book a call',
+    ctaNote: 'First list free, sent by email, no meeting required.',
     scrollAria: 'Scroll to the method',
     proofAlready: 'Already',
     proofCount: '10+',
-    proofSystems: 'systems',
-    proofDeployed: 'deployed',
-    sectors: ['Cybersecurity', 'B2B SaaS', 'Industrial', 'Deeptech'],
+    proofSystems: 'prospecting',
+    proofDeployed: 'systems deployed',
+    sectors: ['Cybersecurity', 'Software vendors', 'Equipment manufacturers', 'Deeptech'],
     proofNote: 'Confidential engagements, run directly or through collectives.',
     testimonialsLabel: 'What clients say',
     blockedTitle: 'LinkedIn testimonial',
@@ -345,175 +444,239 @@ export const en: Content = {
     blockedAllow: 'Allow and display',
     blockedView: 'View on LinkedIn',
   },
+  freeList: {
+    mailSubject: 'My list of 20 companies',
+    mailBody:
+      'Hello Patrice,\n\nI would like to receive the list of 20 companies from my market.\n\nOur website: \nThe kind of customers we target: \n',
+  },
   method: {
-    eyebrow:
-      'Stop chasing leads blindly. Orchestrate every interaction with your key accounts and engage them.',
-    titleLine1: 'Volume no longer works.',
-    titleAccent: 'Context is king.',
-    oldTitle: 'Where the traditional model breaks down',
+    eyebrow: 'A steady flow all year, instead of two peaks around trade shows',
+    titleLine1: 'Your list says who exists.',
+    titleAccent: 'Ours says who is moving.',
+    oldTitle: 'The trade-show list and the address book',
     oldBody:
-      'A diluted marketing message, Marketing and Sales working in silos, and a focus on vanity metrics — clicks, views — rather than real pipeline.',
-    newTitle: 'The Account Based Experience (ABX) approach',
+      'Two bursts of activity a year, sales reps prospecting blind the rest of the time, and a CRM nobody wants to open.',
+    newTitle: 'A dated signal behind every call',
     newBody:
-      'Tailored, scalable infrastructure. Identify priority accounts before Sales does, and generate actionable intent signals grounded in real data.',
-    step1: '1. Sourcing, enrichment and signal detection',
-    step2: '2. LinkedIn and email conversations',
-    step2Badge: 'AUTO',
-    step3: '3. Sales activation',
-    step3Badge: 'Conversion',
+      'A company that is hiring a sales rep, changing its chief executive or has just been acquired has a reason to listen this week. Your rep knows why they are calling and how to open.',
+    step1: '1. Your market, drawn from public registers',
+    step2: '2. This week’s signals, dated and verified',
+    step2Badge: 'Every week',
+    step3: '3. The list, by email',
+    step3Badge: 'Monday',
+  },
+  sample: {
+    eyebrow: 'Example',
+    title: 'What your sales rep receives on Monday',
+    subtitle: 'For each company: the signal, the reason for the call and a line to open with.',
+    context:
+      'Fictional example, for a packaging-machinery manufacturer selling to food producers.',
+    labelSignal: 'Signal',
+    labelReason: 'Reason for the call',
+    labelOpener: 'Opening line',
+    rows: [
+      {
+        company: 'Dairy, 140 employees, Brittany',
+        signal: 'Change of chairman published on 3 November',
+        reason: 'A new chief executive reviews capital spending in their first months.',
+        opener:
+          '“I saw that the leadership has just changed. Is renewing your packaging lines one of the open topics?”',
+      },
+      {
+        company: 'Biscuit maker, 85 employees, Loire-Atlantique',
+        signal: 'Hiring a production manager since 28 October',
+        reason: 'An open production role often signals a ramp-up in output.',
+        opener: '“You are hiring a production manager: is that for a new line?”',
+      },
+      {
+        company: 'Cannery, 210 employees, Finistère',
+        signal: 'Head office moving to a new site, notice of 12 November',
+        reason: 'A new site gets equipped, and the specification is being written now.',
+        opener:
+          '“Congratulations on the new site. Who is leading the choice of packaging equipment?”',
+      },
+    ],
+    footnote:
+      'In your list, each line carries the company name, the source of the signal and the contact to call.',
+  },
+  offers: {
+    title: 'The offers',
+    subtitle:
+      'A first list, free, so you can judge for yourself, then a subscription with no commitment. The full engagement is for key-account markets.',
+    tiers: [
+      {
+        name: 'The first list',
+        price: 'Free',
+        priceNote: 'by email, no meeting required',
+        body: '20 companies in your market showing a dated signal this month, with the reason to call each one.',
+        points: [
+          'An opening line for each company',
+          'Your known customers and prospects separated from new companies, if you attach a CRM export',
+          'A 30-minute review with your sales rep, if you want one',
+        ],
+        cta: 'Get my list',
+      },
+      {
+        name: 'Who to call on Monday',
+        price: '€1,200 excl. VAT',
+        priceNote: 'per month, tools included',
+        body: 'Every Monday, 10 to 20 companies to call, with the reason for the call and an opening line.',
+        points: [
+          'By email, with a file ready to import into your CRM',
+          'No setup fee, no commitment, cancel at the end of any month',
+          'One hour a month on calls made and meetings booked',
+          'One client only per competing market',
+        ],
+        cta: "Let's discuss your challenges",
+      },
+      {
+        name: 'ABX engagement',
+        price: 'On quotation',
+        priceNote: 'three-month commitment',
+        body: 'For key-account markets: the list, plus LinkedIn advertising to your target accounts, prospecting sequences and content.',
+        points: [
+          'Market listed and ranked by priority',
+          'Advertising and sequences managed every week',
+          'Complete documentation and handover to your team',
+        ],
+        cta: 'Request a quote',
+      },
+    ],
+    compare:
+      'For comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment.',
+    oneOff:
+      'One-off engagements are also possible: an audit of your prospecting tools, LinkedIn Ads campaigns, building an account list.',
+    oneOffCta: 'Write to Patrice',
+    oneOffMailSubject: 'Quote request - One-off engagement',
+    quoteMailSubject: 'Quote request - ABX engagement',
   },
   pillars: {
-    titleBefore: 'A',
-    titleAccent: 'complementary',
-    subtitleBefore: 'A system performs not because of one isolated lever, but because of the ',
-    subtitleHighlight: 'simultaneous assembly',
-    subtitleAfter: ' of 4 pillars.',
+    titleBefore: 'The ABX engagement:',
+    titleAccent: 'four coordinated channels',
+    subtitleBefore:
+      'When your target accounts are few and heavily solicited, the list is not enough. The engagement adds advertising, content and sequences, ',
+    subtitleHighlight: 'run together',
+    subtitleAfter: '.',
     items: [
       {
-        name: 'Outbound',
-        description: 'Deeply personalised prospecting, tiered to match your account priorities.',
+        name: 'Prospecting',
+        description: 'Messages written for each account, sent when the signal appears.',
       },
       {
-        name: 'Paid (Ads)',
-        description:
-          'Awareness and lead-gen campaigns on LinkedIn Ads, to educate and convert.',
+        name: 'Advertising',
+        description: 'On LinkedIn, your target accounts see your name before the first call.',
       },
       {
-        name: 'Data & Signals',
-        description:
-          'Spotting accounts with high purchase intent and reaching them at the right moment.',
+        name: 'Signals',
+        description: 'The accounts that are moving, spotted every week.',
       },
       {
         name: 'Content',
-        description:
-          'Building authority and educating the market to shorten your sales cycles.',
+        description: 'Guides and pages that answer your buyers’ questions.',
       },
     ],
     outcomeMeetings: 'Qualified meetings',
-    outcomeProcess: 'Internal sales process',
-    outcomeFinal: 'From conversation to deal',
-  },
-  offers: {
-    title: 'How we work together',
-    introBefore:
-      'We work on a monthly retainer. At the start of the engagement we ask for a commitment over the ',
-    introHighlight: 'first three months',
-    introAfter:
-      '. That is the time needed to lay the foundations, launch the campaigns and validate the first signals. After that period we can continue for a total of 6 months, or transfer the capability to your team.',
-    deliverables: [
-      'Full TAM mapping',
-      'Technical stack setup',
-      'Intent signal detection',
-      'Complete documentation',
-      'Ads & outreach campaign management',
-      'Weekly reporting & iteration',
-    ],
-    cta: 'Start the partnership',
-    sideTitle: 'One-off engagements',
-    sideBody:
-      'Technical stack audit, paid advertising alone, go-to-market strategy or data sourcing. We scope each engagement to what you actually need.',
-    sideCta: 'Request a quote',
-    sideMailSubject: 'Quote request - One-off engagement',
+    outcomeProcess: 'Follow-up by your sales team',
+    outcomeFinal: 'From conversation to signature',
   },
   stack: {
-    eyebrow: 'Modern, automated tooling',
-    title: 'The ABX technical stack',
-    subtitle:
-      'The best tools on the market, orchestrated to turn your data into predictable revenue.',
+    eyebrow: 'A service, not software',
+    title: 'Where the signals come from',
+    subtitle: 'Flow Ops runs the data collection and the tools. You receive the list.',
     tools: [
       {
-        title: 'Data & Targeting',
-        tag: 'Pharow, Sales Nav, custom scraping',
-        desc: 'Building tightly targeted account lists. You stop addressing the whole market and focus on the right accounts.',
+        title: 'Public registers',
+        tag: 'BODACC, company register',
+        desc: 'Changes of chief executive, acquisitions, head-office moves: dated facts your rep can quote.',
       },
       {
-        title: 'Orchestration',
-        tag: 'Clay, Claude Code',
-        desc: 'The system orchestrator. Enrichment, scoring and signal detection across 100+ integrations.',
+        title: 'Sorting and writing',
+        tag: 'Claude, API connectors',
+        desc: 'Each signal is matched to your market, scored, then turned into a reason to call and an opening line.',
       },
       {
-        title: 'Automation',
-        tag: 'Zapier, lemlist, Clay',
-        desc: 'Instant connection between tools and execution of multichannel engagement sequences.',
+        title: 'Hiring',
+        tag: 'Careers pages, job boards',
+        desc: 'A company opening a role is investing. The job advert says where.',
       },
       {
-        title: 'Custom Signals',
-        tag: 'Snitcher, BuiltWith...',
-        desc: 'Traffic de-anonymisation, web technology detection and more.',
+        title: 'Your own data',
+        tag: 'CRM export, trade-show list',
+        desc: 'The list separates new companies from your customers and prospects showing a signal.',
       },
     ],
   },
   timeline: {
-    title: 'A methodical, structured approach',
-    subtitle: 'A clear roadmap from account identification through to conversion',
+    title: 'How an ABX engagement unfolds',
+    subtitle: 'Three months, from your account list to the first meetings',
     steps: [
       {
-        title: 'Foundations & build',
-        desc: 'No more guesswork. We tier the addressable market (TAM), clean up the CRM, define precise targets and audiences, and configure the technical stack.',
-        tags: ['Technical setup', 'Sourcing'],
+        title: 'Foundations',
+        desc: 'Your market is listed and ranked by priority, the CRM cleaned up, and the signals to track chosen with your sales team.',
+        tags: ['Market listed', 'Signals chosen'],
       },
       {
-        title: 'Execution & iteration',
-        desc: 'Paid, outreach and nurturing launch together. Data is collected and the system iterates on it.',
-        tags: ['Outbound', 'Paid advertising', 'Signals'],
+        title: 'Launch',
+        desc: 'Advertising, sequences and content start together. Each week, results decide what continues.',
+        tags: ['Prospecting', 'LinkedIn advertising', 'Signals'],
       },
       {
-        title: 'Scale & optimisation',
-        desc: 'We double down on what works and cut what does not. Sales teams are aligned so inbound leads are handled the right way.',
-        tags: ['Pipeline review', 'Final playbook'],
+        title: 'Handover',
+        desc: 'What produces meetings is reinforced, the rest is stopped. Your team takes over, with documentation to hand.',
+        tags: ['Pipeline review', 'Documentation'],
       },
     ],
   },
   faq: {
     readMore: 'Read further',
     title: 'Frequently asked questions',
-    subtitle: 'What you need to know about ABX and GTM Engineering',
+    subtitle: 'What Flow Ops does, for whom, and at what price',
     items: [
       {
-        q: 'What is ABX (Account Based Experience)?',
-        a: 'ABX is a B2B go-to-market approach that coordinates marketing and sales around a small set of target accounts, driven by those accounts’ real behavioural signals rather than campaigns broadcast blindly.\n\nIn practice, an ABX system identifies the accounts matching your ideal customer profile, detects the moment they show purchase intent — a site visit, an organisational change, a new hire, a technology adoption — and then triggers the appropriate channel: advertising, content, outreach or a call from a sales rep.\n\nWhat separates it from mass prospecting is the order of operations: the signal comes before the message, instead of the message being sent in the hope of producing a signal.',
+        q: 'What does Flow Ops do?',
+        a: 'Flow Ops is the B2B prospecting consultancy of Patrice Tord. It is neither software nor an automation platform: it is a service.\n\nEvery Monday, your sales team receives by email the list of 10 to 20 companies in your market to call that week, each with a dated signal, the reason for the call and an opening line. Flow Ops runs the tools that produce the list. You install nothing.',
       },
       {
-        q: 'What is the difference between ABX and ABM?',
-        a: 'ABM (Account Based Marketing) pushes personalised campaigns towards a list of accounts defined in advance, often without coordination with the sales team.\n\nABX observes real behaviour, captures signals, then activates the right channel — marketing or sales — at the right moment.\n\nPut simply: ABM is a campaign, ABX is a system. ABM is planned by quarter; ABX reacts continuously. ABM belongs to marketing; ABX is shared between marketing and sales, with a common definition of what makes an account ready to be contacted.',
+        q: 'What is “Who to call on Monday”?',
+        a: 'It is the Flow Ops subscription. Every Monday you receive 10 to 20 companies in your market showing a dated signal (a sales hire, a change of chief executive, an acquisition), the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. One hour a month is spent reviewing the calls made and the meetings booked.\n\nBefore subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
+      },
+      {
+        q: 'How much does “Who to call on Monday” cost?',
+        a: '€1,200 excluding VAT per month, tools included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. The full ABX engagement, with LinkedIn advertising and prospecting sequences, is quoted separately.',
+      },
+      {
+        q: 'Which signals are tracked?',
+        a: 'Dated, verifiable facts drawn from public sources: changes of chief executive, acquisitions and head-office moves published in the BODACC and the French company register, and hiring picked up from careers pages and job boards.\n\nThe signals used depend on your market. A signal only enters the list if it can be dated and verified.',
+      },
+      {
+        q: 'I already have my trade-show list. What does this add?',
+        a: 'A trade-show list tells you which companies exist. This list tells you which ones are moving this week, and why to call them now. It arrives every Monday, instead of two bursts of activity a year around trade shows.\n\nIf you share your file or a CRM export, the list separates new companies from the customers and prospects you already know that are showing a signal, with the contact to call back.',
+      },
+      {
+        q: 'How is this different from an outsourced SDR or a prospecting agency?',
+        a: 'An outsourced SDR makes calls on your behalf; an agency sends messages in volume. Flow Ops does not replace your sales team: it tells them who to call and gives them the reason for the call. The relationship with the prospect stays with you.\n\nThe subscription carries no commitment and costs less than an outsourced SDR. It does assume that at least one person on your side calls the list.',
+      },
+      {
+        q: 'Which companies is the offer for?',
+        a: 'French B2B companies with 50 to 249 employees, software vendors and equipment manufacturers in particular, selling a product above €15,000 or under multi-year contract, over a cycle of several months, with at least two people who sell.\n\nThe offer is not a fit if your average deal is below €5,000, or if nobody on your side can call the list.',
+      },
+      {
+        q: 'Do we need to install a tool or change CRM?',
+        a: 'No. The list arrives by email, with an Excel file ready to import into the CRM or ERP you already use. The collection and scoring tools are run by Flow Ops and included in the subscription.\n\nWriting directly into your CRM is possible. It is quoted separately, depending on the tool.',
+      },
+      {
+        q: 'What is the ABX engagement?',
+        a: 'It is the full offer, for markets made of a few heavily solicited key accounts. On top of the weekly list come LinkedIn advertising to your target accounts, prospecting sequences and content, coordinated between marketing and sales.\n\nThe engagement lays the foundations in three months, then continues or is handed over to your team, documentation included. ABX (Account Based Experience) differs from ABM in the order of operations: the signal comes before the message.',
       },
       {
         q: 'What is GTM Engineering?',
-        a: 'GTM Engineering (Go-To-Market Engineering) means treating B2B acquisition as a technical system rather than a series of manual tasks.\n\nA GTM Engineer connects data sources, enrichment tools, the CRM and activation channels into a single documented flow: data comes in, gets enriched and scored, signals are detected, and actions fire automatically.\n\nIt is a hybrid role spanning growth marketing, sales ops and automation. It differs from an SDR, who executes prospecting, and from an agency, which runs campaigns: the GTM Engineer builds the infrastructure that makes both more effective.',
-      },
-      {
-        q: 'What does an ABX system actually include?',
-        a: 'A complete, coordinated system built on 4 pillars:\n\n• Data: targeting, enrichment, intent signal detection\n• Content: lead magnets, landing pages, video\n• Paid: LinkedIn Ads and Google campaigns, retargeting\n• Outreach: multichannel sequences driven by signals\n\nAll orchestrated with Clay, lemlist, Zapier and the tools already in your stack. Delivery includes addressable market (TAM) mapping, technical configuration, full documentation and campaign management.',
-      },
-      {
-        q: 'What kind of companies is ABX for?',
-        a: 'These engagements are designed for B2B companies with an average contract value above €2,000 and an offer that has already found product-market fit.\n\nABX assumes a sales cycle long enough and a contract value high enough to justify account-by-account targeting. Below that threshold, a volume approach remains more cost-effective.\n\nIf you are still searching for your market or have just raised funding, the approach is adjusted and specific engagements are available. The people we work with are typically Heads of Sales, CMOs or founders.',
-      },
-      {
-        q: 'How long does it take to deploy an ABX system?',
-        a: 'Three months for the foundations, six months for a fully autonomous system.\n\nThe first three months cover structuring the addressable market, cleaning the CRM, configuring the stack, launching the first campaigns and validating the first signals. That is the minimum needed to work from real data rather than assumptions.\n\nThe following three months are spent amplifying what works, cutting what does not, and transferring the capability in-house so your team can run the system without outside dependency.',
-      },
-      {
-        q: 'Which tools make up the ABX stack?',
-        a: 'Four families of tools:\n\n• Data and targeting: Pharow, LinkedIn Sales Navigator, custom scraping\n• Orchestration: Clay and Claude Code, for enrichment, scoring and signal detection\n• Automation: Zapier, lemlist, Clay, to execute multichannel sequences\n• Custom signals: Snitcher for traffic de-anonymisation, BuiltWith for technology detection\n\nThe stack adapts to what you already have: the goal is to orchestrate your current tools, not replace all of them.',
-      },
-      {
-        q: 'How much does an ABX engagement cost?',
-        a: 'The model is a monthly retainer, with a commitment over the first three months — the time needed to lay the foundations and produce measurable results.\n\nThe amount depends on scope: how many accounts to cover, which channels are activated, how complex the existing stack is, and the volume of data to process.\n\nOne-off engagements are also possible: stack audit, paid campaigns alone, go-to-market strategy or data sourcing. A quote follows an initial conversation about your situation.',
-      },
-      {
-        q: 'How is this different from a growth agency or an outsourced SDR?',
-        a: 'An agency runs campaigns for you; an outsourced SDR executes call and email volume. In both cases the expertise leaves with the provider when the contract ends.\n\nAn ABX system leaves documented infrastructure behind: the market mapping, the configured stack, the sequences, the scoring rules and the playbooks remain yours.\n\nCapability transfer is an explicit goal — by the end of the engagement your team runs the system. It is a capital investment, not a labour rental.',
-      },
-      {
-        q: 'How is ABX performance measured?',
-        a: 'On pipeline generated, not on vanity metrics.\n\nThe indicators tracked are the number of target accounts engaged, the signal-to-conversation conversion rate, the number of qualified meetings, pipeline created, and cost of acquisition per account.\n\nClicks, impressions and open rates serve internal diagnostics but are not goals in themselves. Reporting is weekly, and every iteration is justified by the data collected.',
+        a: 'GTM Engineering means treating B2B prospecting as a documented system rather than a series of manual tasks: market data is collected, signals are detected and sales actions are triggered according to written rules.\n\nIt is how Flow Ops works. What you buy is the result: the Monday list.',
       },
     ],
   },
   footer: {
     tagline:
-      'Turn your B2B prospecting into automated infrastructure and start conversations with your prospects — the right message at the right moment, built on the ABX methodology. Based in France, operating globally.',
+      'B2B prospecting consultancy for software vendors and equipment manufacturers. Every Monday, the companies to call and the reason for the call.',
     addressLabel: 'Registered office',
     rights: '© 2026 Flow Ops. All rights reserved.',
     privacy: 'Privacy Policy',

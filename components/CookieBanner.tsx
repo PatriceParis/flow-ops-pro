@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Cookie } from 'lucide-react';
 import { setConsent, useConsent } from '../consent';
 import { useContent } from '../i18n';
@@ -11,7 +11,12 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onOpenPrivacy }) => {
   const consent = useConsent();
   const c = useContent();
 
-  if (consent !== null) return null;
+  // Shown only once mounted: the banner must not be baked into the prerendered
+  // HTML, where it would flash at visitors who have already made their choice.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted || consent !== null) return null;
 
   return (
     <div

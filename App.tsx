@@ -12,7 +12,8 @@ import ZcalModal from './components/ZcalModal';
 import PrivacyModal from './components/PrivacyModal';
 import CookieBanner from './components/CookieBanner';
 import ArticlePage from './components/ArticlePage';
-import { slugFromPath } from './i18n';
+import ListSample from './components/ListSample';
+import { useSlug } from './i18n';
 import { SLUGS, type Slug } from './i18n/pages';
 
 const App: React.FC = () => {
@@ -28,7 +29,7 @@ const App: React.FC = () => {
     setIsPrivacyOpen(true);
   };
 
-  const raw = slugFromPath();
+  const raw = useSlug();
   const slug = SLUGS.includes(raw as Slug) ? (raw as Slug) : null;
 
   const modals = (
@@ -54,9 +55,10 @@ const App: React.FC = () => {
       <main>
         <Hero onOpenZcal={openZcal} />
         <Method />
-        <ABXPillars />
-        <Offers onOpenZcal={openZcal} />
+        <ListSample />
         <Stack />
+        <Offers onOpenZcal={openZcal} />
+        <ABXPillars />
         <Timeline />
         <FAQ />
       </main>
