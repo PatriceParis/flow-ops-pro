@@ -285,8 +285,8 @@ export const fr: Content = {
       {
         sector: 'Cybersécurité',
         context: 'Éditeur SaaS de cybersécurité, équipe commerciale sur plusieurs pays',
-        figure: '4 mois',
-        figureLabel: 'pour remplacer une qualification des comptes faite à la main',
+        figure: '3 mois',
+        figureLabel: 'pour remplacer une qualification manuelle des comptes, en place depuis six ans',
         done: 'Les comptes sont complétés et qualifiés automatiquement, puis remis aux commerciaux dans leur CRM. Publicité LinkedIn sur trois marchés.',
         note: 'Sur LinkedIn, 3 % de clics sur les posts des dirigeants, contre 0,4 % sur les visuels classiques.',
       },
@@ -675,8 +675,8 @@ export const en: Content = {
       {
         sector: 'Cybersecurity',
         context: 'Cybersecurity SaaS vendor, sales team across several countries',
-        figure: '4 months',
-        figureLabel: 'to replace account qualification done by hand',
+        figure: '3 months',
+        figureLabel: 'to replace manual account qualification that had been in place for six years',
         done: 'Accounts are completed and qualified automatically, then handed to the sales team in their CRM. LinkedIn advertising in three markets.',
         note: 'On LinkedIn, a 3% click rate on executives’ posts, against 0.4% on standard visuals.',
       },
