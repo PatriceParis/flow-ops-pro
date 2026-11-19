@@ -226,6 +226,8 @@ function seoHead(): Plugin {
   return {
     name: 'flowops-seo-head',
     transformIndexHtml(html, ctx) {
+      // The cockpit demo is a standalone page with its own head: no site meta, no prerender.
+      if (/^\/?demo-cockpit\//.test(ctx.path)) return html;
       const { locale, slug } = routeForPath(ctx.path);
       const json = JSON.stringify(structuredData(locale, slug)).replace(/</g, '\\u003c');
       const withHead = html
@@ -249,10 +251,13 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: Object.fromEntries(
-        ROUTES.map(({ locale, slug }) => [
-          [locale, slug ?? 'home'].join('-'),
-          resolve(__dirname, fileFor(locale, slug)),
-        ])
+        [
+          ...ROUTES.map(({ locale, slug }) => [
+            [locale, slug ?? 'home'].join('-'),
+            resolve(__dirname, fileFor(locale, slug)),
+          ]),
+          ['demo-cockpit', resolve(__dirname, 'demo-cockpit/index.html')],
+        ]
       ),
     },
   },
