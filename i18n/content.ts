@@ -278,8 +278,7 @@ export const fr: Content = {
   references: {
     eyebrow: 'Références',
     title: 'Des missions menées dans votre secteur',
-    subtitle:
-      'Quelques exemples anonymisés, avec les seuls chiffres mesurés pendant la mission. Les références détaillées sont communiquées sur demande, avec l’accord des clients concernés.',
+    subtitle: '',
     labelDone: 'Ce qui a été mis en place',
     cases: [
       {
@@ -660,8 +659,7 @@ export const en: Content = {
   references: {
     eyebrow: 'References',
     title: 'Engagements in your sector',
-    subtitle:
-      'A few anonymised examples, with only the figures measured during the engagement. Detailed references are shared on request, with the clients’ agreement.',
+    subtitle: '',
     labelDone: 'What was put in place',
     cases: [
       {
