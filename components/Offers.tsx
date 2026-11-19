@@ -52,7 +52,10 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
             <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[260px] h-[260px] bg-blue-500/20 rounded-full blur-[80px]"></div>
             <div className="relative z-10 flex flex-col h-full">
               <h3 className="text-lg font-bold text-white">{monday.name}</h3>
-              <p className="mt-4 text-3xl font-bold text-white tracking-tight">{monday.price}</p>
+              {monday.pricePrefix && (
+                <p className="mt-4 text-sm font-semibold text-slate-400">{monday.pricePrefix}</p>
+              )}
+              <p className={`${monday.pricePrefix ? 'mt-1' : 'mt-4'} text-3xl font-bold text-white tracking-tight`}>{monday.price}</p>
               <p className="text-sm text-slate-400 mb-6">{monday.priceNote}</p>
               <p className="text-slate-200 leading-relaxed mb-6">{monday.body}</p>
               {points(monday.points, true)}
