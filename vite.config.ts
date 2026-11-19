@@ -13,7 +13,7 @@ const LOCALES: Locale[] = ['fr', 'en'];
 
 // Machine-readable prices for the three offers, in tier order: the dictionary
 // holds them as display strings. null = quoted on request.
-const TIER_PRICES: (number | null)[] = [0, 1200, null];
+const TIER_PRICES: (number | null)[] = [0, 1400, null];
 
 function offerPrice(price: number | null) {
   if (price === null) return {};

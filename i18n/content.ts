@@ -195,7 +195,7 @@ export const fr: Content = {
   },
   sample: {
     eyebrow: 'Exemple',
-    title: 'Ce que votre commercial reçoit le lundi',
+    title: 'Ce que votre commercial consulte',
     subtitle:
       'Pour chaque entreprise\u00a0: son score, les signaux qui l’expliquent, la raison de l’appel et une phrase pour commencer.',
     context:
@@ -284,7 +284,7 @@ export const fr: Content = {
       },
       {
         name: 'Qui appeler lundi',
-        price: '1\u00a0200\u00a0€ HT',
+        price: '1\u00a0400\u00a0€ HT',
         priceNote: 'par mois, outils compris',
         body: 'Chaque lundi, les 10 à 20 entreprises les mieux notées de votre marché, avec la raison de l’appel et une phrase d’ouverture.',
         points: [
@@ -446,7 +446,7 @@ export const fr: Content = {
       },
       {
         q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: '1\u00a0200\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. L’appel de cadrage est gratuit et le premier mois sert d’essai\u00a0: vous arrêtez à la fin du mois si les chiffres ne suivent pas.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
+        a: '1\u00a0400\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. L’appel de cadrage est gratuit et le premier mois sert d’essai\u00a0: vous arrêtez à la fin du mois si les chiffres ne suivent pas.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
       },
       {
         q: 'Quelle différence avec un SDR externalisé ou une agence de prospection\u00a0?',
@@ -543,7 +543,7 @@ export const en: Content = {
   },
   sample: {
     eyebrow: 'Example',
-    title: 'What your sales rep receives on Monday',
+    title: 'What your sales rep looks at',
     subtitle:
       'For each company: its score, the signals behind it, the reason for the call and a line to open with.',
     context:
@@ -631,7 +631,7 @@ export const en: Content = {
       },
       {
         name: 'Who to call on Monday',
-        price: '€1,200 excl. VAT',
+        price: '€1,400 excl. VAT',
         priceNote: 'per month, tools included',
         body: 'Every Monday, the 10 to 20 highest-scoring companies in your market, with the reason for the call and an opening line.',
         points: [
@@ -793,7 +793,7 @@ export const en: Content = {
       },
       {
         q: 'How much does “Who to call on Monday” cost?',
-        a: '€1,200 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The scoping call is free and the first month is a trial: you stop at the end of the month if the figures do not follow.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
+        a: '€1,400 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The scoping call is free and the first month is a trial: you stop at the end of the month if the figures do not follow.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
       },
       {
         q: 'How is this different from an outsourced SDR or a prospecting agency?',
