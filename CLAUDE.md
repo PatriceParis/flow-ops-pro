@@ -65,6 +65,7 @@ Six static pages, French by default: the home page plus one article per entry in
 - `CookieBanner` renders only after mount, so it is never baked into the static HTML where it would flash at visitors who already chose.
 - The dev server keeps an empty root and `index.tsx` falls back to `createRoot`: the config bundles its own copy of the components once, which would go stale against hot-reloaded code. A hydration bug therefore only shows in `npm run build && npm run preview`. Check the console there after touching anything that renders differently on server and client.
 - `public/llms.txt` states in plain text what Flow Ops is and is not. Keep it in step with the offers.
+- `demo-cockpit/` is a standalone page (its own HTML, entry and root `#cockpit`): a read-only demo of the client follow-up space on fictional data, with companies described, never named. `seoHead` returns its HTML untouched, so it gets no site meta, no JSON-LD and no prerender; it is `noindex`, loads no tracker and stays out of the sitemap. Call it the client's "espace de suivi", never a platform or software.
 
 To add a page: add its slug to `SLUGS`, its content to both `i18n/pages.ts` and `i18n/pages.en.ts`, create `<slug>/index.html` and `en/<slug>/index.html` as copies of any existing shell, and add the URLs to `public/sitemap.xml`.
 
