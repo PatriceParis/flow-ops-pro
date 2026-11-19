@@ -297,6 +297,7 @@ export const fr: Content = {
         body: 'Chaque lundi, les 10 à 20 entreprises les mieux notées de votre marché, avec la raison de l’appel et une phrase d’ouverture.',
         points: [
           'Par email, avec un fichier prêt à importer dans votre CRM',
+          'Deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises pas encore prêtes',
           'Sans frais de mise en place, sans engagement, résiliable chaque mois',
           'Une heure par mois sur les appels passés et les rendez-vous obtenus',
           'Un seul client par marché concurrent',
@@ -307,7 +308,7 @@ export const fr: Content = {
         name: 'ABM en masse',
         price: 'Sur devis',
         priceNote: 'trois mois d’engagement',
-        body: 'En complément de la liste\u00a0: la publicité LinkedIn sur vos comptes les mieux notés, les séquences de prospection et les contenus.',
+        body: 'En complément de la liste\u00a0: la publicité LinkedIn sur vos comptes les mieux notés, des séquences sur mesure et les contenus.',
         points: [
           'Plusieurs centaines de comptes suivis et classés par score',
           'Publicité et séquences pilotées chaque semaine',
@@ -440,7 +441,7 @@ export const fr: Content = {
       },
       {
         q: 'Qu’est-ce que «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez les 10 à 20 entreprises les mieux notées de votre marché, avec les signaux qui expliquent leur score, la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nSi vous transmettez un export de votre CRM, la liste distingue les entreprises nouvelles de celles que vous connaissez déjà. Avant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
+        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez les 10 à 20 entreprises les mieux notées de votre marché, avec les signaux qui expliquent leur score, la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. L’abonnement comprend aussi deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises dont le score n’est pas encore assez haut. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nSi vous transmettez un export de votre CRM, la liste distingue les entreprises nouvelles de celles que vous connaissez déjà. Avant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
       },
       {
         q: 'Comment le score est-il calculé\u00a0?',
@@ -452,7 +453,7 @@ export const fr: Content = {
       },
       {
         q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: '1\u00a0200\u00a0€ HT par mois, outils compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3\u00a0000 à 8\u00a0000\u00a0€ par mois, le plus souvent avec six mois d’engagement. L’ABM en masse, avec publicité LinkedIn et séquences de prospection, fait l’objet d’un devis.',
+        a: '1\u00a0200\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3\u00a0000 à 8\u00a0000\u00a0€ par mois, le plus souvent avec six mois d’engagement. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
       },
       {
         q: 'Quelle différence avec un SDR externalisé ou une agence de prospection\u00a0?',
@@ -648,6 +649,7 @@ export const en: Content = {
         body: 'Every Monday, the 10 to 20 highest-scoring companies in your market, with the reason for the call and an opening line.',
         points: [
           'By email, with a file ready to import into your CRM',
+          'Two nurturing sequences, on LinkedIn and by email, for the companies not yet ready',
           'No setup fee, no commitment, cancel at the end of any month',
           'One hour a month on calls made and meetings booked',
           'One client only per competing market',
@@ -658,7 +660,7 @@ export const en: Content = {
         name: 'ABM at scale',
         price: 'On quotation',
         priceNote: 'three-month commitment',
-        body: 'On top of the list: LinkedIn advertising to your highest-scoring accounts, prospecting sequences and content.',
+        body: 'On top of the list: LinkedIn advertising to your highest-scoring accounts, bespoke sequences and content.',
         points: [
           'Several hundred accounts tracked and ranked by score',
           'Advertising and sequences managed every week',
@@ -791,7 +793,7 @@ export const en: Content = {
       },
       {
         q: 'What is “Who to call on Monday”?',
-        a: 'It is the Flow Ops subscription. Every Monday you receive the 10 to 20 highest-scoring companies in your market, with the signals behind their score, the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. One hour a month is spent reviewing the calls made and the meetings booked.\n\nIf you share a CRM export, the list separates new companies from those you already know. Before subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
+        a: 'It is the Flow Ops subscription. Every Monday you receive the 10 to 20 highest-scoring companies in your market, with the signals behind their score, the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. The subscription also includes two nurturing sequences, on LinkedIn and by email, for the companies whose score is not yet high enough. One hour a month is spent reviewing the calls made and the meetings booked.\n\nIf you share a CRM export, the list separates new companies from those you already know. Before subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
       },
       {
         q: 'How is the score calculated?',
@@ -803,7 +805,7 @@ export const en: Content = {
       },
       {
         q: 'How much does “Who to call on Monday” cost?',
-        a: '€1,200 excluding VAT per month, tools included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. ABM at scale, with LinkedIn advertising and prospecting sequences, is quoted separately.',
+        a: '€1,200 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
       },
       {
         q: 'How is this different from an outsourced SDR or a prospecting agency?',
