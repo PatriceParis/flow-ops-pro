@@ -13,7 +13,7 @@ const References: React.FC = () => {
           <p className="text-slate-500 text-lg leading-relaxed">{r.subtitle}</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {r.cases.map((c) => (
             <article key={c.sector + c.context} className="rounded-[2rem] border border-slate-200 bg-slate-50 p-8 flex flex-col">
               <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600">{c.sector}</span>
