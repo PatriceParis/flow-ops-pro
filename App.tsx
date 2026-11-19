@@ -13,6 +13,7 @@ import PrivacyModal from './components/PrivacyModal';
 import CookieBanner from './components/CookieBanner';
 import ArticlePage from './components/ArticlePage';
 import ListSample from './components/ListSample';
+import References from './components/References';
 import { useSlug } from './i18n';
 import { SLUGS, type Slug } from './i18n/pages';
 
@@ -57,6 +58,7 @@ const App: React.FC = () => {
         <Method />
         <ListSample />
         <Stack />
+        <References />
         <Offers onOpenZcal={openZcal} />
         <ABXPillars />
         <Timeline />

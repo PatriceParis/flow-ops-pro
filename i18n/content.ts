@@ -71,6 +71,16 @@ export interface Content {
     scoringParts: { name: string; body: string }[];
     scoringRule: string;
   };
+  /** Anonymised missions by sector. Only measured facts; a card may have no figure. */
+  references: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    labelDone: string;
+    cases: { sector: string; context: string; figure: string | null; figureLabel: string; done: string; note: string | null }[];
+    footnote: string;
+    cta: string;
+  };
   offers: {
     title: string;
     subtitle: string;
@@ -264,6 +274,49 @@ export const fr: Content = {
     ],
     scoringRule:
       'Les entreprises les mieux notées ouvrent la liste du lundi. La grille de points vous est remise\u00a0: vous savez pourquoi une entreprise est en tête.',
+  },
+  references: {
+    eyebrow: 'Références',
+    title: 'Des missions menées dans votre secteur',
+    subtitle:
+      'Quelques exemples anonymisés, avec les seuls chiffres mesurés pendant la mission. Les références détaillées sont communiquées sur demande, avec l’accord des clients concernés.',
+    labelDone: 'Ce qui a été mis en place',
+    cases: [
+      {
+        sector: 'Cybersécurité',
+        context: 'Éditeur SaaS de cybersécurité, équipe commerciale sur plusieurs pays',
+        figure: '4 mois',
+        figureLabel: 'pour remplacer une qualification des comptes faite à la main',
+        done: 'Les comptes sont complétés et qualifiés automatiquement, puis remis aux commerciaux dans leur CRM. Publicité LinkedIn sur trois marchés.',
+        note: 'Sur LinkedIn, 3 % de clics sur les posts des dirigeants, contre 0,4 % sur les visuels classiques.',
+      },
+      {
+        sector: 'Éditeur de logiciels',
+        context: 'Jeune éditeur SaaS, trois fondateurs',
+        figure: '9',
+        figureLabel: 'premiers rendez-vous en quatre mois',
+        done: 'Comptes classés par score, séquences LinkedIn et email, publicité ciblée sur les comptes prioritaires.',
+        note: 'Sept rendez-vous venus de LinkedIn, deux de la publicité.',
+      },
+      {
+        sector: 'Services aux entreprises',
+        context: 'Prestataire de services informatiques pour les PME, équipe de SDR',
+        figure: '46',
+        figureLabel: 'affaires ouvertes sur les entreprises des listes',
+        done: 'Chaque semaine, des listes d’entreprises classées par score et les recrutements repérés, transmis aux SDR qui appellent.',
+        note: 'Trois affaires déjà gagnées au moment du bilan.',
+      },
+      {
+        sector: 'Industrie',
+        context: 'Fabricant d’équipements professionnels, commerciaux terrain',
+        figure: null,
+        figureLabel: 'Plan de comptes et séquences pour une équipe terrain',
+        done: 'Comptes prioritaires choisis avec la direction, séquences LinkedIn et email, messages adaptés à chaque type de site.',
+        note: null,
+      },
+    ],
+    footnote: 'Missions menées par Patrice Tord. Les chiffres sont ceux relevés pendant chaque mission.',
+    cta: 'Demander une référence détaillée',
   },
   offers: {
     title: 'Les offres',
@@ -611,6 +664,49 @@ export const en: Content = {
     ],
     scoringRule:
       'The highest-scoring companies open the Monday list. You receive the points grid: you know why a company is at the top.',
+  },
+  references: {
+    eyebrow: 'References',
+    title: 'Engagements in your sector',
+    subtitle:
+      'A few anonymised examples, with only the figures measured during the engagement. Detailed references are shared on request, with the clients’ agreement.',
+    labelDone: 'What was put in place',
+    cases: [
+      {
+        sector: 'Cybersecurity',
+        context: 'Cybersecurity SaaS vendor, sales team across several countries',
+        figure: '4 months',
+        figureLabel: 'to replace account qualification done by hand',
+        done: 'Accounts are completed and qualified automatically, then handed to the sales team in their CRM. LinkedIn advertising in three markets.',
+        note: 'On LinkedIn, a 3% click rate on executives’ posts, against 0.4% on standard visuals.',
+      },
+      {
+        sector: 'Software vendor',
+        context: 'Young SaaS vendor, three founders',
+        figure: '9',
+        figureLabel: 'first meetings in four months',
+        done: 'Accounts ranked by score, LinkedIn and email sequences, advertising aimed at the priority accounts.',
+        note: 'Seven meetings came from LinkedIn, two from advertising.',
+      },
+      {
+        sector: 'Business services',
+        context: 'IT services provider for SMEs, SDR team',
+        figure: '46',
+        figureLabel: 'deals opened with companies from the lists',
+        done: 'Every week, lists of companies ranked by score and the hiring spotted, passed to the SDRs who call.',
+        note: 'Three deals already won at the time of the review.',
+      },
+      {
+        sector: 'Manufacturing',
+        context: 'Manufacturer of professional equipment, field sales team',
+        figure: null,
+        figureLabel: 'Account plan and sequences for a field team',
+        done: 'Priority accounts chosen with management, LinkedIn and email sequences, messages adapted to each type of site.',
+        note: null,
+      },
+    ],
+    footnote: 'Engagements led by Patrice Tord. Figures are those recorded during each engagement.',
+    cta: 'Ask for a detailed reference',
   },
   offers: {
     title: 'The offers',
