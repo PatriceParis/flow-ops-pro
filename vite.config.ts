@@ -132,9 +132,9 @@ function structuredData(locale: Locale, slug: Slug | null) {
     knowsAbout: [
       'B2B prospecting',
       'Buying signals',
+      'Account scoring',
       'Account lists for sales teams',
-      'Account Based Experience',
-      'Account Based Marketing',
+      'Account Based Marketing at scale',
       'GTM Engineering',
     ],
     sameAs: ['https://www.linkedin.com/in/patrice-tord/'],

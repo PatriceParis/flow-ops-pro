@@ -29,9 +29,12 @@ This is the marketing site of Flow Ops, the B2B prospecting consultancy of Patri
 
 Flow Ops is a **service sold by a named consultant**, and the copy must never let a reader, human or machine, take it for software. An AI sales tool once classified the site as an n8n competitor because the copy led with "infrastructure automatisée", "système autonome", "stack" and "orchestration"; the positioning was rewritten in November 2026 around the validated offer.
 
-- The lead offer is **« Qui appeler lundi »**: every Monday, 10 to 20 companies to call with the reason for the call and an opening line, 1 200 € HT per month, no setup fee, no commitment, preceded by a free list of 20 companies. The ABX engagement is the high-end offer, not the headline.
-- Write in the vocabulary of the manager who sells: "qui appeler", "la raison de l'appel", "vos salons". Keep TAM, stack, infrastructure, orchestration and tool names out of anything addressed to the buyer. Claude and the API connectors are how the list gets made, and appear once, in the "D'où viennent les signaux" section, as a reason to believe.
-- Only promise signals that are actually wired and verified: changes of chief executive, acquisitions and head-office moves (BODACC, company register), hiring (careers pages, job boards).
+- The lead offer is **« Qui appeler lundi »**: every Monday, the 10 to 20 highest-scoring companies to call, with the reason for the call and an opening line, 1 200 € HT per month, no setup fee, no commitment, preceded by a free list of 20 companies.
+- The complementary high-end offer is called **« ABM en masse »** ("ABM at scale" in English). Do not call it ABX on the home page or in the offers: Patrice ruled that word out. The two published articles still discuss ABX as a topic.
+- The list is the output of a **score that combines several signals**, never of one dated signal per call. Explain scoring in three plain parts: what the company is, what it is doing now, how recently.
+- No trade-show framing ("fichier de salon", "deux salons par an"): many clients do not exhibit.
+- Write in the vocabulary of the manager who sells: "qui appeler", "la raison de l'appel", "le score". Keep TAM, stack, infrastructure, orchestration and tool names out of anything addressed to the buyer. Claude and the API connectors are how the list gets made, and appear once, in the "D'où viennent les signaux" section, as a reason to believe.
+- Only promise signals that are actually wired and verified: changes of chief executive, acquisitions and head-office moves (BODACC, company register), hiring (careers pages, job boards), visits to the client's site.
 - Never claim a guaranteed number of meetings or a projected cost per lead, and never name a client in copy without written consent. Sector-level proof ("éditeurs de logiciels", "fabricants d'équipements") is fine.
 - French copy follows Patrice's style rules: no em or en dash as sentence punctuation, sentence-case titles, no emoji, non-breaking space before : ; ! ? and inside « », typographic apostrophes, direct statements over hedged ones.
 
@@ -40,7 +43,7 @@ The source of truth for the offer, the ICP and these rules is the Flow Ops tenan
 **Component model**
 
 - `App.tsx` owns all modal state (`isZcalOpen`, `isPrivacyOpen`) and passes open/close callbacks as props.
-- Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list), `Stack` (where the signals come from, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the ABX engagement), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
+- Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list with scores, then how the score is calculated), `Stack` (where the signals come from, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the « ABM en masse » engagement; the component keeps its old file name), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
 - Two modals — `ZcalModal` (booking) and `PrivacyModal` (legal) — are lifted to `App.tsx` so any section can trigger them via props.
 - `Hero` embeds three LinkedIn testimonial posts as iframes, driven by the `TESTIMONIAL_URNS` array at the top of the file and gated behind cookie consent.
 

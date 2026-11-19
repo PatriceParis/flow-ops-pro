@@ -4,8 +4,10 @@ export type Locale = 'fr' | 'en';
 // dictionary stays plain data and translators never touch JSX.
 //
 // Voice (French): the vocabulary of the manager who sells, not of the growth
-// team. "Qui appeler", "la raison de l'appel", "vos salons" — never TAM, stack,
-// infrastructure or tool names in what addresses the buyer. French typography
+// team. "Qui appeler", "la raison de l'appel", "le score" — never TAM, stack,
+// infrastructure or tool names in what addresses the buyer. No trade-show
+// framing (many clients do not exhibit), and the high-end offer is called
+// "ABM en masse", never ABX. French typography
 // throughout:   before : ; ! ? and inside « », typographic apostrophes, no
 // em or en dash used as sentence punctuation.
 export interface Content {
@@ -59,11 +61,15 @@ export interface Content {
     title: string;
     subtitle: string;
     context: string;
-    labelSignal: string;
+    labelScore: string;
+    labelSignals: string;
     labelReason: string;
     labelOpener: string;
-    rows: { company: string; signal: string; reason: string; opener: string }[];
+    rows: { company: string; score: number; signals: string[]; reason: string; opener: string }[];
     footnote: string;
+    scoringTitle: string;
+    scoringParts: { name: string; body: string }[];
+    scoringRule: string;
   };
   offers: {
     title: string;
@@ -138,13 +144,13 @@ export const fr: Content = {
   },
   nav: { cta: 'Discutons de vos enjeux', switchTo: 'EN', switchLabel: 'Switch to English' },
   hero: {
-    badge: 'Conseil en prospection B2B, par Patrice Tord',
+    badge: 'Engager les bons prospects au bon moment',
     titleLine1: 'Chaque lundi, les entreprises à appeler.',
     titleAccent: 'Et la raison de l’appel.',
-    subtitleBefore: 'Votre fichier de salon dit qui existe. Flow Ops vous dit ',
-    subtitleHighlight: 'qui bouge maintenant',
+    subtitleBefore: 'Flow Ops croise plusieurs signaux pour repérer les entreprises de votre marché ',
+    subtitleHighlight: 'prêtes à vous écouter',
     subtitleAfter:
-      ' : 10 à 20 entreprises de votre marché par semaine, chacune avec un signal daté et une phrase d’ouverture pour vos commerciaux.',
+      '\u00a0: 10 à 20 par semaine, classées par score, chacune avec une phrase d’ouverture pour vos commerciaux.',
     ctaPrimary: 'Recevoir 20 entreprises de mon marché',
     ctaSecondary: 'Prendre rendez-vous',
     ctaNote: 'Première liste gratuite, envoyée par email, sans rendez-vous.',
@@ -168,66 +174,96 @@ export const fr: Content = {
       'Bonjour Patrice,\n\nJe souhaite recevoir la liste de 20 entreprises de mon marché.\n\nAdresse de notre site : \nType de clients que nous visons : \n',
   },
   method: {
-    eyebrow: 'Un flux régulier toute l’année, au lieu de deux pics autour des salons',
-    titleLine1: 'Votre fichier dit qui existe.',
-    titleAccent: 'La liste dit qui bouge.',
-    oldTitle: 'Le fichier de salon et le carnet d’adresses',
+    eyebrow: 'Un flux régulier d’entreprises à appeler, toute l’année',
+    titleLine1: 'Un fichier dit qui existe.',
+    titleAccent: 'Le score dit qui appeler.',
+    oldTitle: 'Le fichier de prospection habituel',
     oldBody:
-      'Deux pics d’activité par an, des commerciaux qui prospectent à l’aveugle le reste du temps, et un CRM que personne n’a envie d’ouvrir.',
-    newTitle: 'Un signal daté pour chaque appel',
+      'Une liste figée, sans ordre de priorité. Vos commerciaux appellent à l’aveugle, et le CRM se remplit d’entreprises que personne ne rappelle.',
+    newTitle: 'Plusieurs signaux, un seul score',
     newBody:
-      'Une entreprise qui recrute un commercial, change de dirigeant ou vient d’être reprise a une raison d’écouter cette semaine. Votre commercial sait pourquoi il appelle et par quelle phrase commencer.',
-    step1: '1. Votre marché, relevé dans les registres publics',
-    step2: '2. Les signaux de la semaine, datés et vérifiés',
-    step2Badge: 'Chaque semaine',
-    step3: '3. La liste, par email',
+      'Un recrutement seul ne dit pas grand-chose. Un recrutement, un nouveau dirigeant et deux visites sur votre site dans la même quinzaine, si. Chaque entreprise reçoit un score qui additionne ces signaux, et la liste du lundi commence par les mieux notées.',
+    step1: '1. Votre marché, entreprise par entreprise',
+    step2: '2. Les signaux de la semaine, croisés et notés',
+    step2Badge: 'Score',
+    step3: '3. Les mieux notées, par email',
     step3Badge: 'Lundi',
   },
   sample: {
     eyebrow: 'Exemple',
     title: 'Ce que votre commercial reçoit le lundi',
-    subtitle: 'Pour chaque entreprise : le signal, la raison de l’appel et une phrase pour commencer.',
+    subtitle:
+      'Pour chaque entreprise\u00a0: son score, les signaux qui l’expliquent, la raison de l’appel et une phrase pour commencer.',
     context:
       'Exemple fictif, pour un fabricant de machines d’emballage qui vend aux industriels de l’agroalimentaire.',
-    labelSignal: 'Signal',
+    labelScore: 'Score',
+    labelSignals: 'Signaux',
     labelReason: 'Raison de l’appel',
     labelOpener: 'Phrase d’ouverture',
     rows: [
       {
         company: 'Laiterie, 140 salariés, Ille-et-Vilaine',
-        signal: 'Changement de président publié le 3 novembre',
-        reason: 'Un nouveau dirigeant revoit les investissements dans ses premiers mois.',
+        score: 86,
+        signals: [
+          'Changement de président publié le 3 novembre',
+          'Recrute un responsable de production',
+          'Deux visites sur votre page produit cette semaine',
+        ],
+        reason:
+          'Nouvelle direction, production qui monte et intérêt pour vos machines\u00a0: un projet est ouvert.',
         opener:
-          '« J’ai vu que la direction venait de changer. Le renouvellement de vos lignes d’emballage fait-il partie des sujets ouverts ? »',
+          '«\u00a0J’ai vu que la direction venait de changer. Le renouvellement de vos lignes d’emballage fait-il partie des sujets ouverts\u00a0?\u00a0»',
       },
       {
         company: 'Biscuiterie, 85 salariés, Loire-Atlantique',
-        signal: 'Recrute un responsable de production depuis le 28 octobre',
-        reason: 'Un poste de production ouvert annonce souvent une montée en cadence.',
+        score: 71,
+        signals: [
+          'Transfert du siège vers un nouveau site',
+          'Recrute un responsable de production depuis le 28 octobre',
+        ],
+        reason: 'Un nouveau site et un poste de production ouvert annoncent une ligne à équiper.',
         opener:
-          '« Vous recrutez un responsable de production : est-ce pour une nouvelle ligne ? »',
+          '«\u00a0Félicitations pour le nouveau site. Qui pilote le choix des équipements de conditionnement\u00a0?\u00a0»',
       },
       {
         company: 'Conserverie, 210 salariés, Finistère',
-        signal: 'Transfert du siège vers un nouveau site, annonce du 12 novembre',
-        reason: 'Un nouveau site s’équipe, et le cahier des charges s’écrit maintenant.',
+        score: 64,
+        signals: ['Reprise par un nouvel actionnaire en octobre', 'Une visite sur votre site'],
+        reason: 'Une reprise s’accompagne souvent d’un plan d’investissement dans l’année.',
         opener:
-          '« Félicitations pour le nouveau site. Qui pilote le choix des équipements de conditionnement ? »',
+          '«\u00a0Avec l’arrivée du nouvel actionnaire, un plan d’investissement est-il prévu sur le conditionnement\u00a0?\u00a0»',
       },
     ],
     footnote:
-      'Dans votre liste, chaque ligne porte le nom de l’entreprise, la source du signal et le contact à appeler.',
+      'Dans votre liste, chaque ligne porte le nom de l’entreprise, la source de chaque signal et le contact à appeler.',
+    scoringTitle: 'Comment le score se calcule',
+    scoringParts: [
+      {
+        name: 'Ce que l’entreprise est',
+        body: 'Secteur, taille, région. Plus elle ressemble à vos meilleurs clients, plus elle part de haut.',
+      },
+      {
+        name: 'Ce qu’elle fait en ce moment',
+        body: 'Un recrutement, un changement de dirigeant, une visite de votre site. Chaque signal ajoute des points.',
+      },
+      {
+        name: 'Depuis quand',
+        body: 'Un signal de la semaine pèse plus qu’un signal d’il y a trois mois.',
+      },
+    ],
+    scoringRule:
+      'Les entreprises les mieux notées ouvrent la liste du lundi. La grille de points vous est remise\u00a0: vous savez pourquoi une entreprise est en tête.',
   },
   offers: {
     title: 'Les offres',
     subtitle:
-      'Une première liste gratuite pour juger sur pièces, puis un abonnement sans engagement. La mission complète répond aux marchés de grands comptes.',
+      'Une première liste gratuite pour juger sur pièces, puis un abonnement sans engagement. L’ABM en masse le complète quand il faut aussi la publicité et les séquences.',
     tiers: [
       {
         name: 'La première liste',
         price: 'Gratuite',
         priceNote: 'par email, sans rendez-vous',
-        body: '20 entreprises de votre marché qui montrent un signal daté ce mois-ci, avec la raison d’appeler chacune.',
+        body: '20 entreprises de votre marché classées par score, avec les signaux relevés et la raison d’appeler chacune.',
         points: [
           'Une phrase d’ouverture par entreprise',
           'Vos clients et prospects connus séparés des entreprises nouvelles, si vous joignez un export de votre CRM',
@@ -237,9 +273,9 @@ export const fr: Content = {
       },
       {
         name: 'Qui appeler lundi',
-        price: '1 200 € HT',
+        price: '1\u00a0200\u00a0€ HT',
         priceNote: 'par mois, outils compris',
-        body: 'Chaque lundi, 10 à 20 entreprises à appeler, avec la raison de l’appel et une phrase d’ouverture.',
+        body: 'Chaque lundi, les 10 à 20 entreprises les mieux notées de votre marché, avec la raison de l’appel et une phrase d’ouverture.',
         points: [
           'Par email, avec un fichier prêt à importer dans votre CRM',
           'Sans frais de mise en place, sans engagement, résiliable chaque mois',
@@ -249,12 +285,12 @@ export const fr: Content = {
         cta: 'Discutons de vos enjeux',
       },
       {
-        name: 'Mission ABX',
+        name: 'ABM en masse',
         price: 'Sur devis',
         priceNote: 'trois mois d’engagement',
-        body: 'Pour les marchés de grands comptes : la liste, plus la publicité LinkedIn sur vos comptes cibles, les séquences de prospection et les contenus.',
+        body: 'En complément de la liste\u00a0: la publicité LinkedIn sur vos comptes les mieux notés, les séquences de prospection et les contenus.',
         points: [
-          'Marché listé et classé par priorité',
+          'Plusieurs centaines de comptes suivis et classés par score',
           'Publicité et séquences pilotées chaque semaine',
           'Documentation complète et transfert à votre équipe',
         ],
@@ -267,13 +303,13 @@ export const fr: Content = {
       'Des missions ponctuelles sont possibles : audit de vos outils de prospection, campagnes LinkedIn Ads, constitution d’un fichier de comptes.',
     oneOffCta: 'Écrire à Patrice',
     oneOffMailSubject: 'Demande de devis - Mission ponctuelle',
-    quoteMailSubject: 'Demande de devis - Mission ABX',
+    quoteMailSubject: 'Demande de devis - ABM en masse',
   },
   pillars: {
-    titleBefore: 'La mission ABX :',
+    titleBefore: 'L’ABM en masse\u00a0:',
     titleAccent: 'quatre canaux coordonnés',
     subtitleBefore:
-      'Quand vos comptes cibles sont peu nombreux et très sollicités, la liste ne suffit pas. La mission y ajoute la publicité, les contenus et les séquences, ',
+      'L’ABM classique soigne quelques dizaines de comptes à la main. Ici, le score décide pour plusieurs centaines\u00a0: quel compte, quel canal, quel moment. Publicité, contenus et séquences sont ',
     subtitleHighlight: 'menés ensemble',
     subtitleAfter: '.',
     items: [
@@ -286,8 +322,8 @@ export const fr: Content = {
         description: 'Sur LinkedIn, vos comptes cibles voient votre nom avant le premier appel.',
       },
       {
-        name: 'Signaux',
-        description: 'Les comptes qui bougent, repérés chaque semaine.',
+        name: 'Score',
+        description: 'Les signaux de chaque compte, croisés et notés chaque semaine.',
       },
       {
         name: 'Contenus',
@@ -309,9 +345,9 @@ export const fr: Content = {
         desc: 'Changements de dirigeant, reprises, transferts de siège : des faits datés, que votre commercial peut citer.',
       },
       {
-        title: 'Tri et rédaction',
+        title: 'Score et rédaction',
         tag: 'Claude, connecteurs API',
-        desc: 'Chaque signal est rapproché de votre marché, noté, puis traduit en raison d’appel et en phrase d’ouverture.',
+        desc: 'Les signaux de chaque entreprise sont croisés et notés, puis traduits en raison d’appel et en phrase d’ouverture.',
       },
       {
         title: 'Recrutements',
@@ -320,24 +356,24 @@ export const fr: Content = {
       },
       {
         title: 'Vos propres données',
-        tag: 'Export CRM, fichier de salon',
-        desc: 'La liste distingue les entreprises nouvelles de vos clients et prospects qui montrent un signal.',
+        tag: 'Export CRM, visites de votre site',
+        desc: 'Vos clients et prospects connus sont reconnus dans la liste, et une visite sur votre site ajoute des points.',
       },
     ],
   },
   timeline: {
-    title: 'Déroulé d’une mission ABX',
+    title: 'Déroulé d’une mission d’ABM en masse',
     subtitle: 'Trois mois, de la liste de vos comptes aux premiers rendez-vous',
     steps: [
       {
         title: 'Fondations',
-        desc: 'Votre marché est listé et classé par priorité, le CRM nettoyé, les signaux à suivre choisis avec vos commerciaux.',
-        tags: ['Marché listé', 'Signaux choisis'],
+        desc: 'Votre marché est listé, le CRM nettoyé, les signaux à suivre et la grille de points choisis avec vos commerciaux.',
+        tags: ['Marché listé', 'Grille de score'],
       },
       {
         title: 'Lancement',
         desc: 'Publicité, séquences et contenus partent ensemble. Chaque semaine, les résultats décident de ce qui continue.',
-        tags: ['Prospection', 'Publicité LinkedIn', 'Signaux'],
+        tags: ['Prospection', 'Publicité LinkedIn', 'Score'],
       },
       {
         title: 'Transfert',
@@ -352,44 +388,44 @@ export const fr: Content = {
     subtitle: 'Ce que fait Flow Ops, pour qui, et à quel prix',
     items: [
       {
-        q: 'Que fait Flow Ops ?',
-        a: 'Flow Ops est l’activité de conseil en prospection B2B de Patrice Tord. Ce n’est ni un logiciel ni une plateforme d’automatisation : c’est une prestation.\n\nChaque lundi, vos commerciaux reçoivent par email la liste des 10 à 20 entreprises de votre marché à appeler cette semaine, avec pour chacune un signal daté, la raison de l’appel et une phrase d’ouverture. Flow Ops exploite les outils qui produisent cette liste. Vous n’installez rien.',
+        q: 'Que fait Flow Ops\u00a0?',
+        a: 'Flow Ops est l’activité de conseil en prospection B2B de Patrice Tord. Ce n’est ni un logiciel ni une plateforme d’automatisation\u00a0: c’est une prestation.\n\nChaque lundi, vos commerciaux reçoivent par email les 10 à 20 entreprises de votre marché à appeler cette semaine, classées par score, avec pour chacune les signaux relevés, la raison de l’appel et une phrase d’ouverture. Flow Ops exploite les outils qui produisent cette liste. Vous n’installez rien.',
       },
       {
-        q: 'Qu’est-ce que « Qui appeler lundi » ?',
-        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez 10 à 20 entreprises de votre marché qui montrent un signal daté (un recrutement commercial, un changement de dirigeant, une reprise), la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nAvant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
+        q: 'Qu’est-ce que «\u00a0Qui appeler lundi\u00a0»\u00a0?',
+        a: 'C’est l’abonnement de Flow Ops. Chaque lundi, vous recevez les 10 à 20 entreprises les mieux notées de votre marché, avec les signaux qui expliquent leur score, la raison d’appeler chacune et une phrase d’ouverture. La liste arrive par email, avec un fichier prêt à importer dans votre CRM. Une heure par mois sert à revoir les appels passés et les rendez-vous obtenus.\n\nSi vous transmettez un export de votre CRM, la liste distingue les entreprises nouvelles de celles que vous connaissez déjà. Avant de vous abonner, vous recevez gratuitement une première liste de 20 entreprises, pour juger sur pièces.',
       },
       {
-        q: 'Combien coûte « Qui appeler lundi » ?',
-        a: '1 200 € HT par mois, outils compris, sans frais de mise en place et sans engagement : l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3 000 à 8 000 € par mois, le plus souvent avec six mois d’engagement. La mission ABX complète, avec publicité LinkedIn et séquences de prospection, fait l’objet d’un devis.',
+        q: 'Comment le score est-il calculé\u00a0?',
+        a: 'Le score additionne trois choses. Ce que l’entreprise est\u00a0: son secteur, sa taille, sa région, comparés à vos meilleurs clients. Ce qu’elle fait en ce moment\u00a0: un recrutement, un changement de dirigeant, une visite de votre site, chaque signal ajoutant des points. Et depuis quand\u00a0: un signal de la semaine pèse plus qu’un signal d’il y a trois mois.\n\nUn signal isolé ne suffit pas à faire monter une entreprise. C’est leur combinaison qui la place en tête de liste. La grille de points vous est remise\u00a0: vous savez pourquoi une entreprise est à appeler.',
       },
       {
-        q: 'Quels signaux sont suivis ?',
-        a: 'Des faits datés et vérifiables, tirés de sources publiques : les changements de dirigeant, les reprises et les transferts de siège publiés au BODACC et au registre des entreprises, et les recrutements relevés sur les pages carrières et les sites d’emploi.\n\nLes signaux retenus dépendent de votre marché. Un signal n’entre dans la liste que s’il peut être daté et vérifié.',
+        q: 'Quels signaux sont suivis\u00a0?',
+        a: 'Des faits vérifiables, tirés de sources publiques et de vos propres données\u00a0: les changements de dirigeant, les reprises et les transferts de siège publiés au BODACC et au registre des entreprises, les recrutements relevés sur les pages carrières et les sites d’emploi, et les visites sur votre site.\n\nLes signaux retenus et leur poids dépendent de votre marché. Un signal n’entre dans le score que s’il peut être daté et vérifié.',
       },
       {
-        q: 'J’ai déjà mon fichier de salon. Qu’apporte la liste ?',
-        a: 'Un fichier de salon dit quelles entreprises existent. La liste dit lesquelles bougent cette semaine, et pourquoi les appeler maintenant. Elle arrive chaque lundi, au lieu de deux pics d’activité par an autour des salons.\n\nSi vous transmettez votre fichier ou un export de votre CRM, la liste sépare les entreprises nouvelles des clients et prospects que vous connaissez déjà et qui montrent un signal, avec le contact à rappeler.',
+        q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
+        a: '1\u00a0200\u00a0€ HT par mois, outils compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. La première liste de 20 entreprises est gratuite.\n\nPour comparaison, un SDR externalisé coûte de 3\u00a0000 à 8\u00a0000\u00a0€ par mois, le plus souvent avec six mois d’engagement. L’ABM en masse, avec publicité LinkedIn et séquences de prospection, fait l’objet d’un devis.',
       },
       {
-        q: 'Quelle différence avec un SDR externalisé ou une agence de prospection ?',
-        a: 'Un SDR externalisé passe des appels à votre place, une agence envoie des messages en volume. Flow Ops ne remplace pas vos commerciaux : il leur dit qui appeler et leur donne la raison de l’appel. La relation avec le prospect reste chez vous.\n\nL’abonnement est sans engagement et coûte moins qu’un SDR externalisé. Il suppose en revanche qu’au moins une personne chez vous appelle la liste.',
+        q: 'Quelle différence avec un SDR externalisé ou une agence de prospection\u00a0?',
+        a: 'Un SDR externalisé passe des appels à votre place, une agence envoie des messages en volume. Flow Ops ne remplace pas vos commerciaux\u00a0: il leur dit qui appeler et leur donne la raison de l’appel. La relation avec le prospect reste chez vous.\n\nL’abonnement est sans engagement et coûte moins qu’un SDR externalisé. Il suppose en revanche qu’au moins une personne chez vous appelle la liste.',
       },
       {
-        q: 'À quelles entreprises l’offre s’adresse-t-elle ?',
-        a: 'Aux entreprises B2B françaises de 50 à 249 salariés, en particulier les éditeurs de logiciels et les fabricants d’équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent.\n\nL’offre ne convient pas si votre panier est inférieur à 5 000 €, ou si personne chez vous ne peut appeler la liste.',
+        q: 'À quelles entreprises l’offre s’adresse-t-elle\u00a0?',
+        a: 'Aux entreprises B2B françaises de 50 à 249 salariés, en particulier les éditeurs de logiciels et les fabricants d’équipements, qui vendent un produit à plus de 15\u00a0000\u00a0€ ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent.\n\nL’offre ne convient pas si votre panier est inférieur à 5\u00a0000\u00a0€, ou si personne chez vous ne peut appeler la liste.',
       },
       {
-        q: 'Faut-il installer un outil ou changer de CRM ?',
-        a: 'Non. La liste arrive par email, avec un fichier Excel prêt à importer dans le CRM ou l’ERP que vous utilisez déjà. Les outils de relevé et de notation sont exploités par Flow Ops et compris dans l’abonnement.\n\nL’écriture directe dans votre CRM est possible. Elle se chiffre à part, selon l’outil.',
+        q: 'Faut-il installer un outil ou changer de CRM\u00a0?',
+        a: 'Non. La liste arrive par email, avec un fichier Excel prêt à importer dans le CRM ou l’ERP que vous utilisez déjà. Les outils de relevé et de score sont exploités par Flow Ops et compris dans l’abonnement.\n\nL’écriture directe dans votre CRM est possible. Elle se chiffre à part, selon l’outil.',
       },
       {
-        q: 'Qu’est-ce que la mission ABX ?',
-        a: 'C’est l’offre complète, pour les marchés de grands comptes peu nombreux et très sollicités. À la liste hebdomadaire s’ajoutent la publicité LinkedIn sur vos comptes cibles, les séquences de prospection et les contenus, coordonnés entre marketing et commerciaux.\n\nLa mission pose les fondations en trois mois, puis se prolonge ou se transfère à votre équipe, documentation comprise. L’ABX (Account Based Experience) se distingue de l’ABM par l’ordre des opérations : le signal précède le message.',
+        q: 'Qu’est-ce que l’ABM en masse\u00a0?',
+        a: 'L’ABM (Account Based Marketing) classique concentre l’effort marketing et commercial sur quelques dizaines de comptes, traités à la main. L’ABM en masse applique la même logique à plusieurs centaines de comptes\u00a0: le score de chaque entreprise décide du canal, publicité LinkedIn, séquence de prospection ou appel, et du moment.\n\nC’est l’offre complète de Flow Ops, en complément de la liste du lundi. Elle pose les fondations en trois mois, puis se prolonge ou se transfère à votre équipe, documentation comprise.',
       },
       {
-        q: 'Qu’est-ce que le GTM Engineering ?',
-        a: 'Le GTM Engineering consiste à traiter la prospection B2B comme un système documenté plutôt que comme une suite de tâches manuelles : les données du marché sont relevées, les signaux détectés et les actions commerciales déclenchées selon des règles écrites.\n\nC’est la méthode de travail de Flow Ops. Ce que vous achetez, c’est le résultat : la liste du lundi.',
+        q: 'Qu’est-ce que le GTM Engineering\u00a0?',
+        a: 'Le GTM Engineering consiste à traiter la prospection B2B comme un système documenté plutôt que comme une suite de tâches manuelles\u00a0: les données du marché sont relevées, les signaux croisés et notés, et les actions commerciales déclenchées selon des règles écrites.\n\nC’est la méthode de travail de Flow Ops. Ce que vous achetez, c’est le résultat\u00a0: la liste du lundi.',
       },
     ],
   },
@@ -420,13 +456,13 @@ export const en: Content = {
   },
   nav: { cta: "Let's discuss your challenges", switchTo: 'FR', switchLabel: 'Passer en français' },
   hero: {
-    badge: 'B2B prospecting consultancy, by Patrice Tord',
+    badge: 'Engaging the right prospects at the right moment',
     titleLine1: 'Every Monday, the companies to call.',
     titleAccent: 'And the reason for the call.',
-    subtitleBefore: 'Your trade-show list says who exists. Flow Ops tells you ',
-    subtitleHighlight: 'who is moving right now',
+    subtitleBefore: 'Flow Ops cross-checks several signals to spot the companies in your market ',
+    subtitleHighlight: 'ready to listen',
     subtitleAfter:
-      ': 10 to 20 companies in your market each week, each with a dated signal and an opening line for your sales team.',
+      ': 10 to 20 a week, ranked by score, each with an opening line for your sales team.',
     ctaPrimary: 'Get 20 companies from my market',
     ctaSecondary: 'Book a call',
     ctaNote: 'First list free, sent by email, no meeting required.',
@@ -450,65 +486,96 @@ export const en: Content = {
       'Hello Patrice,\n\nI would like to receive the list of 20 companies from my market.\n\nOur website: \nThe kind of customers we target: \n',
   },
   method: {
-    eyebrow: 'A steady flow all year, instead of two peaks around trade shows',
-    titleLine1: 'Your list says who exists.',
-    titleAccent: 'Ours says who is moving.',
-    oldTitle: 'The trade-show list and the address book',
+    eyebrow: 'A steady flow of companies to call, all year round',
+    titleLine1: 'A list says who exists.',
+    titleAccent: 'The score says who to call.',
+    oldTitle: 'The usual prospecting list',
     oldBody:
-      'Two bursts of activity a year, sales reps prospecting blind the rest of the time, and a CRM nobody wants to open.',
-    newTitle: 'A dated signal behind every call',
+      'A static list with no order of priority. Your sales reps call blind, and the CRM fills up with companies nobody calls back.',
+    newTitle: 'Several signals, one score',
     newBody:
-      'A company that is hiring a sales rep, changing its chief executive or has just been acquired has a reason to listen this week. Your rep knows why they are calling and how to open.',
-    step1: '1. Your market, drawn from public registers',
-    step2: '2. This week’s signals, dated and verified',
-    step2Badge: 'Every week',
-    step3: '3. The list, by email',
+      'A single job advert says little. A job advert, a new chief executive and two visits to your site in the same fortnight say a lot. Each company gets a score that adds these signals up, and the Monday list starts with the highest.',
+    step1: '1. Your market, company by company',
+    step2: '2. This week’s signals, cross-checked and scored',
+    step2Badge: 'Score',
+    step3: '3. The highest scores, by email',
     step3Badge: 'Monday',
   },
   sample: {
     eyebrow: 'Example',
     title: 'What your sales rep receives on Monday',
-    subtitle: 'For each company: the signal, the reason for the call and a line to open with.',
+    subtitle:
+      'For each company: its score, the signals behind it, the reason for the call and a line to open with.',
     context:
       'Fictional example, for a packaging-machinery manufacturer selling to food producers.',
-    labelSignal: 'Signal',
+    labelScore: 'Score',
+    labelSignals: 'Signals',
     labelReason: 'Reason for the call',
     labelOpener: 'Opening line',
     rows: [
       {
         company: 'Dairy, 140 employees, Brittany',
-        signal: 'Change of chairman published on 3 November',
-        reason: 'A new chief executive reviews capital spending in their first months.',
+        score: 86,
+        signals: [
+          'Change of chairman published on 3 November',
+          'Hiring a production manager',
+          'Two visits to your product page this week',
+        ],
+        reason:
+          'New leadership, rising output and interest in your machines: a project is open.',
         opener:
           '“I saw that the leadership has just changed. Is renewing your packaging lines one of the open topics?”',
       },
       {
         company: 'Biscuit maker, 85 employees, Loire-Atlantique',
-        signal: 'Hiring a production manager since 28 October',
-        reason: 'An open production role often signals a ramp-up in output.',
-        opener: '“You are hiring a production manager: is that for a new line?”',
-      },
-      {
-        company: 'Cannery, 210 employees, Finistère',
-        signal: 'Head office moving to a new site, notice of 12 November',
-        reason: 'A new site gets equipped, and the specification is being written now.',
+        score: 71,
+        signals: [
+          'Head office moving to a new site',
+          'Hiring a production manager since 28 October',
+        ],
+        reason: 'A new site and an open production role point to a line that needs equipping.',
         opener:
           '“Congratulations on the new site. Who is leading the choice of packaging equipment?”',
       },
+      {
+        company: 'Cannery, 210 employees, Finistère',
+        score: 64,
+        signals: ['Acquired by a new shareholder in October', 'One visit to your site'],
+        reason: 'An acquisition often comes with an investment plan within the year.',
+        opener:
+          '“With the new shareholder on board, is an investment plan expected on packaging?”',
+      },
     ],
     footnote:
-      'In your list, each line carries the company name, the source of the signal and the contact to call.',
+      'In your list, each line carries the company name, the source of every signal and the contact to call.',
+    scoringTitle: 'How the score is calculated',
+    scoringParts: [
+      {
+        name: 'What the company is',
+        body: 'Sector, size, region. The closer it is to your best customers, the higher it starts.',
+      },
+      {
+        name: 'What it is doing right now',
+        body: 'A hire, a change of chief executive, a visit to your site. Each signal adds points.',
+      },
+      {
+        name: 'How recently',
+        body: 'A signal from this week weighs more than one from three months ago.',
+      },
+    ],
+    scoringRule:
+      'The highest-scoring companies open the Monday list. You receive the points grid: you know why a company is at the top.',
   },
   offers: {
     title: 'The offers',
     subtitle:
-      'A first list, free, so you can judge for yourself, then a subscription with no commitment. The full engagement is for key-account markets.',
+      'A first list, free, so you can judge for yourself, then a subscription with no commitment. ABM at scale complements it when advertising and sequences are needed too.',
     tiers: [
       {
         name: 'The first list',
         price: 'Free',
         priceNote: 'by email, no meeting required',
-        body: '20 companies in your market showing a dated signal this month, with the reason to call each one.',
+        body: '20 companies in your market ranked by score, with the signals found and the reason to call each one.',
         points: [
           'An opening line for each company',
           'Your known customers and prospects separated from new companies, if you attach a CRM export',
@@ -520,7 +587,7 @@ export const en: Content = {
         name: 'Who to call on Monday',
         price: '€1,200 excl. VAT',
         priceNote: 'per month, tools included',
-        body: 'Every Monday, 10 to 20 companies to call, with the reason for the call and an opening line.',
+        body: 'Every Monday, the 10 to 20 highest-scoring companies in your market, with the reason for the call and an opening line.',
         points: [
           'By email, with a file ready to import into your CRM',
           'No setup fee, no commitment, cancel at the end of any month',
@@ -530,12 +597,12 @@ export const en: Content = {
         cta: "Let's discuss your challenges",
       },
       {
-        name: 'ABX engagement',
+        name: 'ABM at scale',
         price: 'On quotation',
         priceNote: 'three-month commitment',
-        body: 'For key-account markets: the list, plus LinkedIn advertising to your target accounts, prospecting sequences and content.',
+        body: 'On top of the list: LinkedIn advertising to your highest-scoring accounts, prospecting sequences and content.',
         points: [
-          'Market listed and ranked by priority',
+          'Several hundred accounts tracked and ranked by score',
           'Advertising and sequences managed every week',
           'Complete documentation and handover to your team',
         ],
@@ -548,13 +615,13 @@ export const en: Content = {
       'One-off engagements are also possible: an audit of your prospecting tools, LinkedIn Ads campaigns, building an account list.',
     oneOffCta: 'Write to Patrice',
     oneOffMailSubject: 'Quote request - One-off engagement',
-    quoteMailSubject: 'Quote request - ABX engagement',
+    quoteMailSubject: 'Quote request - ABM at scale',
   },
   pillars: {
-    titleBefore: 'The ABX engagement:',
+    titleBefore: 'ABM at scale:',
     titleAccent: 'four coordinated channels',
     subtitleBefore:
-      'When your target accounts are few and heavily solicited, the list is not enough. The engagement adds advertising, content and sequences, ',
+      'Classic ABM tends a few dozen accounts by hand. Here the score decides for several hundred: which account, which channel, which moment. Advertising, content and sequences are ',
     subtitleHighlight: 'run together',
     subtitleAfter: '.',
     items: [
@@ -567,8 +634,8 @@ export const en: Content = {
         description: 'On LinkedIn, your target accounts see your name before the first call.',
       },
       {
-        name: 'Signals',
-        description: 'The accounts that are moving, spotted every week.',
+        name: 'Score',
+        description: 'Each account’s signals, cross-checked and scored every week.',
       },
       {
         name: 'Content',
@@ -590,9 +657,9 @@ export const en: Content = {
         desc: 'Changes of chief executive, acquisitions, head-office moves: dated facts your rep can quote.',
       },
       {
-        title: 'Sorting and writing',
+        title: 'Scoring and writing',
         tag: 'Claude, API connectors',
-        desc: 'Each signal is matched to your market, scored, then turned into a reason to call and an opening line.',
+        desc: 'Each company’s signals are cross-checked and scored, then turned into a reason to call and an opening line.',
       },
       {
         title: 'Hiring',
@@ -601,24 +668,24 @@ export const en: Content = {
       },
       {
         title: 'Your own data',
-        tag: 'CRM export, trade-show list',
-        desc: 'The list separates new companies from your customers and prospects showing a signal.',
+        tag: 'CRM export, visits to your site',
+        desc: 'Your known customers and prospects are recognised in the list, and a visit to your site adds points.',
       },
     ],
   },
   timeline: {
-    title: 'How an ABX engagement unfolds',
+    title: 'How an ABM-at-scale engagement unfolds',
     subtitle: 'Three months, from your account list to the first meetings',
     steps: [
       {
         title: 'Foundations',
-        desc: 'Your market is listed and ranked by priority, the CRM cleaned up, and the signals to track chosen with your sales team.',
-        tags: ['Market listed', 'Signals chosen'],
+        desc: 'Your market is listed, the CRM cleaned up, and the signals to track and the points grid chosen with your sales team.',
+        tags: ['Market listed', 'Scoring grid'],
       },
       {
         title: 'Launch',
         desc: 'Advertising, sequences and content start together. Each week, results decide what continues.',
-        tags: ['Prospecting', 'LinkedIn advertising', 'Signals'],
+        tags: ['Prospecting', 'LinkedIn advertising', 'Score'],
       },
       {
         title: 'Handover',
@@ -634,23 +701,23 @@ export const en: Content = {
     items: [
       {
         q: 'What does Flow Ops do?',
-        a: 'Flow Ops is the B2B prospecting consultancy of Patrice Tord. It is neither software nor an automation platform: it is a service.\n\nEvery Monday, your sales team receives by email the list of 10 to 20 companies in your market to call that week, each with a dated signal, the reason for the call and an opening line. Flow Ops runs the tools that produce the list. You install nothing.',
+        a: 'Flow Ops is the B2B prospecting consultancy of Patrice Tord. It is neither software nor an automation platform: it is a service.\n\nEvery Monday, your sales team receives by email the 10 to 20 companies in your market to call that week, ranked by score, each with the signals found, the reason for the call and an opening line. Flow Ops runs the tools that produce the list. You install nothing.',
       },
       {
         q: 'What is “Who to call on Monday”?',
-        a: 'It is the Flow Ops subscription. Every Monday you receive 10 to 20 companies in your market showing a dated signal (a sales hire, a change of chief executive, an acquisition), the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. One hour a month is spent reviewing the calls made and the meetings booked.\n\nBefore subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
+        a: 'It is the Flow Ops subscription. Every Monday you receive the 10 to 20 highest-scoring companies in your market, with the signals behind their score, the reason to call each one and an opening line. The list arrives by email, with a file ready to import into your CRM. One hour a month is spent reviewing the calls made and the meetings booked.\n\nIf you share a CRM export, the list separates new companies from those you already know. Before subscribing, you receive a first list of 20 companies free of charge, so you can judge for yourself.',
       },
       {
-        q: 'How much does “Who to call on Monday” cost?',
-        a: '€1,200 excluding VAT per month, tools included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. The full ABX engagement, with LinkedIn advertising and prospecting sequences, is quoted separately.',
+        q: 'How is the score calculated?',
+        a: 'The score adds up three things. What the company is: its sector, size and region, compared with your best customers. What it is doing right now: a hire, a change of chief executive, a visit to your site, each signal adding points. And how recently: a signal from this week weighs more than one from three months ago.\n\nA single signal is not enough to move a company up. It is the combination that puts it at the top of the list. You receive the points grid: you know why a company is worth calling.',
       },
       {
         q: 'Which signals are tracked?',
-        a: 'Dated, verifiable facts drawn from public sources: changes of chief executive, acquisitions and head-office moves published in the BODACC and the French company register, and hiring picked up from careers pages and job boards.\n\nThe signals used depend on your market. A signal only enters the list if it can be dated and verified.',
+        a: 'Verifiable facts, drawn from public sources and from your own data: changes of chief executive, acquisitions and head-office moves published in the BODACC and the French company register, hiring picked up from careers pages and job boards, and visits to your website.\n\nThe signals used and their weight depend on your market. A signal only counts towards the score if it can be dated and verified.',
       },
       {
-        q: 'I already have my trade-show list. What does this add?',
-        a: 'A trade-show list tells you which companies exist. This list tells you which ones are moving this week, and why to call them now. It arrives every Monday, instead of two bursts of activity a year around trade shows.\n\nIf you share your file or a CRM export, the list separates new companies from the customers and prospects you already know that are showing a signal, with the contact to call back.',
+        q: 'How much does “Who to call on Monday” cost?',
+        a: '€1,200 excluding VAT per month, tools included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The first list of 20 companies is free.\n\nFor comparison, an outsourced SDR costs €3,000 to €8,000 a month, usually with a six-month commitment. ABM at scale, with LinkedIn advertising and prospecting sequences, is quoted separately.',
       },
       {
         q: 'How is this different from an outsourced SDR or a prospecting agency?',
@@ -665,12 +732,12 @@ export const en: Content = {
         a: 'No. The list arrives by email, with an Excel file ready to import into the CRM or ERP you already use. The collection and scoring tools are run by Flow Ops and included in the subscription.\n\nWriting directly into your CRM is possible. It is quoted separately, depending on the tool.',
       },
       {
-        q: 'What is the ABX engagement?',
-        a: 'It is the full offer, for markets made of a few heavily solicited key accounts. On top of the weekly list come LinkedIn advertising to your target accounts, prospecting sequences and content, coordinated between marketing and sales.\n\nThe engagement lays the foundations in three months, then continues or is handed over to your team, documentation included. ABX (Account Based Experience) differs from ABM in the order of operations: the signal comes before the message.',
+        q: 'What is ABM at scale?',
+        a: 'Classic ABM (Account Based Marketing) concentrates marketing and sales effort on a few dozen accounts, handled by hand. ABM at scale applies the same logic to several hundred accounts: each company’s score decides the channel, LinkedIn advertising, a prospecting sequence or a call, and the moment.\n\nIt is the full Flow Ops offer, on top of the Monday list. It lays the foundations in three months, then continues or is handed over to your team, documentation included.',
       },
       {
         q: 'What is GTM Engineering?',
-        a: 'GTM Engineering means treating B2B prospecting as a documented system rather than a series of manual tasks: market data is collected, signals are detected and sales actions are triggered according to written rules.\n\nIt is how Flow Ops works. What you buy is the result: the Monday list.',
+        a: 'GTM Engineering means treating B2B prospecting as a documented system rather than a series of manual tasks: market data is collected, signals are cross-checked and scored, and sales actions are triggered according to written rules.\n\nIt is how Flow Ops works. What you buy is the result: the Monday list.',
       },
     ],
   },

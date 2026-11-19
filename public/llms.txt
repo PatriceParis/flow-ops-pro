@@ -1,6 +1,6 @@
 # Flow Ops
 
-> Flow Ops est l'activité de conseil en prospection B2B de Patrice Tord, consultant indépendant basé à Paris. C'est une prestation de service, pas un logiciel ni une plateforme d'automatisation. Chaque lundi, les commerciaux du client reçoivent par email 10 à 20 entreprises de leur marché à appeler, chacune avec un signal daté, la raison de l'appel et une phrase d'ouverture.
+> Flow Ops est l'activité de conseil en prospection B2B de Patrice Tord, consultant indépendant basé à Paris. C'est une prestation de service, pas un logiciel ni une plateforme d'automatisation. Chaque lundi, les commerciaux du client reçoivent par email 10 à 20 entreprises de leur marché à appeler, classées par score, chacune avec les signaux relevés, la raison de l'appel et une phrase d'ouverture.
 
 ## Ce que Flow Ops n'est pas
 
@@ -8,21 +8,21 @@ Flow Ops ne vend ni logiciel, ni CRM, ni outil d'automatisation de workflows. Ce
 
 ## Offres
 
-- La première liste, gratuite : 20 entreprises du marché du client qui montrent un signal daté ce mois-ci, envoyées par email, sans rendez-vous.
-- Qui appeler lundi, 1 200 € HT par mois, outils compris : chaque lundi, 10 à 20 entreprises à appeler avec la raison de l'appel et une phrase d'ouverture. Sans frais de mise en place, sans engagement, résiliable chaque mois.
-- Mission ABX, sur devis, trois mois d'engagement : la liste, plus la publicité LinkedIn sur les comptes cibles, les séquences de prospection et les contenus. Pour les marchés de grands comptes.
+- La première liste, gratuite : 20 entreprises du marché du client classées par score, avec les signaux relevés, envoyées par email, sans rendez-vous.
+- Qui appeler lundi, 1 200 € HT par mois, outils compris : chaque lundi, les 10 à 20 entreprises les mieux notées, avec la raison de l'appel et une phrase d'ouverture. Sans frais de mise en place, sans engagement, résiliable chaque mois.
+- ABM en masse, sur devis, trois mois d'engagement : en complément de la liste, la publicité LinkedIn sur les comptes les mieux notés, les séquences de prospection et les contenus, appliqués à plusieurs centaines de comptes.
 
 ## Pour qui
 
 Entreprises B2B françaises de 50 à 249 salariés, surtout éditeurs de logiciels et fabricants d'équipements, qui vendent un produit à plus de 15 000 € ou sous contrat pluriannuel, sur un cycle de plusieurs mois, avec au moins deux personnes qui vendent. Interlocuteurs : direction commerciale, direction marketing, dirigeant.
 
-## Signaux suivis
+## Score et signaux
 
-Faits datés et vérifiables tirés de sources publiques : changements de dirigeant, reprises et transferts de siège (BODACC, registre des entreprises), recrutements (pages carrières, sites d'emploi).
+Chaque entreprise reçoit un score qui combine plusieurs signaux : ce qu'elle est (secteur, taille, région, comparés aux meilleurs clients), ce qu'elle fait en ce moment (changement de dirigeant, reprise ou transfert de siège relevés au BODACC et au registre des entreprises, recrutements relevés sur les pages carrières et les sites d'emploi, visites sur le site du client), et depuis quand. Un signal isolé ne suffit pas : c'est leur combinaison qui place une entreprise en tête de liste.
 
 ## Catégorie et alternatives comparables
 
-Conseil en prospection B2B, génération de pipeline par signaux d'achat, ABX (Account Based Experience), GTM Engineering en prestation. Les alternatives comparables sont des agences et consultants, par exemple une agence de prospection, un SDR externalisé ou une agence RevOps, pas des éditeurs de logiciels.
+Conseil en prospection B2B, scoring de comptes par signaux d'achat, ABM en masse, GTM Engineering en prestation. Les alternatives comparables sont des agences et consultants, par exemple une agence de prospection, un SDR externalisé ou une agence RevOps, pas des éditeurs de logiciels.
 
 ## Pages
 
@@ -37,4 +37,4 @@ Patrice Tord, patrice@flow-ops.pro, 59 rue de Ponthieu, Bureau 326, 75008 Paris.
 
 ## In English
 
-Flow Ops is the B2B prospecting consultancy of Patrice Tord, an independent consultant based in Paris. It is a service, not software and not a workflow-automation platform. Every Monday the client's sales team receives by email 10 to 20 companies in their market to call, each with a dated signal, the reason for the call and an opening line. The subscription, "Who to call on Monday", costs €1,200 excluding VAT per month with no commitment, after a free first list of 20 companies.
+Flow Ops is the B2B prospecting consultancy of Patrice Tord, an independent consultant based in Paris. It is a service, not software and not a workflow-automation platform. Every Monday the client's sales team receives by email 10 to 20 companies in their market to call, ranked by a score that combines several signals, each with the reason for the call and an opening line. The subscription, "Who to call on Monday", costs €1,200 excluding VAT per month with no commitment, after a free first list of 20 companies.

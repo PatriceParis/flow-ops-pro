@@ -29,15 +29,39 @@ const ListSample: React.FC = () => {
             {s.rows.map((row, i) => (
               <li key={i} className="p-6 md:p-8 grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-5 md:gap-10">
                 <div>
-                  <span className="text-xs font-bold text-slate-300">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-bold text-slate-900 leading-snug mt-1">{row.company}</h3>
+                  <h3 className="font-bold text-slate-900 leading-snug">{row.company}</h3>
+                  <div className="mt-4 flex items-center gap-3">
+                    <span className="text-3xl font-bold text-slate-900 tracking-tight tabular-nums">
+                      {row.score}
+                    </span>
+                    <div className="flex-1 max-w-[140px]">
+                      <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
+                        {s.labelScore}
+                      </span>
+                      <span className="block h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                        <span
+                          className="block h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-400"
+                          style={{ width: `${row.score}%` }}
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 <dl className="space-y-4 text-sm">
                   <div>
-                    <dt className="text-[10px] font-bold uppercase tracking-wider text-blue-600 mb-1">
-                      {s.labelSignal}
+                    <dt className="text-[10px] font-bold uppercase tracking-wider text-blue-600 mb-1.5">
+                      {s.labelSignals}
                     </dt>
-                    <dd className="text-slate-900 font-semibold">{row.signal}</dd>
+                    <dd>
+                      <ul className="space-y-1.5">
+                        {row.signals.map((signal, j) => (
+                          <li key={j} className="flex gap-2.5 text-slate-900 font-semibold">
+                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
+                            {signal}
+                          </li>
+                        ))}
+                      </ul>
+                    </dd>
                   </div>
                   <div>
                     <dt className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
@@ -58,6 +82,26 @@ const ListSample: React.FC = () => {
         </div>
 
         <p className="mt-6 text-sm text-slate-400 text-center">{s.footnote}</p>
+
+        <div className="mt-16">
+          <h3 className="text-xl md:text-2xl font-bold text-slate-900 text-center mb-8">
+            {s.scoringTitle}
+          </h3>
+          <div className="grid md:grid-cols-3 gap-5">
+            {s.scoringParts.map((part, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-200 p-6">
+                <span className="text-xs font-bold text-blue-600 tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h4 className="font-bold text-slate-900 mt-2 mb-2">{part.name}</h4>
+                <p className="text-sm text-slate-500 leading-relaxed">{part.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-slate-500 text-center max-w-2xl mx-auto leading-relaxed">
+            {s.scoringRule}
+          </p>
+        </div>
       </div>
     </section>
   );
