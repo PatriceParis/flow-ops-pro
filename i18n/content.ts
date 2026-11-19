@@ -277,7 +277,7 @@ export const fr: Content = {
   },
   references: {
     eyebrow: 'Références',
-    title: 'Des missions menées dans votre secteur',
+    title: 'Des missions variées dans plusieurs secteurs',
     subtitle: '',
     labelDone: 'Ce qui a été mis en place',
     cases: [
@@ -337,7 +337,6 @@ export const fr: Content = {
           'Deux séquences de nurturing, sur LinkedIn et par email, pour les entreprises pas encore prêtes',
           'Sans frais de mise en place, sans engagement, résiliable chaque mois',
           'Ensuite, une heure par mois sur les appels passés et les rendez-vous obtenus',
-          'Un marché suivi, et un seul client par marché concurrent',
         ],
         cta: 'Discutons de vos enjeux',
       },
@@ -658,7 +657,7 @@ export const en: Content = {
   },
   references: {
     eyebrow: 'References',
-    title: 'Engagements in your sector',
+    title: 'Varied engagements across several sectors',
     subtitle: '',
     labelDone: 'What was put in place',
     cases: [
@@ -718,7 +717,6 @@ export const en: Content = {
           'Two nurturing sequences, on LinkedIn and by email, for the companies not yet ready',
           'No setup fee, no commitment, cancel at the end of any month',
           'After that, one hour a month on calls made and meetings booked',
-          'One market tracked, and one client only per competing market',
         ],
         cta: "Let's discuss your challenges",
       },
