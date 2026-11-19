@@ -29,6 +29,9 @@ const ListSample: React.FC = () => {
             {s.rows.map((row, i) => (
               <li key={i} className="p-6 md:p-8 grid md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-5 md:gap-10">
                 <div>
+                  <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">
+                    {row.context}
+                  </span>
                   <h3 className="font-bold text-slate-900 leading-snug">{row.company}</h3>
                   <div className="mt-4 flex items-center gap-3">
                     <span className="text-3xl font-bold text-slate-900 tracking-tight tabular-nums">

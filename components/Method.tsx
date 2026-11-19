@@ -50,37 +50,46 @@ const Method: React.FC = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
             <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[1.3rem] h-full relative z-10">
               <div className="space-y-6">
-                <div className="flex items-center justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-blue-200 transition-colors">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-blue-200 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-blue-50 rounded-lg text-blue-600 shrink-0">
                       <Radar className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-slate-700">{c.method.step1}</span>
+                    <div>
+                      <span className="font-semibold text-slate-700 block">{c.method.step1}</span>
+                      <span className="block text-sm text-slate-500 font-normal leading-relaxed mt-1">{c.method.step1Desc}</span>
+                    </div>
                   </div>
                 </div>
                 
                 <div className="w-0.5 h-6 bg-slate-200 mx-auto group-hover:bg-blue-200 transition-colors"></div>
                 
-                <div className="flex items-center justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-purple-200 transition-colors">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-purple-50 rounded-lg text-blue-600">
+                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-purple-200 transition-colors">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-purple-50 rounded-lg text-blue-600 shrink-0">
                       <ThumbsUp className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-slate-700">{c.method.step2}</span>
+                    <div>
+                      <span className="font-semibold text-slate-700 block">{c.method.step2}</span>
+                      <span className="block text-sm text-slate-500 font-normal leading-relaxed mt-1">{c.method.step2Desc}</span>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-600 px-2 py-1 rounded-md">{c.method.step2Badge}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-600 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step2Badge}</span>
                 </div>
                 
                 <div className="w-0.5 h-6 bg-slate-200 mx-auto group-hover:bg-green-200 transition-colors"></div>
                 
-                <div className="flex items-center justify-between p-5 bg-slate-900 text-white rounded-xl shadow-lg shadow-slate-900/10 transition-all duration-300">
-                  <div className="flex items-center gap-4">
-                    <div className="p-2 bg-white/10 rounded-lg text-green-400">
+                <div className="flex items-start justify-between p-5 bg-slate-900 text-white rounded-xl shadow-lg shadow-slate-900/10 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="p-2 bg-white/10 rounded-lg text-green-400 shrink-0">
                       <MessageSquare className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold">{c.method.step3}</span>
+                    <div>
+                      <span className="font-semibold block">{c.method.step3}</span>
+                      <span className="block text-sm text-slate-400 font-normal leading-relaxed mt-1">{c.method.step3Desc}</span>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/20 text-green-300 px-2 py-1 rounded-md">{c.method.step3Badge}</span>
+                  <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/20 text-green-300 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step3Badge}</span>
                 </div>
               </div>
             </div>

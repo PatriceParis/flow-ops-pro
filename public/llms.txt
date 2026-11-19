@@ -18,7 +18,9 @@ Entreprises B2B françaises de 50 à 249 salariés, surtout éditeurs de logicie
 
 ## Score et signaux
 
-Chaque entreprise reçoit un score qui combine plusieurs signaux : ce qu'elle est (secteur, taille, région, comparés aux meilleurs clients), ce qu'elle fait en ce moment (changement de dirigeant, reprise ou transfert de siège relevés au BODACC et au registre des entreprises, recrutements relevés sur les pages carrières et les sites d'emploi, visites sur le site du client), et depuis quand. Un signal isolé ne suffit pas : c'est leur combinaison qui place une entreprise en tête de liste.
+Chaque entreprise reçoit un score qui combine plusieurs signaux : ce qu'elle est (secteur, taille, région, comparés aux meilleurs clients), ce qu'elle fait en ce moment, et depuis quand. Exemples de signaux : visite des pages stratégiques du site du client, recrutement, prise de poste d'un décideur, lead dormant du CRM, annonce d'ouverture, participation à un événement, engagement LinkedIn, changement de direction. Un signal isolé ne suffit pas : c'est leur combinaison qui place une entreprise en tête de liste. Tant que le score est bas, l'entreprise reçoit des messages LinkedIn et email (nurturing) ; quand il franchit le seuil, elle passe aux commerciaux.
+
+Chaque signal demande sa technologie. Flow Ops combine plusieurs technologies complémentaires, choisies selon les signaux retenus pour chaque client, et en teste régulièrement de nouvelles.
 
 ## Catégorie et alternatives comparables
 

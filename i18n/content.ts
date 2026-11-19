@@ -51,9 +51,12 @@ export interface Content {
     newTitle: string;
     newBody: string;
     step1: string;
+    step1Desc: string;
     step2: string;
+    step2Desc: string;
     step2Badge: string;
     step3: string;
+    step3Desc: string;
     step3Badge: string;
   };
   sample: {
@@ -65,7 +68,7 @@ export interface Content {
     labelSignals: string;
     labelReason: string;
     labelOpener: string;
-    rows: { company: string; score: number; signals: string[]; reason: string; opener: string }[];
+    rows: { context: string; company: string; score: number; signals: string[]; reason: string; opener: string }[];
     footnote: string;
     scoringTitle: string;
     scoringParts: { name: string; body: string }[];
@@ -100,12 +103,16 @@ export interface Content {
     outcomeProcess: string;
     outcomeFinal: string;
   };
-  /** "Where the signals come from" — the section that says this is a service. */
+  /** Examples of signals and the technology behind them: says this is a service. */
   stack: {
     eyebrow: string;
     title: string;
     subtitle: string;
-    tools: { title: string; tag: string; desc: string }[];
+    /** Exactly eight, in the order of the icons in Stack.tsx. */
+    signals: { name: string; desc: string }[];
+    techTitle: string;
+    /** Exactly three: complementary, chosen per client, audited continuously. */
+    techPoints: { name: string; body: string }[];
   };
   timeline: {
     title: string;
@@ -183,11 +190,16 @@ export const fr: Content = {
     newTitle: 'Plusieurs signaux, un seul score',
     newBody:
       'Un recrutement seul ne dit pas grand-chose. Un recrutement, un nouveau dirigeant et deux visites sur votre site dans la même quinzaine, si. Chaque entreprise reçoit un score qui additionne ces signaux, et la liste du lundi commence par les mieux notées.',
-    step1: '1. Votre marché, entreprise par entreprise',
-    step2: '2. Les signaux de la semaine, croisés et notés',
-    step2Badge: 'Score',
-    step3: '3. Les mieux notées, par email',
-    step3Badge: 'Lundi',
+    step1: '1. Sourcing, enrichissement et détection de signaux',
+    step1Desc: 'Votre marché est listé, complété, puis observé chaque semaine.',
+    step2: '2. Conversations LinkedIn et email',
+    step2Desc:
+      'Chaque signal ajoute des points au score de l’entreprise. Tant que le score est bas, elle reçoit des messages utiles sur LinkedIn et par email, sans appel\u00a0: c’est le nurturing.',
+    step2Badge: 'Auto',
+    step3: '3. Activation Sales',
+    step3Desc:
+      'Quand le score franchit le seuil, l’entreprise entre dans la liste du lundi de vos commerciaux, avec la raison de l’appel.',
+    step3Badge: 'Conversion',
   },
   sample: {
     eyebrow: 'Exemple',
@@ -195,43 +207,50 @@ export const fr: Content = {
     subtitle:
       'Pour chaque entreprise\u00a0: son score, les signaux qui l’expliquent, la raison de l’appel et une phrase pour commencer.',
     context:
-      'Exemple fictif, pour un fabricant de machines d’emballage qui vend aux industriels de l’agroalimentaire.',
+      'Trois exemples fictifs, pour trois types de clients.',
     labelScore: 'Score',
     labelSignals: 'Signaux',
     labelReason: 'Raison de l’appel',
     labelOpener: 'Phrase d’ouverture',
     rows: [
       {
-        company: 'Laiterie, 140 salariés, Ille-et-Vilaine',
-        score: 86,
+        context: 'Pour un éditeur de cybersécurité',
+        company: 'Mutuelle santé, 1\u00a0200 salariés, Lyon',
+        score: 88,
         signals: [
-          'Changement de président publié le 3 novembre',
-          'Recrute un responsable de production',
-          'Deux visites sur votre page produit cette semaine',
+          'Prise de poste d’un nouveau RSSI en octobre',
+          'Recrute deux analystes en sécurité',
+          'Trois visites sur votre page tarifs cette semaine',
         ],
         reason:
-          'Nouvelle direction, production qui monte et intérêt pour vos machines\u00a0: un projet est ouvert.',
+          'Un RSSI qui arrive revoit ses fournisseurs dans ses premiers mois, et son équipe s’étoffe.',
         opener:
-          '«\u00a0J’ai vu que la direction venait de changer. Le renouvellement de vos lignes d’emballage fait-il partie des sujets ouverts\u00a0?\u00a0»',
+          '«\u00a0Félicitations pour votre prise de poste. Comptez-vous revoir votre dispositif de détection dans les prochains mois\u00a0?\u00a0»',
       },
       {
-        company: 'Biscuiterie, 85 salariés, Loire-Atlantique',
-        score: 71,
+        context: 'Pour un éditeur de logiciel SaaS',
+        company: 'Réseau de franchises, 60 points de vente, Nantes',
+        score: 74,
         signals: [
-          'Transfert du siège vers un nouveau site',
-          'Recrute un responsable de production depuis le 28 octobre',
+          'Annonce l’ouverture de huit points de vente en 2027',
+          'Lead dormant de votre CRM\u00a0: démonstration demandée il y a un an',
         ],
-        reason: 'Un nouveau site et un poste de production ouvert annoncent une ligne à équiper.',
+        reason: 'Un réseau qui s’étend doit équiper ses nouveaux sites, et il vous connaît déjà.',
         opener:
-          '«\u00a0Félicitations pour le nouveau site. Qui pilote le choix des équipements de conditionnement\u00a0?\u00a0»',
+          '«\u00a0Nous avions échangé l’an dernier. Avec vos huit ouvertures, le planning des équipes revient-il sur la table\u00a0?\u00a0»',
       },
       {
-        company: 'Conserverie, 210 salariés, Finistère',
-        score: 64,
-        signals: ['Reprise par un nouvel actionnaire en octobre', 'Une visite sur votre site'],
-        reason: 'Une reprise s’accompagne souvent d’un plan d’investissement dans l’année.',
+        context: 'Pour un fabricant de machines d’emballage',
+        company: 'Laiterie, 140 salariés, Ille-et-Vilaine',
+        score: 67,
+        signals: [
+          'Visites répétées sur vos pages stratégiques\u00a0: tarifs et demande de démonstration',
+          'Participe à un événement professionnel le mois prochain',
+        ],
+        reason:
+          'Un intérêt marqué pour vos machines, et une occasion de se rencontrer dans un mois.',
         opener:
-          '«\u00a0Avec l’arrivée du nouvel actionnaire, un plan d’investissement est-il prévu sur le conditionnement\u00a0?\u00a0»',
+          '«\u00a0Je vois que vous participez au congrès de la filière le mois prochain. Pouvons-nous y prévoir vingt minutes sur vos lignes d’emballage\u00a0?\u00a0»',
       },
     ],
     footnote:
@@ -244,7 +263,7 @@ export const fr: Content = {
       },
       {
         name: 'Ce qu’elle fait en ce moment',
-        body: 'Un recrutement, un changement de dirigeant, une visite de votre site. Chaque signal ajoute des points.',
+        body: 'Une prise de poste, un recrutement, une visite de vos pages stratégiques. Chaque signal ajoute des points.',
       },
       {
         name: 'Depuis quand',
@@ -336,28 +355,56 @@ export const fr: Content = {
   },
   stack: {
     eyebrow: 'Une prestation, pas un logiciel',
-    title: 'D’où viennent les signaux',
-    subtitle: 'Flow Ops exploite les relevés et les outils. Vous recevez la liste.',
-    tools: [
+    title: 'Exemples de signaux suivis',
+    subtitle:
+      'Aucun ne suffit seul. Ils sont choisis selon votre marché, puis combinés dans le score.',
+    signals: [
       {
-        title: 'Registres publics',
-        tag: 'BODACC, registre des entreprises',
-        desc: 'Changements de dirigeant, reprises, transferts de siège : des faits datés, que votre commercial peut citer.',
+        name: 'Visite de votre site',
+        desc: 'Une entreprise cible consulte vos pages stratégiques\u00a0: tarifs, démonstration, cas clients.',
       },
       {
-        title: 'Score et rédaction',
-        tag: 'Claude, connecteurs API',
-        desc: 'Les signaux de chaque entreprise sont croisés et notés, puis traduits en raison d’appel et en phrase d’ouverture.',
+        name: 'Recrutement',
+        desc: 'Un poste ouvert dit où l’entreprise investit, et avec quelle urgence.',
       },
       {
-        title: 'Recrutements',
-        tag: 'Pages carrières, sites d’emploi',
-        desc: 'Une entreprise qui ouvre un poste investit. L’offre d’emploi dit où.',
+        name: 'Prise de poste',
+        desc: 'Un nouveau décideur revoit ses fournisseurs dans ses premiers mois.',
       },
       {
-        title: 'Vos propres données',
-        tag: 'Export CRM, visites de votre site',
-        desc: 'Vos clients et prospects connus sont reconnus dans la liste, et une visite sur votre site ajoute des points.',
+        name: 'Leads dormants du CRM',
+        desc: 'Un ancien contact ou une affaire perdue redonne signe de vie.',
+      },
+      {
+        name: 'Annonce d’ouverture',
+        desc: 'Nouveau site, nouvelle agence, nouveau pays\u00a0: des besoins à équiper.',
+      },
+      {
+        name: 'Participation à un événement',
+        desc: 'L’entreprise expose ou intervient\u00a0: une raison de prendre contact, et une date.',
+      },
+      {
+        name: 'Engagement LinkedIn',
+        desc: 'Un décideur commente ou partage un contenu sur votre sujet.',
+      },
+      {
+        name: 'Changement de direction',
+        desc: 'Une reprise ou un nouveau dirigeant rouvre les décisions d’investissement.',
+      },
+    ],
+    techTitle: 'Les technologies derrière les signaux',
+    techPoints: [
+      {
+        name: 'Des technologies complémentaires',
+        body: 'Aucun outil ne capte tous les signaux. Flow Ops en combine plusieurs\u00a0: identification des visiteurs, veille des recrutements et des nominations, enrichissement de données, IA pour croiser les signaux et rédiger.',
+      },
+      {
+        name: 'Choisies selon vos signaux',
+        body: 'Les signaux utiles à un éditeur de cybersécurité ne sont pas ceux d’un fabricant de machines. Le choix des technologies suit les signaux retenus pour votre marché.',
+      },
+      {
+        name: 'Auditées en continu',
+        body: 'De nouvelles technologies sont testées régulièrement et intégrées quand elles font mieux. Vous en bénéficiez sans rien changer de votre côté.',
       },
     ],
   },
@@ -401,7 +448,7 @@ export const fr: Content = {
       },
       {
         q: 'Quels signaux sont suivis\u00a0?',
-        a: 'Des faits vérifiables, tirés de sources publiques et de vos propres données\u00a0: les changements de dirigeant, les reprises et les transferts de siège publiés au BODACC et au registre des entreprises, les recrutements relevés sur les pages carrières et les sites d’emploi, et les visites sur votre site.\n\nLes signaux retenus et leur poids dépendent de votre marché. Un signal n’entre dans le score que s’il peut être daté et vérifié.',
+        a: 'Ils dépendent de votre marché. Parmi les plus courants\u00a0: les visites sur vos pages stratégiques, les recrutements, les prises de poste, les changements de direction, les annonces d’ouverture, la participation à un événement, les leads dormants de votre CRM et l’engagement sur LinkedIn.\n\nChaque signal demande sa technologie. Flow Ops en combine plusieurs, choisies selon les signaux retenus pour vous, et en teste régulièrement de nouvelles. Un signal n’entre dans le score que s’il peut être daté et vérifié.',
       },
       {
         q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
@@ -495,11 +542,16 @@ export const en: Content = {
     newTitle: 'Several signals, one score',
     newBody:
       'A single job advert says little. A job advert, a new chief executive and two visits to your site in the same fortnight say a lot. Each company gets a score that adds these signals up, and the Monday list starts with the highest.',
-    step1: '1. Your market, company by company',
-    step2: '2. This week’s signals, cross-checked and scored',
-    step2Badge: 'Score',
-    step3: '3. The highest scores, by email',
-    step3Badge: 'Monday',
+    step1: '1. Sourcing, enrichment and signal detection',
+    step1Desc: 'Your market is listed, completed, then watched every week.',
+    step2: '2. LinkedIn and email conversations',
+    step2Desc:
+      'Each signal adds points to the company’s score. While the score is low, it receives useful messages on LinkedIn and by email, with no call: that is nurturing.',
+    step2Badge: 'Auto',
+    step3: '3. Sales activation',
+    step3Desc:
+      'When the score crosses the threshold, the company enters your sales team’s Monday list, with the reason for the call.',
+    step3Badge: 'Conversion',
   },
   sample: {
     eyebrow: 'Example',
@@ -507,43 +559,49 @@ export const en: Content = {
     subtitle:
       'For each company: its score, the signals behind it, the reason for the call and a line to open with.',
     context:
-      'Fictional example, for a packaging-machinery manufacturer selling to food producers.',
+      'Three fictional examples, for three kinds of client.',
     labelScore: 'Score',
     labelSignals: 'Signals',
     labelReason: 'Reason for the call',
     labelOpener: 'Opening line',
     rows: [
       {
-        company: 'Dairy, 140 employees, Brittany',
-        score: 86,
+        context: 'For a cybersecurity vendor',
+        company: 'Health insurer, 1,200 employees, Lyon',
+        score: 88,
         signals: [
-          'Change of chairman published on 3 November',
-          'Hiring a production manager',
-          'Two visits to your product page this week',
+          'New CISO took up the post in October',
+          'Hiring two security analysts',
+          'Three visits to your pricing page this week',
         ],
         reason:
-          'New leadership, rising output and interest in your machines: a project is open.',
+          'An incoming CISO reviews suppliers in the first months, and the team is growing.',
         opener:
-          '“I saw that the leadership has just changed. Is renewing your packaging lines one of the open topics?”',
+          '“Congratulations on your new role. Do you plan to review your detection setup in the coming months?”',
       },
       {
-        company: 'Biscuit maker, 85 employees, Loire-Atlantique',
-        score: 71,
+        context: 'For a SaaS software vendor',
+        company: 'Franchise network, 60 outlets, Nantes',
+        score: 74,
         signals: [
-          'Head office moving to a new site',
-          'Hiring a production manager since 28 October',
+          'Announced eight new outlets for 2027',
+          'Dormant lead in your CRM: demo requested a year ago',
         ],
-        reason: 'A new site and an open production role point to a line that needs equipping.',
+        reason: 'A growing network has new sites to equip, and it already knows you.',
         opener:
-          '“Congratulations on the new site. Who is leading the choice of packaging equipment?”',
+          '“We spoke last year. With eight openings ahead, is staff scheduling back on the table?”',
       },
       {
-        company: 'Cannery, 210 employees, Finistère',
-        score: 64,
-        signals: ['Acquired by a new shareholder in October', 'One visit to your site'],
-        reason: 'An acquisition often comes with an investment plan within the year.',
+        context: 'For a packaging-machinery manufacturer',
+        company: 'Dairy, 140 employees, Brittany',
+        score: 67,
+        signals: [
+          'Repeated visits to your strategic pages: pricing and demo request',
+          'Attending a trade event next month',
+        ],
+        reason: 'Clear interest in your machines, and a chance to meet in a month.',
         opener:
-          '“With the new shareholder on board, is an investment plan expected on packaging?”',
+          '“I see you are attending the industry congress next month. Could we set aside twenty minutes there on your packaging lines?”',
       },
     ],
     footnote:
@@ -556,7 +614,7 @@ export const en: Content = {
       },
       {
         name: 'What it is doing right now',
-        body: 'A hire, a change of chief executive, a visit to your site. Each signal adds points.',
+        body: 'A new decision-maker, a hire, a visit to your strategic pages. Each signal adds points.',
       },
       {
         name: 'How recently',
@@ -648,28 +706,56 @@ export const en: Content = {
   },
   stack: {
     eyebrow: 'A service, not software',
-    title: 'Where the signals come from',
-    subtitle: 'Flow Ops runs the data collection and the tools. You receive the list.',
-    tools: [
+    title: 'Examples of signals we track',
+    subtitle:
+      'None is enough on its own. They are chosen for your market, then combined in the score.',
+    signals: [
       {
-        title: 'Public registers',
-        tag: 'BODACC, company register',
-        desc: 'Changes of chief executive, acquisitions, head-office moves: dated facts your rep can quote.',
+        name: 'Visit to your website',
+        desc: 'A target company views your strategic pages: pricing, demo, case studies.',
       },
       {
-        title: 'Scoring and writing',
-        tag: 'Claude, API connectors',
-        desc: 'Each company’s signals are cross-checked and scored, then turned into a reason to call and an opening line.',
+        name: 'Hiring',
+        desc: 'An open role says where the company is investing, and how urgently.',
       },
       {
-        title: 'Hiring',
-        tag: 'Careers pages, job boards',
-        desc: 'A company opening a role is investing. The job advert says where.',
+        name: 'New decision-maker',
+        desc: 'Someone new in the role reviews suppliers in the first months.',
       },
       {
-        title: 'Your own data',
-        tag: 'CRM export, visits to your site',
-        desc: 'Your known customers and prospects are recognised in the list, and a visit to your site adds points.',
+        name: 'Dormant CRM leads',
+        desc: 'A past contact or a lost deal shows signs of life again.',
+      },
+      {
+        name: 'Opening announced',
+        desc: 'A new site, a new branch, a new country: needs to equip.',
+      },
+      {
+        name: 'Event participation',
+        desc: 'The company is exhibiting or speaking: a reason to get in touch, and a date.',
+      },
+      {
+        name: 'LinkedIn engagement',
+        desc: 'A decision-maker comments on or shares content about your topic.',
+      },
+      {
+        name: 'Change of leadership',
+        desc: 'An acquisition or a new chief executive reopens investment decisions.',
+      },
+    ],
+    techTitle: 'The technology behind the signals',
+    techPoints: [
+      {
+        name: 'Complementary technologies',
+        body: 'No single tool captures every signal. Flow Ops combines several: visitor identification, monitoring of hires and appointments, data enrichment, AI to cross-check signals and write.',
+      },
+      {
+        name: 'Chosen for your signals',
+        body: 'The signals that matter to a cybersecurity vendor are not those of a machinery manufacturer. The choice of technology follows the signals selected for your market.',
+      },
+      {
+        name: 'Audited continuously',
+        body: 'New technologies are tested regularly and adopted when they do better. You benefit without changing anything on your side.',
       },
     ],
   },
@@ -713,7 +799,7 @@ export const en: Content = {
       },
       {
         q: 'Which signals are tracked?',
-        a: 'Verifiable facts, drawn from public sources and from your own data: changes of chief executive, acquisitions and head-office moves published in the BODACC and the French company register, hiring picked up from careers pages and job boards, and visits to your website.\n\nThe signals used and their weight depend on your market. A signal only counts towards the score if it can be dated and verified.',
+        a: 'They depend on your market. Among the most common: visits to your strategic pages, hiring, new decision-makers, changes of leadership, announced openings, event participation, dormant leads in your CRM and LinkedIn engagement.\n\nEach signal needs its own technology. Flow Ops combines several, chosen for the signals selected for you, and regularly tests new ones. A signal only counts towards the score if it can be dated and verified.',
       },
       {
         q: 'How much does “Who to call on Monday” cost?',

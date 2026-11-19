@@ -33,8 +33,10 @@ Flow Ops is a **service sold by a named consultant**, and the copy must never le
 - The complementary high-end offer is called **« ABM en masse »** ("ABM at scale" in English). Do not call it ABX on the home page or in the offers: Patrice ruled that word out. The two published articles still discuss ABX as a topic.
 - The list is the output of a **score that combines several signals**, never of one dated signal per call. Explain scoring in three plain parts: what the company is, what it is doing now, how recently.
 - No trade-show framing ("fichier de salon", "deux salons par an"): many clients do not exhibit.
-- Write in the vocabulary of the manager who sells: "qui appeler", "la raison de l'appel", "le score". Keep TAM, stack, infrastructure, orchestration and tool names out of anything addressed to the buyer. Claude and the API connectors are how the list gets made, and appear once, in the "D'où viennent les signaux" section, as a reason to believe.
-- Only promise signals that are actually wired and verified: changes of chief executive, acquisitions and head-office moves (BODACC, company register), hiring (careers pages, job boards), visits to the client's site.
+- Write in the vocabulary of the manager who sells: "qui appeler", "la raison de l'appel", "le score". Keep TAM, stack, infrastructure, orchestration and tool names out of anything addressed to the buyer. The technology is presented as a combination chosen for the client, in the "Exemples de signaux suivis" section, without naming tools.
+- Signals are shown as **examples** (site visits on strategic pages, hiring, new decision-maker, dormant CRM leads, announced openings, event participation, LinkedIn engagement, change of leadership), chosen per client. Do not present public registers (BODACC and the like) as the source: it reads as something the buyer could do alone. Put forward instead that Flow Ops combines complementary technologies, picks them according to the signals that suit the client, and audits new ones regularly.
+- Every example of a scored company shows at least two signals, and the examples span the three client types: cybersecurity, SaaS, industrial.
+- The method keeps its three original blocks: sourcing, enrichment and signal detection; LinkedIn and email conversations (where scoring and nurturing are explained in plain words); sales activation.
 - Never claim a guaranteed number of meetings or a projected cost per lead, and never name a client in copy without written consent. Sector-level proof ("éditeurs de logiciels", "fabricants d'équipements") is fine.
 - French copy follows Patrice's style rules: no em or en dash as sentence punctuation, sentence-case titles, no emoji, non-breaking space before : ; ! ? and inside « », typographic apostrophes, direct statements over hedged ones.
 
@@ -43,7 +45,7 @@ The source of truth for the offer, the ICP and these rules is the Flow Ops tenan
 **Component model**
 
 - `App.tsx` owns all modal state (`isZcalOpen`, `isPrivacyOpen`) and passes open/close callbacks as props.
-- Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list with scores, then how the score is calculated), `Stack` (where the signals come from, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the « ABM en masse » engagement; the component keeps its old file name), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
+- Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list with scores, then how the score is calculated), `Stack` (examples of signals, the technology behind them, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the « ABM en masse » engagement; the component keeps its old file name), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
 - Two modals — `ZcalModal` (booking) and `PrivacyModal` (legal) — are lifted to `App.tsx` so any section can trigger them via props.
 - `Hero` embeds three LinkedIn testimonial posts as iframes, driven by the `TESTIMONIAL_URNS` array at the top of the file and gated behind cookie consent.
 
