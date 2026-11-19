@@ -365,7 +365,7 @@ const Cockpit: React.FC = () => {
       <div className="lg:flex">
         <aside className="lg:w-72 lg:min-h-[calc(100vh-41px)] bg-white border-b lg:border-b-0 lg:border-r border-slate-200 lg:flex lg:flex-col">
           <div className="px-5 pt-5 pb-4 flex items-center gap-3">
-            <img src="/flow-ops-logo.png" alt="" className="w-9 h-9 rounded-lg" />
+            <img src="/favicon-192.png" alt="" className="w-9 h-9" />
             <div>
               <p className="font-bold text-slate-900 leading-tight">Votre espace de suivi</p>
               <p className="text-xs text-slate-500">Flow Ops</p>

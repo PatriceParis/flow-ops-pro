@@ -255,8 +255,7 @@ export const fr: Content = {
           '«\u00a0Je vois que vous participez au congrès de la filière le mois prochain. Pouvons-nous y prévoir vingt minutes sur vos lignes d’emballage\u00a0?\u00a0»',
       },
     ],
-    footnote:
-      'Dans votre liste, chaque ligne porte le nom de l’entreprise, la source de chaque signal et le contact à appeler.',
+    footnote: '',
     scoringTitle: 'Comment le score se calcule',
     scoringParts: [
       {
@@ -328,7 +327,7 @@ export const fr: Content = {
       },
       {
         name: 'Qui appeler lundi',
-        price: '1\u00a0400\u00a0€ HT',
+        price: 'À partir de 1\u00a0400\u00a0€ HT',
         priceNote: 'par mois, outils compris',
         body: 'Chaque lundi, les 10 à 20 entreprises les mieux notées de votre marché, avec la raison de l’appel et une phrase d’ouverture.',
         points: [
@@ -489,7 +488,7 @@ export const fr: Content = {
       },
       {
         q: 'Combien coûte «\u00a0Qui appeler lundi\u00a0»\u00a0?',
-        a: '1\u00a0400\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. L’appel de cadrage est gratuit et le premier mois sert d’essai\u00a0: vous arrêtez à la fin du mois si les chiffres ne suivent pas.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
+        a: 'À partir de 1\u00a0400\u00a0€ HT par mois, outils et deux séquences de nurturing compris, sans frais de mise en place et sans engagement\u00a0: l’abonnement se résilie à la fin de chaque mois. L’appel de cadrage est gratuit et le premier mois sert d’essai\u00a0: vous arrêtez à la fin du mois si les chiffres ne suivent pas.\n\nSi personne chez vous ne peut appeler la liste, une équipe de SDR peut le faire en option, sur devis. L’ABM en masse, avec publicité LinkedIn, séquences sur mesure et contenus, fait l’objet d’un devis.',
       },
       {
         q: 'Quelle différence avec un SDR externalisé ou une agence de prospection\u00a0?',
@@ -635,8 +634,7 @@ export const en: Content = {
           '“I see you are attending the industry congress next month. Could we set aside twenty minutes there on your packaging lines?”',
       },
     ],
-    footnote:
-      'In your list, each line carries the company name, the source of every signal and the contact to call.',
+    footnote: '',
     scoringTitle: 'How the score is calculated',
     scoringParts: [
       {
@@ -708,7 +706,7 @@ export const en: Content = {
       },
       {
         name: 'Who to call on Monday',
-        price: '€1,400 excl. VAT',
+        price: 'From €1,400 excl. VAT',
         priceNote: 'per month, tools included',
         body: 'Every Monday, the 10 to 20 highest-scoring companies in your market, with the reason for the call and an opening line.',
         points: [
@@ -869,7 +867,7 @@ export const en: Content = {
       },
       {
         q: 'How much does “Who to call on Monday” cost?',
-        a: '€1,400 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The scoping call is free and the first month is a trial: you stop at the end of the month if the figures do not follow.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
+        a: 'From €1,400 excluding VAT per month, tools and two nurturing sequences included, with no setup fee and no commitment: the subscription can be cancelled at the end of any month. The scoping call is free and the first month is a trial: you stop at the end of the month if the figures do not follow.\n\nIf nobody on your side can call the list, a team of SDRs can do it as an option, quoted separately. ABM at scale, with LinkedIn advertising, bespoke sequences and content, is quoted separately.',
       },
       {
         q: 'How is this different from an outsourced SDR or a prospecting agency?',

@@ -21,7 +21,7 @@ function offerPrice(price: number | null) {
   return {
     priceSpecification: {
       '@type': 'UnitPriceSpecification',
-      price,
+      minPrice: price,
       priceCurrency: 'EUR',
       unitCode: 'MON',
       valueAddedTaxIncluded: false,

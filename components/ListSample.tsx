@@ -84,7 +84,7 @@ const ListSample: React.FC = () => {
           </ol>
         </div>
 
-        <p className="mt-6 text-sm text-slate-400 text-center">{s.footnote}</p>
+        {s.footnote && <p className="mt-6 text-sm text-slate-400 text-center">{s.footnote}</p>}
 
         <div className="mt-16">
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 text-center mb-8">
