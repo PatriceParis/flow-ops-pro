@@ -47,6 +47,8 @@ The source of truth for the offer, the ICP and these rules is the Flow Ops tenan
 - `App.tsx` owns all modal state (`isZcalOpen`, `isPrivacyOpen`) and passes open/close callbacks as props.
 - Section components, in page order: `Hero`, `Method`, `ListSample` (a fictional Monday list with scores, then how the score is calculated), `Stack` (examples of signals, the technology behind them, and the "service, not software" statement), `Offers` (the three tiers), `ABXPillars` and `Timeline` (the « ABM en masse » engagement; the component keeps its old file name), `FAQ`. They are presentational, with no local state beyond UI interactions. The `Formation` block lives in `archive/` — see `archive/README.md`.
 - Two modals — `ZcalModal` (booking) and `PrivacyModal` (legal) — are lifted to `App.tsx` so any section can trigger them via props.
+- `Hero` is a split from `lg` up: the text on the left, `HeroPreview` on the right, a fictional Monday list (copy in `hero.preview`, companies described, never named, labelled as a fictional example). Never put a real client cockpit or real data there.
+- Type: Instrument Sans for the interface, Geist Mono (`font-mono`) for scores and figures, both loaded from Google Fonts in every HTML shell. Weights stay at 400 to 600, no uppercase tracked labels, no gradient text, no blurred colour blobs (polish pass inspired by unslop, @heydamir, CC BY 4.0).
 - `Hero` embeds three LinkedIn testimonial posts as iframes, driven by the `TESTIMONIAL_URNS` array at the top of the file and gated behind cookie consent.
 
 **Styling**

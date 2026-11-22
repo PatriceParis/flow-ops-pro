@@ -38,6 +38,15 @@ export interface Content {
     blockedBody: string;
     blockedAllow: string;
     blockedView: string;
+    /** Fictional preview of a Monday list, shown next to the headline. */
+    preview: {
+      label: string;
+      date: string;
+      count: string;
+      reasonLabel: string;
+      rows: { company: string; score: number; signals: string; reason?: string }[];
+      footer: string;
+    };
   };
   method: {
     eyebrow: string;
@@ -181,6 +190,24 @@ export const fr: Content = {
       'L’affichage de cette publication dépose des traceurs LinkedIn. Il requiert votre accord.',
     blockedAllow: 'Autoriser et afficher',
     blockedView: 'Voir sur LinkedIn',
+    preview: {
+      label: 'Exemple fictif',
+      date: 'Lundi 23 novembre',
+      count: '12 entreprises à appeler',
+      reasonLabel: 'Raison de l’appel',
+      rows: [
+        {
+          company: 'Fabricant d’emballages plastiques, Ain',
+          score: 76,
+          signals: 'Recrute un responsable maintenance · tarifs consultés 3 fois',
+          reason: 'Le poste est ouvert depuis six jours et vos tarifs ont été consultés cette semaine.',
+        },
+        { company: 'Éditeur SaaS de paie, Lyon', score: 71, signals: 'Nouveau directeur commercial · page démo visitée' },
+        { company: 'Intégrateur cybersécurité, Rennes', score: 68, signals: 'Recrute deux commerciaux · engagement LinkedIn' },
+        { company: 'Laiterie coopérative, Manche', score: 64, signals: 'Nouvelle ligne annoncée · ancien lead revenu' },
+      ],
+      footer: 'Score sur 100 : ce que l’entreprise est, ce qu’elle fait en ce moment, depuis quand.',
+    },
   },
   method: {
     eyebrow: 'Un flux régulier d’entreprises à appeler, toute l’année',
@@ -561,6 +588,24 @@ export const en: Content = {
       'Displaying this post sets LinkedIn tracking cookies. It requires your consent.',
     blockedAllow: 'Allow and display',
     blockedView: 'View on LinkedIn',
+    preview: {
+      label: 'Fictional example',
+      date: 'Monday 23 November',
+      count: '12 companies to call',
+      reasonLabel: 'Reason for the call',
+      rows: [
+        {
+          company: 'Plastic packaging manufacturer, Ain',
+          score: 76,
+          signals: 'Hiring a maintenance manager · pricing viewed 3 times',
+          reason: 'The role has been open for six days and your pricing was viewed this week.',
+        },
+        { company: 'Payroll SaaS vendor, Lyon', score: 71, signals: 'New sales director · demo page visited' },
+        { company: 'Cybersecurity integrator, Rennes', score: 68, signals: 'Hiring two sales reps · LinkedIn engagement' },
+        { company: 'Dairy cooperative, Normandy', score: 64, signals: 'New line announced · former lead back' },
+      ],
+      footer: 'Score out of 100: what the company is, what it is doing now, how recently.',
+    },
   },
   method: {
     eyebrow: 'A steady flow of companies to call, all year round',

@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        mono: ['Geist Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
         sans: [
-          'Inter',
+          'Instrument Sans',
           'ui-sans-serif',
           'system-ui',
           '-apple-system',
