@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react';
 import { ArrowRight, ChevronDown, Linkedin, ExternalLink } from 'lucide-react';
 import { setConsent, useConsent } from '../consent';
 import { useContent } from '../i18n';
-import HeroPreview from './HeroPreview';
 
 interface HeroProps {
   onOpenZcal: () => void;
@@ -61,30 +60,28 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.4] -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-12 lg:gap-16 items-center">
-        <div className="lg:text-left">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-700 text-sm mb-8">
-          <span className="relative flex h-2 w-2">
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+        <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-blue-100 shadow-sm text-blue-800 text-base font-normal mb-8 hover:border-blue-200 hover:shadow-md transition-colors cursor-default">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
           </span>
           {c.hero.badge}
         </div>
 
-        <h1 className="text-4xl md:text-5xl xl:text-6xl font-semibold tracking-tight text-slate-900 mb-6 leading-[1.06]">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-slate-900 mb-8 leading-tight">
           {c.hero.titleLine1}<br />
           <span className="text-blue-700">{c.hero.titleAccent}</span>
         </h1>
         
-        <p className="text-lg md:text-xl text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+        <p className="mt-4 text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
           {c.hero.subtitleBefore}
           <span className="text-slate-900 font-medium">{c.hero.subtitleHighlight}</span>
           {c.hero.subtitleAfter}
         </p>
 
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={onOpenZcal}
-            className="w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-sm flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-xl flex items-center justify-center gap-2"
           >
             {c.hero.ctaPrimary}
             <ArrowRight className="w-4 h-4" />
@@ -97,9 +94,6 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
           </a>
         </div>
         <p className="mt-4 text-sm text-slate-400">{c.hero.ctaNote}</p>
-        </div>
-        <HeroPreview />
-        </div>
 
         {/* Interactive "Electric Charge" Scroll Indicator */}
         <div className="mt-20 flex justify-center">
