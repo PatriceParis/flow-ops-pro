@@ -58,21 +58,18 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
   return (
     <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.4] -z-10"></div>
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[100px] animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-[500px] h-[500px] bg-purple-400/10 rounded-full blur-[100px]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-blue-100 shadow-sm text-blue-800 text-base font-normal mb-8 hover:border-blue-200 hover:shadow-md transition-all cursor-default">
+        <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white border border-blue-100 shadow-sm text-blue-800 text-base font-normal mb-8 hover:border-blue-200 hover:shadow-md transition-colors cursor-default">
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
           </span>
           {c.hero.badge}
         </div>
 
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 mb-8 leading-tight">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-tight text-slate-900 mb-8 leading-tight">
           {c.hero.titleLine1}<br />
-          <span className="gradient-text">{c.hero.titleAccent}</span>
+          <span className="text-blue-700">{c.hero.titleAccent}</span>
         </h1>
         
         <p className="mt-4 text-xl md:text-2xl text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">
@@ -84,14 +81,14 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <button
             onClick={onOpenZcal}
-            className="btn-glow w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition-all shadow-xl flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-7 py-4 bg-slate-900 text-white font-semibold rounded-xl hover:bg-slate-800 transition-colors shadow-xl flex items-center justify-center gap-2"
           >
             {c.hero.ctaPrimary}
             <ArrowRight className="w-4 h-4" />
           </button>
           <a
             href="#exemple"
-            className="w-full sm:w-auto px-7 py-4 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-50 transition-colors text-center"
+            className="w-full sm:w-auto px-7 py-4 bg-white text-slate-900 font-semibold rounded-xl border border-slate-300 hover:bg-slate-50 transition-colors text-center"
           >
             {c.hero.ctaSecondary}
           </a>
@@ -105,27 +102,26 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
             onClick={handleClick}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="group flex flex-col items-center gap-3 transition-all duration-500"
+            className="group flex flex-col items-center gap-3 transition-colors duration-500"
             aria-label={c.hero.scrollAria}
           >
-            <div className="relative w-10 h-16 border-2 border-slate-200 rounded-full flex flex-col items-center justify-center gap-0.5 transition-all duration-500 group-hover:border-indigo-400/30 group-hover:bg-indigo-50/20 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+            <div className="relative w-10 h-16 border-2 border-slate-200 rounded-full flex flex-col items-center justify-center gap-0.5 transition-colors duration-500 group-hover:border-blue-400/30 group-hover:bg-blue-50/20 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.1)]">
               {/* Electric charge arrows */}
-              <ChevronDown className="w-5 h-5 text-slate-300 -mb-2 transition-all duration-300 delay-0 group-hover:text-blue-400 group-hover:translate-y-1" />
-              <ChevronDown className="w-5 h-5 text-slate-300 -mb-2 transition-all duration-300 delay-150 group-hover:text-indigo-500 group-hover:translate-y-1" />
-              <ChevronDown className="w-5 h-5 text-slate-200 transition-all duration-300 delay-300 group-hover:text-purple-600 group-hover:translate-y-1" />
+              <ChevronDown className="w-5 h-5 text-slate-300 -mb-2 transition-colors duration-300 delay-0 group-hover:text-slate-500 group-hover:translate-y-1" />
+              <ChevronDown className="w-5 h-5 text-slate-300 -mb-2 transition-colors duration-300 delay-150 group-hover:text-slate-500 group-hover:translate-y-1" />
+              <ChevronDown className="w-5 h-5 text-slate-200 transition-colors duration-300 delay-300 group-hover:text-slate-500 group-hover:translate-y-1" />
               
               {/* Hover Glow Pulse */}
-              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-b from-transparent via-indigo-500/5 to-indigo-500/10 pointer-events-none"></div>
             </div>
           </a>
         </div>
         
         {/* Harmonized Social Proof Block - STATIC VERSION */}
         <div className="mt-20 max-w-4xl mx-auto px-4">
-          <div className="bg-white/40 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-slate-200/50 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 shadow-sm">
+          <div className="bg-white rounded-2xl p-8 md:p-10 border border-slate-200/50 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-14 shadow-sm">
             
             <div className="flex flex-col items-center md:items-start shrink-0">
-              <div className="text-3xl md:text-4xl font-bold tracking-tight flex items-baseline gap-2">
+              <div className="text-3xl md:text-4xl font-semibold tracking-tight flex items-baseline gap-2">
                 <span className="text-slate-400 font-medium text-2xl md:text-3xl">{c.hero.proofAlready}</span>
                 <span className="text-slate-700">{c.hero.proofCount}</span>
                 <span className="text-slate-400 font-medium text-2xl md:text-3xl">{c.hero.proofSystems}</span>
@@ -138,7 +134,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
             <div className="flex flex-col items-center md:items-start flex-1">
               <div className="flex flex-wrap justify-center md:justify-start gap-2 mb-4">
                 {c.hero.sectors.map((sector) => (
-                  <span key={sector} className="text-[10px] font-bold text-slate-400 bg-white/50 px-2.5 py-1 rounded-lg border border-slate-100 uppercase tracking-wider">
+                  <span key={sector} className="text-xs font-semibold text-slate-400 bg-white/50 px-2.5 py-1 rounded-lg border border-slate-100">
                     {sector}
                   </span>
                 ))}
@@ -150,7 +146,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
 
         {/* Témoignages clients — posts LinkedIn */}
         <div className="mt-14 max-w-6xl mx-auto">
-          <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-6">
+          <p className="text-xs font-semibold text-slate-400 mb-6">
             {c.hero.testimonialsLabel}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -172,13 +168,13 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
                   <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-slate-300 mb-5">
                     <Linkedin className="w-6 h-6" />
                   </div>
-                  <p className="text-sm font-bold text-slate-900 mb-2">{c.hero.blockedTitle}</p>
+                  <p className="text-sm font-semibold text-slate-900 mb-2">{c.hero.blockedTitle}</p>
                   <p className="text-xs text-slate-500 leading-relaxed max-w-[240px]">
                     {c.hero.blockedBody}
                   </p>
                   <button
                     onClick={() => setConsent('granted')}
-                    className="mt-6 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-slate-800 transition-colors"
+                    className="mt-6 px-5 py-2.5 bg-slate-900 text-white rounded-xl text-xs font-semibold hover:bg-slate-800 transition-colors"
                   >
                     {c.hero.blockedAllow}
                   </button>
@@ -186,7 +182,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenZcal }) => {
                     href={`https://www.linkedin.com/feed/update/${urn}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 text-[11px] font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1.5 transition-colors"
+                    className="mt-4 text-xs font-semibold text-slate-400 hover:text-slate-600 flex items-center gap-1.5 transition-colors"
                   >
                     {c.hero.blockedView} <ExternalLink className="w-3 h-3" />
                   </a>

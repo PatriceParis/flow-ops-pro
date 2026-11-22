@@ -28,37 +28,36 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
     <section id="offres" className="py-24 bg-white border-y border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-5">{c.offers.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-5">{c.offers.title}</h2>
           <p className="text-slate-500 text-lg leading-relaxed">{c.offers.subtitle}</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6 items-stretch">
-          <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200 flex flex-col">
-            <h3 className="text-lg font-bold text-slate-900">{scoping.name}</h3>
-            <p className="mt-4 text-3xl font-bold text-slate-900 tracking-tight">{scoping.price}</p>
+          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 flex flex-col">
+            <h3 className="text-lg font-semibold text-slate-900">{scoping.name}</h3>
+            <p className="mt-4 text-3xl font-semibold text-slate-900 tracking-tight">{scoping.price}</p>
             <p className="text-sm text-slate-400 mb-6">{scoping.priceNote}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{scoping.body}</p>
             {points(scoping.points)}
             <button
               onClick={onOpenZcal}
-              className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
+              className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-semibold rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
             >
               {scoping.cta}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
-          <div className="bg-slate-900 rounded-[2rem] p-8 relative overflow-hidden flex flex-col shadow-2xl shadow-slate-900/20">
-            <div className="absolute top-0 right-0 -mr-20 -mt-20 w-[260px] h-[260px] bg-blue-500/20 rounded-full blur-[80px]"></div>
+          <div className="bg-slate-900 rounded-2xl p-8 relative overflow-hidden flex flex-col shadow-sm">
             <div className="relative z-10 flex flex-col h-full">
-              <h3 className="text-lg font-bold text-white">{monday.name}</h3>
-              <p className="mt-4 text-3xl font-bold text-white tracking-tight">{monday.price}</p>
+              <h3 className="text-lg font-semibold text-white">{monday.name}</h3>
+              <p className="mt-4 text-3xl font-semibold text-white tracking-tight">{monday.price}</p>
               <p className="text-sm text-slate-400 mb-6">{monday.priceNote}</p>
               <p className="text-slate-200 leading-relaxed mb-6">{monday.body}</p>
               {points(monday.points, true)}
               <button
                 onClick={onOpenZcal}
-                className="btn-glow mt-auto px-6 py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
+                className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-semibold rounded-xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
               >
                 {monday.cta}
                 <ArrowRight className="w-4 h-4" />
@@ -66,15 +65,15 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
             </div>
           </div>
 
-          <div className="bg-slate-50 rounded-[2rem] p-8 border border-slate-200 flex flex-col">
-            <h3 className="text-lg font-bold text-slate-900">{abx.name}</h3>
-            <p className="mt-4 text-3xl font-bold text-slate-900 tracking-tight">{abx.price}</p>
+          <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200 flex flex-col">
+            <h3 className="text-lg font-semibold text-slate-900">{abx.name}</h3>
+            <p className="mt-4 text-3xl font-semibold text-slate-900 tracking-tight">{abx.price}</p>
             <p className="text-sm text-slate-400 mb-6">{abx.priceNote}</p>
             <p className="text-slate-700 leading-relaxed mb-6">{abx.body}</p>
             {points(abx.points)}
             <a
               href={mailtoHref(c.offers.quoteMailSubject)}
-              className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-bold rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
+              className="mt-auto px-6 py-3.5 bg-white text-slate-900 font-semibold rounded-xl border border-slate-300 hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
             >
               {abx.cta}
               <ArrowRight className="w-4 h-4" />
@@ -87,7 +86,7 @@ const Offers: React.FC<OffersProps> = ({ onOpenZcal }) => {
           {c.offers.oneOff}{' '}
           <a
             href={mailtoHref(c.offers.oneOffMailSubject)}
-            className="font-bold text-slate-900 underline underline-offset-2 hover:text-blue-600 transition-colors"
+            className="font-semibold text-slate-900 underline underline-offset-2 hover:text-blue-600 transition-colors"
           >
             {c.offers.oneOffCta}
           </a>

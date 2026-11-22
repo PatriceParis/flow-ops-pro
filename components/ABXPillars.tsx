@@ -33,12 +33,11 @@ const ABXPillars: React.FC = () => {
     <section id="piliers" className="py-20 md:py-32 bg-white relative overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] -z-10"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] h-[300px] md:h-[800px] bg-indigo-50/40 rounded-full blur-[60px] md:blur-[100px] -z-10"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight mb-4 md:mb-6">
-            {c.pillars.titleBefore} <span className="gradient-text">{c.pillars.titleAccent}</span>
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 tracking-tight mb-4 md:mb-6">
+            {c.pillars.titleBefore} <span className="text-blue-700">{c.pillars.titleAccent}</span>
           </h2>
           <p className="text-slate-500 text-sm md:text-lg font-light leading-relaxed">
             {c.pillars.subtitleBefore}<span className="text-slate-900">{c.pillars.subtitleHighlight}</span>{c.pillars.subtitleAfter}
@@ -74,10 +73,10 @@ const ABXPillars: React.FC = () => {
                 {pillars.map((p, i) => (
                   <div key={p.id} className={`flex flex-col h-full absolute w-1/2 h-1/2 ${p.containerClasses}`}>
                     <div className="bg-white p-1.5 md:p-2.5 rounded-lg md:rounded-xl w-fit mb-2 md:mb-5 shadow-sm border border-slate-100 flex items-center justify-center">
-                      {React.cloneElement(p.icon as React.ReactElement<any>, { className: "w-3 h-3 md:w-4 md:h-4 text-indigo-500" })}
+                      {React.cloneElement(p.icon as React.ReactElement<any>, { className: "w-3 h-3 md:w-4 md:h-4 text-blue-500" })}
                     </div>
-                    <h3 className="text-slate-900 font-bold text-sm md:text-xl mb-1 md:mb-3 tracking-tight whitespace-nowrap">{c.pillars.items[i].name}</h3>
-                    <p className="text-slate-500 text-[8px] sm:text-[10px] md:text-xs leading-tight md:leading-relaxed max-w-[130px] md:max-w-[180px] font-normal">
+                    <h3 className="text-slate-900 font-semibold text-sm md:text-xl mb-1 md:mb-3 tracking-tight whitespace-nowrap">{c.pillars.items[i].name}</h3>
+                    <p className="text-slate-500 text-[8px] sm:text-xs md:text-xs leading-tight md:leading-relaxed max-w-[130px] md:max-w-[180px] font-normal">
                       {c.pillars.items[i].description}
                     </p>
                   </div>
@@ -94,8 +93,7 @@ const ABXPillars: React.FC = () => {
         <div className="flex flex-col items-center">
           {/* Pulsing Start Point */}
           <div className="relative">
-            <div className="absolute inset-0 bg-indigo-500/20 rounded-full animate-ping"></div>
-            <div className="w-2.5 h-2.5 bg-indigo-100 border border-indigo-300 rounded-full relative z-10"></div>
+            <div className="w-2.5 h-2.5 bg-blue-100 border border-blue-300 rounded-full relative z-10"></div>
           </div>
 
           <div className="w-px h-12 md:h-16 relative overflow-hidden">
@@ -105,37 +103,37 @@ const ABXPillars: React.FC = () => {
                 stroke="#6366f1" 
                 strokeWidth="1.5" 
                 strokeDasharray="4 4" 
-                className="animate-flow opacity-30" 
+                className=" opacity-30" 
               />
             </svg>
           </div>
 
           <div className="flex flex-col items-center gap-3 md:gap-4 w-full max-w-[360px] pt-2">
             {/* Outcomes */}
-            <div className="w-full px-5 md:px-6 py-4 md:py-5 bg-white rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(15,23,42,0.02)] flex items-center gap-4 md:gap-5 group transition-colors hover:border-indigo-100">
-              <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-500">
+            <div className="w-full px-5 md:px-6 py-4 md:py-5 bg-white rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(15,23,42,0.02)] flex items-center gap-4 md:gap-5 group transition-colors hover:border-blue-100">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-500">
                 <Calendar className="w-4 md:w-4.5 h-4 md:h-4.5" />
               </div>
-              <span className="text-sm md:text-base font-bold text-slate-700">{c.pillars.outcomeMeetings}</span>
+              <span className="text-sm md:text-base font-semibold text-slate-700">{c.pillars.outcomeMeetings}</span>
             </div>
 
-            <div className="w-full px-5 md:px-6 py-4 md:py-5 bg-white rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(15,23,42,0.02)] flex items-center gap-4 md:gap-5 group transition-colors hover:border-indigo-100">
+            <div className="w-full px-5 md:px-6 py-4 md:py-5 bg-white rounded-xl border border-slate-100 shadow-[0_4px_12px_rgba(15,23,42,0.02)] flex items-center gap-4 md:gap-5 group transition-colors hover:border-blue-100">
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-400">
                 <Users className="w-4 md:w-4.5 h-4 md:h-4.5" />
               </div>
-              <span className="text-sm md:text-base font-bold text-slate-700">{c.pillars.outcomeProcess}</span>
+              <span className="text-sm md:text-base font-semibold text-slate-700">{c.pillars.outcomeProcess}</span>
             </div>
 
             <div className="h-8 md:h-10 w-px relative mt-1">
                <div className="absolute inset-0 w-px bg-slate-100"></div>
-               <div className="absolute inset-0 w-px bg-indigo-500 animate-flow opacity-20" style={{ backgroundImage: 'linear-gradient(to bottom, transparent, #6366f1, transparent)', backgroundSize: '1px 10px' }}></div>
+               <div className="absolute inset-0 w-px bg-blue-500 opacity-20"></div>
             </div>
 
-            <div className="w-full px-6 md:px-8 py-5 md:py-6 bg-slate-900 rounded-xl md:rounded-2xl shadow-xl flex items-center justify-center gap-4 md:gap-5 transition-all hover:bg-black hover:-translate-y-0.5 active:scale-[0.98]">
+            <div className="w-full px-6 md:px-8 py-5 md:py-6 bg-slate-900 rounded-xl md:rounded-2xl shadow-sm flex items-center justify-center gap-4 md:gap-5 transition-colors hover:bg-black active:scale-[0.98]">
               <div className="p-1.5 md:p-2 bg-emerald-500/10 rounded-full">
                 <CheckCircle className="w-4 md:w-5 h-4 md:h-5 text-emerald-400" />
               </div>
-              <span className="font-bold text-white text-xs md:text-sm tracking-[0.1em] md:tracking-[0.15em] uppercase">{c.pillars.outcomeFinal}</span>
+              <span className="font-semibold text-white text-xs md:text-sm">{c.pillars.outcomeFinal}</span>
             </div>
           </div>
         </div>

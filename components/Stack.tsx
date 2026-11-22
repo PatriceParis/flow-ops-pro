@@ -32,15 +32,13 @@ const Stack: React.FC = () => {
 
   return (
     <section id="stack" className="py-24 bg-white relative overflow-hidden">
-      <div className="absolute -left-40 top-40 w-80 h-80 bg-blue-50 rounded-full blur-[120px] opacity-60"></div>
-      <div className="absolute -right-40 bottom-40 w-80 h-80 bg-indigo-50 rounded-full blur-[120px] opacity-60"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-14">
-          <span className="text-blue-600 font-bold tracking-widest text-xs uppercase mb-3 block">
+          <span className="text-blue-600 font-semibold text-xs mb-3 block">
             {c.stack.eyebrow}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">{c.stack.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-slate-900">{c.stack.title}</h2>
           <p className="mt-4 text-slate-500 max-w-2xl mx-auto">{c.stack.subtitle}</p>
         </div>
 
@@ -50,22 +48,21 @@ const Stack: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300"
+                className="group bg-white p-6 rounded-2xl border border-slate-100 shadow-sm transition-colors duration-300"
               >
                 <div className="w-11 h-11 rounded-xl bg-slate-50 text-slate-400 flex items-center justify-center mb-5 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{signal.name}</h3>
+                <h3 className="font-semibold text-slate-900 mb-2">{signal.name}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed">{signal.desc}</p>
               </div>
             );
           })}
         </div>
 
-        <div className="mt-16 bg-slate-900 rounded-[2rem] p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-24 -mt-24 w-[360px] h-[360px] bg-blue-500/15 rounded-full blur-[100px]"></div>
+        <div className="mt-16 bg-slate-900 rounded-2xl p-8 md:p-12 relative overflow-hidden">
           <div className="relative z-10">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-10">{c.stack.techTitle}</h3>
+            <h3 className="text-xl md:text-2xl font-semibold text-white mb-10">{c.stack.techTitle}</h3>
             <div className="grid md:grid-cols-3 gap-10">
               {c.stack.techPoints.map((point, idx) => {
                 const Icon = TECH_ICONS[idx];
@@ -74,7 +71,7 @@ const Stack: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl bg-white/10 text-cyan-300 flex items-center justify-center mb-4">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h4 className="font-bold text-white mb-2">{point.name}</h4>
+                    <h4 className="font-semibold text-white mb-2">{point.name}</h4>
                     <p className="text-sm text-slate-400 leading-relaxed">{point.body}</p>
                   </div>
                 );

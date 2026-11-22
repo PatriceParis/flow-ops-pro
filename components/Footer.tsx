@@ -13,9 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
 
   return (
     <footer className="relative bg-slate-950 text-slate-300 py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950/20"></div>
       <div className="absolute inset-0 footer-pattern opacity-[0.05]"></div>
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8">
@@ -31,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
               {c.footer.tagline}
             </p>
             <address className="mt-6 text-slate-500 text-xs not-italic leading-relaxed">
-              <span className="block font-semibold text-slate-400 uppercase tracking-wider text-[10px] mb-1.5">{c.footer.addressLabel}</span>
+              <span className="block font-semibold text-slate-400 text-xs mb-1.5">{c.footer.addressLabel}</span>
               Patrice Tord<br />
               59, rue de Ponthieu, Bureau 326<br />
               75008 Paris, France
@@ -39,10 +37,10 @@ const Footer: React.FC<FooterProps> = ({ onOpenPrivacy }) => {
           </div>
           
           <div className="flex items-center gap-6">
-            <a href="https://www.linkedin.com/in/patrice-tord/" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300">
+            <a href="https://www.linkedin.com/in/patrice-tord/" target="_blank" rel="noopener noreferrer" className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-colors duration-300">
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="mailto:patrice@flow-ops.pro" className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-all duration-300">
+            <a href="mailto:patrice@flow-ops.pro" className="p-2 text-slate-400 hover:text-white hover:bg-white/10 rounded-full transition-colors duration-300">
               <Mail className="w-5 h-5" />
             </a>
           </div>

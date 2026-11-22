@@ -74,18 +74,18 @@ const Timeline: React.FC = () => {
   const c = useContent();
   const steps = [
     {
-      borderColor: "border-blue-500",
-      tint: "bg-blue-500",
+      borderColor: "border-blue-300",
+      tint: "bg-blue-300",
       icon: <FoundationIcon />
     },
     {
-      borderColor: "border-purple-500",
-      tint: "bg-purple-500",
+      borderColor: "border-blue-500",
+      tint: "bg-blue-500",
       icon: <ConstructionIcon />
     },
     {
-      borderColor: "border-emerald-500",
-      tint: "bg-emerald-500",
+      borderColor: "border-blue-700",
+      tint: "bg-blue-700",
       icon: <FullCityIcon />
     }
   ];
@@ -94,7 +94,7 @@ const Timeline: React.FC = () => {
     <section className="py-24 bg-slate-50 border-t border-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-2xl font-bold text-slate-900">{c.timeline.title}</h2>
+          <h2 className="text-2xl font-semibold text-slate-900">{c.timeline.title}</h2>
           <p className="text-slate-500 mt-2">{c.timeline.subtitle}</p>
         </div>
         
@@ -104,10 +104,10 @@ const Timeline: React.FC = () => {
               {/* Enhanced Larger 3D Icon Marker */}
               <div className={`
                 absolute -left-[41px] -top-4 
-                w-20 h-20 rounded-[2rem] bg-white 
-                border border-slate-100 shadow-xl shadow-slate-200/50 
+                w-20 h-20 rounded-2xl bg-white 
+                border border-slate-100 shadow-sm 
                 flex items-center justify-center 
-                group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500
+                transition-colors duration-500
                 z-10 overflow-hidden
               `}>
                 <div className="relative z-10">
@@ -118,11 +118,11 @@ const Timeline: React.FC = () => {
               </div>
               
               <div className="pt-2">
-                <h3 className="text-xl font-bold text-slate-900 transition-colors group-hover:text-slate-800">{c.timeline.steps[idx].title}</h3>
+                <h3 className="text-xl font-semibold text-slate-900 transition-colors group-hover:text-slate-800">{c.timeline.steps[idx].title}</h3>
                 <p className="text-slate-500 mt-3 leading-relaxed font-medium">{c.timeline.steps[idx].desc}</p>
                 <div className="flex flex-wrap gap-3 mt-5">
                   {c.timeline.steps[idx].tags.map((tag, tIdx) => (
-                    <span key={tIdx} className="px-3 py-1 bg-white border border-slate-200 text-[11px] rounded-lg text-slate-500 font-bold uppercase tracking-wider shadow-sm transition-all group-hover:border-slate-300">
+                    <span key={tIdx} className="px-3 py-1 bg-white border border-slate-200 text-xs rounded-lg text-slate-500 font-semibold shadow-sm transition-colors group-hover:border-slate-300">
                       {tag}
                     </span>
                   ))}

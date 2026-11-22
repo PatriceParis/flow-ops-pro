@@ -7,17 +7,16 @@ const Method: React.FC = () => {
 
   return (
     <section id="methode" className="py-24 bg-white relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-50/50 to-transparent"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
-          <span className="text-blue-600 font-bold tracking-widest text-base md:text-lg uppercase mb-3 inline-block max-w-4xl leading-relaxed">
+          <span className="text-blue-600 font-semibold text-base md:text-lg mb-3 inline-block max-w-4xl leading-relaxed">
             {c.method.eyebrow}
           </span>
         </div>
         
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8 leading-snug">
+            <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-8 leading-snug">
               {c.method.titleLine1}<br /><span className="text-blue-600">{c.method.titleAccent}</span>
             </h2>
             <div className="space-y-8">
@@ -46,11 +45,10 @@ const Method: React.FC = () => {
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-slate-50 to-white p-1 rounded-3xl border border-slate-100 shadow-2xl shadow-slate-200/50 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl -mr-16 -mt-16"></div>
-            <div className="bg-white/80 backdrop-blur-sm p-8 rounded-[1.3rem] h-full relative z-10">
+          <div className="bg-slate-50 p-1 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+            <div className="bg-white p-8 rounded-[13px] h-full relative z-10">
               <div className="space-y-6">
-                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-blue-200 transition-colors">
+                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-slate-300 transition-colors">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-blue-50 rounded-lg text-blue-600 shrink-0">
                       <Radar className="w-5 h-5" />
@@ -64,9 +62,9 @@ const Method: React.FC = () => {
                 
                 <div className="w-0.5 h-6 bg-slate-200 mx-auto group-hover:bg-blue-200 transition-colors"></div>
                 
-                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-purple-200 transition-colors">
+                <div className="flex items-start justify-between p-5 bg-white rounded-xl shadow-[0_2px_10px_rgba(0,0,0,0.03)] border border-slate-100 group-hover:border-slate-300 transition-colors">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 bg-purple-50 rounded-lg text-blue-600 shrink-0">
+                    <div className="p-2 bg-slate-100 rounded-lg text-blue-600 shrink-0">
                       <ThumbsUp className="w-5 h-5" />
                     </div>
                     <div>
@@ -74,12 +72,12 @@ const Method: React.FC = () => {
                       <span className="block text-sm text-slate-500 font-normal leading-relaxed mt-1">{c.method.step2Desc}</span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-purple-50 text-purple-600 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step2Badge}</span>
+                  <span className="text-xs font-semibold bg-slate-100 text-slate-600 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step2Badge}</span>
                 </div>
                 
                 <div className="w-0.5 h-6 bg-slate-200 mx-auto group-hover:bg-green-200 transition-colors"></div>
                 
-                <div className="flex items-start justify-between p-5 bg-slate-900 text-white rounded-xl shadow-lg shadow-slate-900/10 transition-all duration-300">
+                <div className="flex items-start justify-between p-5 bg-slate-900 text-white rounded-xl shadow-lg shadow-slate-900/10 transition-colors duration-300">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-white/10 rounded-lg text-green-400 shrink-0">
                       <MessageSquare className="w-5 h-5" />
@@ -89,7 +87,7 @@ const Method: React.FC = () => {
                       <span className="block text-sm text-slate-400 font-normal leading-relaxed mt-1">{c.method.step3Desc}</span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-green-500/20 text-green-300 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step3Badge}</span>
+                  <span className="text-xs font-semibold bg-green-500/20 text-green-300 px-2 py-1 rounded-md shrink-0 ml-3">{c.method.step3Badge}</span>
                 </div>
               </div>
             </div>

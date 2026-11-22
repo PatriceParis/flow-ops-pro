@@ -49,7 +49,7 @@ const ZcalModal: React.FC<ZcalModalProps> = ({ isOpen, onClose }) => {
       />
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-5xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[90vh] animate-modal border border-white/20">
+      <div className="relative w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[90vh] animate-modal border border-white/20">
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
           <div className="flex items-center">

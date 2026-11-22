@@ -40,12 +40,12 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
       />
       
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col h-[85vh] animate-modal border border-slate-100">
+      <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[85vh] animate-modal border border-slate-100">
         {/* Header */}
         <div className="flex justify-between items-center p-6 border-b border-slate-100 shrink-0">
           <div className="flex items-center gap-3">
             <img src="/flow-ops-logo.png" alt="Flow Ops" className="h-6 w-auto" />
-            <h2 className="text-lg font-bold text-slate-900">{c.footer.privacy}</h2>
+            <h2 className="text-lg font-semibold text-slate-900">{c.footer.privacy}</h2>
           </div>
           <button 
             onClick={onClose}
@@ -68,58 +68,58 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </p>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">1. Responsable du traitement</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">1. Responsable du traitement</h3>
               <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 overflow-x-auto">
                 <table className="w-full text-sm">
                   <tbody>
                     <tr className="border-b border-slate-200">
-                      <td className="py-2 font-bold text-slate-900 w-1/3">Nom et statut</td>
+                      <td className="py-2 font-semibold text-slate-900 w-1/3">Nom et statut</td>
                       <td className="py-2">Patrice Tord</td>
                     </tr>
                     <tr className="border-b border-slate-200">
-                      <td className="py-2 font-bold text-slate-900">Adresse postale</td>
+                      <td className="py-2 font-semibold text-slate-900">Adresse postale</td>
                       <td className="py-2">59, rue de Ponthieu, Bureau 326, 75008 Paris</td>
                     </tr>
                     <tr className="border-b border-slate-200">
-                      <td className="py-2 font-bold text-slate-900">Coordonnées</td>
+                      <td className="py-2 font-semibold text-slate-900">Coordonnées</td>
                       <td className="py-2">contact@flow-ops.pro</td>
                     </tr>
                     <tr className="border-b border-slate-200">
-                      <td className="py-2 font-bold text-slate-900">Numéro SIRET</td>
+                      <td className="py-2 font-semibold text-slate-900">Numéro SIRET</td>
                       <td className="py-2">81927317800023</td>
                     </tr>
                     <tr>
-                      <td className="py-2 font-bold text-slate-900 align-top">Délégué à la protection des données (DPO)</td>
+                      <td className="py-2 font-semibold text-slate-900 align-top">Délégué à la protection des données (DPO)</td>
                       <td className="py-2">Le caractère de l’entreprise ne nécessite pas la désignation d’un DPO. Pour toute question liée à la protection des données, vous pouvez contacter le responsable du traitement.</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="mt-4 text-xs italic">Conformément aux obligations légales, l’identité de l’hébergeur du Site est indiquée ci-après. Le Site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis (voir § 4 ci-dessous).</p>
+              <p className="mt-4 text-xs">Conformément aux obligations légales, l’identité de l’hébergeur du Site est indiquée ci-après. Le Site est hébergé par Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis (voir § 4 ci-dessous).</p>
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">2. Données collectées et finalités</h3>
-              <h4 className="font-bold text-slate-800 mb-2">2.1 Données fournies volontairement par les utilisateurs</h4>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">2. Données collectées et finalités</h3>
+              <h4 className="font-semibold text-slate-800 mb-2">2.1 Données fournies volontairement par les utilisateurs</h4>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Prise de contact par e-mail :</strong> le Site ne comporte aucun formulaire de contact. Les liens « Discutons de vos enjeux » et « Demander un devis » ouvrent votre logiciel de messagerie vers <strong>patrice@flow-ops.pro</strong>. Les données que vous nous transmettez ainsi sont celles que vous choisissez d’écrire dans votre message ; elles sont conservées dans la messagerie du responsable du traitement.</li>
                 <li><strong>Prise de rendez-vous via zCal :</strong> lors de la réservation d’un créneau, zCal collecte votre nom, votre adresse e-mail et le créneau sélectionné afin d’organiser l’appel ou la visio-conférence. Cette collecte est gérée par zCal (voir § 4 ci-dessous).</li>
               </ul>
 
-              <h4 className="font-bold text-slate-800 mt-6 mb-2">2.2 Données collectées automatiquement</h4>
+              <h4 className="font-semibold text-slate-800 mt-6 mb-2">2.2 Données collectées automatiquement</h4>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Données d’usage et d’appareil :</strong> lors de la navigation, le Site enregistre automatiquement certaines informations (adresse IP, identifiant d’appareil, type de navigateur, pages visitées, temps de connexion) via l’outil d’analyse d’usage PostHog, hébergé dans l’Union européenne. Ces données ne permettent pas de vous identifier directement mais servent à des fins statistiques et d’amélioration du Site.</li>
                 <li><strong>Cookies et traceurs :</strong> des cookies de mesure d’audience et de fonctionnement sont déposés sur votre terminal pour faciliter la navigation et mesurer la fréquentation (cf. § 7). Certains cookies nécessitent votre consentement préalable.</li>
               </ul>
 
-              <h4 className="font-bold text-slate-800 mt-6 mb-2">2.3 Finalités et bases légales</h4>
+              <h4 className="font-semibold text-slate-800 mt-6 mb-2">2.3 Finalités et bases légales</h4>
               <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 overflow-x-auto">
                 <table className="w-full text-xs text-left">
                   <thead>
                     <tr className="border-b border-slate-200">
-                      <th className="pb-2 font-bold text-slate-900">Finalité du traitement</th>
-                      <th className="pb-2 font-bold text-slate-900">Données concernées</th>
-                      <th className="pb-2 font-bold text-slate-900">Base légale (art. 6 RGPD)</th>
+                      <th className="pb-2 font-semibold text-slate-900">Finalité du traitement</th>
+                      <th className="pb-2 font-semibold text-slate-900">Données concernées</th>
+                      <th className="pb-2 font-semibold text-slate-900">Base légale (art. 6 RGPD)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
@@ -149,7 +149,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">3. Durée de conservation</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">3. Durée de conservation</h3>
               <p className="text-sm mb-3">Les données sont conservées pendant une durée limitée, proportionnelle à la finalité du traitement :</p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Données de contact et de rendez-vous :</strong> conservées trois (3) ans à compter du dernier échange avec vous. Au-delà, elles sont supprimées ou anonymisées.</li>
@@ -159,7 +159,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">4. Destinataires des données</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">4. Destinataires des données</h3>
               <p className="text-sm mb-4">Les informations collectées sont exclusivement utilisées par le responsable du traitement et par ses prestataires strictement habilités :</p>
               <ol className="list-decimal pl-5 space-y-4 text-sm">
                 <li><strong>Vercel – hébergement et infrastructure :</strong> Vercel agit en tant que sous-traitant et héberge le Site sur des serveurs sécurisés. Les journaux techniques générés par l’hébergement (adresse IP, horodatage, ressource demandée) sont traités à des fins de fonctionnement et de sécurité. Pour les transferts hors de l’Espace Économique Européen (EEE), Vercel s’appuie sur les clauses contractuelles types approuvées par la Commission européenne.</li>
@@ -172,12 +172,12 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">5. Transferts internationaux</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">5. Transferts internationaux</h3>
               <p className="text-sm">Certaines données peuvent être traitées en dehors de l’EEE du fait de l’utilisation de services fournis par Vercel ou zCal, dont les sociétés éditrices sont établies aux États-Unis. Ces prestataires s’appuient sur les clauses contractuelles types (SCC) validées par la Commission européenne pour encadrer les transferts de données ; ces clauses assurent un niveau de protection équivalent à celui garanti par l’UE. ZCal indique également se conformer aux obligations en matière de protection des données et s’appuie sur des bases légales telles que le consentement et l’intérêt légitime.</p>
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">6. Vos droits</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">6. Vos droits</h3>
               <p className="text-sm mb-3">Conformément à la législation sur la protection des données, vous disposez des droits suivants :</p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Droit d’accès :</strong> obtenir la confirmation que des données vous concernant sont traitées et en recevoir une copie.</li>
@@ -192,7 +192,7 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">7. Cookies et traceurs</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">7. Cookies et traceurs</h3>
               <p className="text-sm mb-3">Un bandeau s’affiche lors de votre première visite pour recueillir votre choix. Tant que vous n’avez pas accepté, <strong>aucun traceur de mesure d’audience n’est déposé et les publications LinkedIn ne sont pas chargées</strong> : elles sont remplacées par un encart qui vous laisse décider. Refuser est aussi simple qu’accepter, et votre refus n’altère en rien la navigation. Vous pouvez revenir sur votre choix à tout moment via le lien « Gérer les traceurs » en pied de page ; le retrait de votre consentement supprime les identifiants déjà enregistrés sur votre terminal. Plusieurs catégories de traceurs peuvent être utilisées :</p>
               <ul className="list-disc pl-5 space-y-2 text-sm">
                 <li><strong>Cookies techniques et nécessaires :</strong> indispensables au bon fonctionnement du Site (navigation sécurisée, choix de langue). Ils ne nécessitent pas de consentement.</li>
@@ -203,12 +203,12 @@ const PrivacyModal: React.FC<PrivacyModalProps> = ({ isOpen, onClose }) => {
             </section>
 
             <section>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">8. Sécurité</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">8. Sécurité</h3>
               <p className="text-sm">Le Site utilise le protocole HTTPS et des mesures techniques (chiffrement des échanges, accès restreints) pour assurer la confidentialité et l’intégrité des données. Les sous-traitants (Vercel, zCal, PostHog) certifient respecter des normes internationales de sécurité, notamment la norme SOC 2 Type II.</p>
             </section>
 
             <section className="pb-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">9. Mise à jour de la politique</h3>
+              <h3 className="text-xl font-semibold text-slate-900 mb-4">9. Mise à jour de la politique</h3>
               <p className="text-sm">La présente politique est susceptible d’être modifiée pour refléter les évolutions légales ou technologiques. La version en vigueur est celle publiée sur le Site à la date de consultation. Les utilisateurs seront informés des changements significatifs (par exemple via un bandeau ou une notification). <strong>Dernière mise à jour : 13 novembre 2026.</strong></p>
             </section>
           </div>

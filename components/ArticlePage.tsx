@@ -24,16 +24,16 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
         <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <a
             href={home}
-            className="inline-flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-slate-700 uppercase tracking-wider transition-colors mb-10"
+            className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-slate-700 transition-colors mb-10"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             Flow Ops
           </a>
 
-          <span className="text-blue-600 font-bold tracking-widest text-xs uppercase block mb-4">
+          <span className="text-blue-600 font-semibold text-xs block mb-4">
             {a.eyebrow}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight mb-6">
+          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-slate-900 leading-tight mb-6">
             {a.h1}
           </h1>
           <p className="text-xl text-slate-500 font-light leading-relaxed">{a.standfirst}</p>
@@ -46,7 +46,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
 
           {a.sections.map((section, idx) => (
             <section key={idx} className="mt-14">
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-5 leading-snug">
+              <h2 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-5 leading-snug">
                 {section.h2}
               </h2>
               {section.paragraphs.map((p, i) => (
@@ -74,7 +74,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
                         {a.table.head.map((h, i) => (
                           <th
                             key={i}
-                            className={`py-3 text-left font-bold ${
+                            className={`py-3 text-left font-semibold ${
                               i === 0 ? 'text-slate-400' : 'text-slate-900'
                             }`}
                           >
@@ -91,7 +91,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
                               key={j}
                               className={`py-3 pr-4 align-top ${
                                 j === 0
-                                  ? 'font-bold text-slate-700 whitespace-nowrap'
+                                  ? 'font-semibold text-slate-700 whitespace-nowrap'
                                   : 'text-slate-500'
                               }`}
                             >
@@ -107,22 +107,21 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
             </section>
           ))}
 
-          <aside className="mt-16 bg-slate-900 rounded-[2rem] p-8 md:p-10 relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px]" />
+          <aside className="mt-16 bg-slate-900 rounded-2xl p-8 md:p-10 relative overflow-hidden">
             <div className="relative z-10">
-              <h2 className="text-xl md:text-2xl font-bold text-white mb-3">{a.ctaTitle}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold text-white mb-3">{a.ctaTitle}</h2>
               <p className="text-slate-400 leading-relaxed mb-8">{a.ctaBody}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={onOpenZcal}
-                  className="btn-glow px-6 py-3.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
+                  className="px-6 py-3.5 bg-white text-slate-900 font-semibold rounded-xl hover:bg-slate-100 transition-colors flex items-center justify-center gap-2"
                 >
                   {a.ctaButton}
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <a
                   href={home}
-                  className="px-6 py-3.5 border border-white/20 text-white font-bold rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
+                  className="px-6 py-3.5 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
                 >
                   {a.backHome}
                 </a>
@@ -137,7 +136,7 @@ const ArticlePage: React.FC<ArticlePageProps> = ({ slug, onOpenZcal, onOpenPriva
                 <a
                   key={s}
                   href={`${home === '/' ? '' : home.replace(/\/$/, '')}/${s}/`}
-                  className="text-sm font-bold text-slate-700 hover:text-blue-600 transition-colors flex items-center gap-2"
+                  className="text-sm font-semibold text-slate-700 hover:text-blue-600 transition-colors flex items-center gap-2"
                 >
                   {articles[locale][s].h1}
                   <ArrowRight className="w-3.5 h-3.5" />

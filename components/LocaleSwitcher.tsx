@@ -29,7 +29,7 @@ const LocaleSwitcher: React.FC = () => {
       hrefLang={target}
       aria-label={c.nav.switchLabel}
       title={c.nav.switchLabel}
-      className="flex items-center gap-1.5 px-2.5 py-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-bold tracking-wider"
+      className="flex items-center gap-1.5 px-2.5 py-2 text-slate-500 hover:text-slate-900 hover:bg-slate-100 rounded-lg transition-colors text-xs font-semibold"
     >
       <Languages className="w-4 h-4" />
       {c.nav.switchTo}
